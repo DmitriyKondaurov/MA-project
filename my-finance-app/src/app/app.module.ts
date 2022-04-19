@@ -3,10 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FieldCostComponent } from './components/field-cost/field-cost.component';
+import { FieldCostItemComponent } from './components/field-cost-item/field-cost-item.component';
+import { FrontPageItemComponent } from './components/front-page-item/front-page-item.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent,
+    HeaderComponent,
+    FieldCostComponent,
+    FieldCostItemComponent,
+    FrontPageItemComponent
   ],
   imports: [
     BrowserModule,

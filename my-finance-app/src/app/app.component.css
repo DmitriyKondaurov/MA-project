@@ -1,0 +1,7 @@
+.app-root {
+  font-family: 'open sans', sans-serif;
+  background-color: #FFFBEF;
+  padding: 10px;
+  height: 100vh;
+  box-sizing: border-box;
+}
