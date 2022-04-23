@@ -1,7 +1,12 @@
 .app-root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  max-width: 320px;
+  margin: auto;
   font-family: 'open sans', sans-serif;
   background-color: #FFFBEF;
-  padding: 10px;
-  height: 100vh;
+  padding: 5px;
   box-sizing: border-box;
 }

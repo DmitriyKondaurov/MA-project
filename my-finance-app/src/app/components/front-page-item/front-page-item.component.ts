@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {IFrontPageItem} from "../../app-interfaces";
 
 @Component({
   selector: 'app-front-page-item',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrontPageItemComponent implements OnInit {
 
-  constructor() { }
+ @Input()  frontPageItem: IFrontPageItem = {
+   name: '',
+   value: 0,
+   total: 0,
+   color: ''
+ };
+
+ constructor() { }
 
   ngOnInit(): void {
   }
