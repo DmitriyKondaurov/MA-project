@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-finance-app';
+
+  isShow = false;
+
+  show() {
+    this.isShow = true;
+  }
+
+  hide() {
+    this.isShow = false;
+  }
 }

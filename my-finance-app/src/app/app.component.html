@@ -1,2 +1,3 @@
-
+<app-popup-form *ngIf="isShow" (handleHide)="hide()"></app-popup-form>
+<div (click)="show()">+</div>
 <router-outlet></router-outlet>
