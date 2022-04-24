@@ -9,6 +9,7 @@ import { FieldCostComponent } from './components/field-cost/field-cost.component
 import { FieldCostItemComponent } from './components/field-cost-item/field-cost-item.component';
 import { FrontPageItemComponent } from './components/front-page-item/front-page-item.component';
 import { FillAmountDirective } from './directives/fill-amount.directive';
+import { FillCostDirective } from './directives/fill-cost.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FillAmountDirective } from './directives/fill-amount.directive';
     FieldCostComponent,
     FieldCostItemComponent,
     FrontPageItemComponent,
-    FillAmountDirective
+    FillAmountDirective,
+    FillCostDirective
   ],
   imports: [
     BrowserModule,

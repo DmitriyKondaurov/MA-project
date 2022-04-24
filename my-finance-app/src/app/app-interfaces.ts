@@ -19,7 +19,7 @@ export interface ICostArchive   {
   categoryName: string
   subCategoryName: string
   date: Date
-  value:number
+  value: number
 }
 
 
