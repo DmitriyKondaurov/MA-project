@@ -1,0 +1,12 @@
+.field-cost {
+  width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  padding-top: 20px;
+}
+
+.field-cost__name {
+  align-self: flex-start;
+}

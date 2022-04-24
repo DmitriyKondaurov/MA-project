@@ -14,3 +14,13 @@ export interface IFrontPageItem {
   total: number
   color: string
 }
+
+export interface ICostArchive   {
+  categoryName: string
+  subCategoryName: string
+  date: Date
+  value:number
+}
+
+
+

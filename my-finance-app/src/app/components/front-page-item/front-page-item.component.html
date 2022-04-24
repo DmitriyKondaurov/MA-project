@@ -1,6 +1,6 @@
-<span>
-  <span>{{frontPageItem.name}}</span>
-  <div class="progress-bar">
+<span class="progress-bar">
+  <span class="progress-bar__name">{{frontPageItem.name}}</span>
+  <div class="progress-bar__line">
     <span class="progress-bar__fill-value" [appFillAmount]="frontPageItem.value"
           curItemColor="{{frontPageItem.color}}" curItemTotal="{{frontPageItem.total}}"></span>
     <span  class="progress-bar__value-amount">{{frontPageItem.total}}</span>

@@ -1,4 +1,4 @@
-.progress-bar {
+.progress-bar__line {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,6 +14,3 @@
 
 }
 
-.progress-bar__value-amount {
-
-}

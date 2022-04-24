@@ -10,3 +10,7 @@
   padding: 5px;
   box-sizing: border-box;
 }
+
+.app-root__progress-bar-field {
+  padding-top: 20px;
+}
