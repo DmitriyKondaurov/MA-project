@@ -1,5 +1,12 @@
+
 .popup-container {
     width: 100%;
     min-height: 100%;
     background-color: red;
+    display: flex;
+}
+
+.popup__form {
+    display: flex;
+    flex-direction: column;
 }
