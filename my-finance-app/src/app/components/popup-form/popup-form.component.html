@@ -1,1 +1,31 @@
-<div class="popup" class="popup-container" (click)="handleHideClick()">Its work!</div>
+<div class="popup" class="popup-container">
+    <form [formGroup]="form"
+          (ngSubmit)="submitForm()">
+        <select formControlName="type">
+          <option *ngFor="let type of types" [ngValue]="type">
+            {{ type.title }}
+          </option>
+        </select>
+        <select formControlName="expense">
+          <option *ngFor="let expense of expenses" [ngValue]="expense">
+            {{ expense.title }}
+          </option>
+        </select>
+        <input type="date" formControlName="date" data-date-input>
+        <select formControlName="category">
+          <option *ngFor="let category of categories" [ngValue]="category">
+            {{ category }}
+          </option>
+        </select>
+        <input type="text" formControlName="description">
+        <input type="text" formControlName="amount">
+        <select formControlName="currency">
+          <option *ngFor="let currency of currencies" [ngValue]="currency">
+            {{ currency.title }}
+          </option>
+        </select>
+        <button>Submit</button>
+    </form>
+    <p>Form value: {{ form.value | json }}</p>
+    <button (click)="handleHideClick()">Close</button>
+</div>
