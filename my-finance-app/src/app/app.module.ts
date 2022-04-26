@@ -6,17 +6,26 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PopupFormComponent } from './components/popup-form/popup-form.component';
+import { Routes, RouterModule } from '@angular/router';
+import { TransactionArchiveComponent } from './components/transition-archive/transaction-archive.component';
+import { CardComponent } from './components/transition-archive/card/card.component';
 
+const appRoutes: Routes = [
+  { path: 'archive', component: TransactionArchiveComponent },
+]
 @NgModule({
   declarations: [
     AppComponent,
-    PopupFormComponent
+    PopupFormComponent,
+    TransactionArchiveComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,6 +16,7 @@ interface Type {
 export class PopupFormComponent implements OnInit {
 
   data?: Categories;
+  dataStorage?: string[] = [];
 
 
   types: Type[] = [
@@ -61,7 +62,6 @@ export class PopupFormComponent implements OnInit {
   ngOnInit(): void {
     this.GetDataService.getData().subscribe( res => {
       this.data = res;
-      console.log(this.data)
     } )
 
     const dateControl = document.querySelector('[data-date-input]') as HTMLInputElement ;
@@ -72,14 +72,23 @@ export class PopupFormComponent implements OnInit {
     this.form.controls['type'].valueChanges.subscribe( ({ value }: Type) => {
       if(!this.data) return;
       console.log(this.data, value);
-      let obj = this.data[value];
-      console.log(Object.values(this.data[value]).flat());
       this.categories = Object.values(this.data[value]).flat();
     } )
   }
 
   submitForm(): void {
-    if(this.form.valid) localStorage.setItem("dataForm", JSON.stringify(this.form.value));
+    if(this.form.valid) {
+      if(localStorage.length === 0) this.save()
+      else {
+        this.dataStorage = JSON.parse(localStorage.getItem('dataForm')!)
+        this.save()
+      }
+    }
+  }
+
+  save() {
+    this.dataStorage?.push(JSON.stringify(this.form.value))
+    localStorage.setItem("dataForm", JSON.stringify(this.dataStorage));
   }
 
 }
