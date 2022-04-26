@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -10,6 +9,7 @@ import { FieldCostItemComponent } from './components/field-cost-item/field-cost-
 import { FrontPageItemComponent } from './components/front-page-item/front-page-item.component';
 import { FillAmountDirective } from './directives/fill-amount.directive';
 import { FillCostDirective } from './directives/fill-cost.directive';
+import { AddNewComponent } from './components/add-new/add-new.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { FillCostDirective } from './directives/fill-cost.directive';
     FieldCostItemComponent,
     FrontPageItemComponent,
     FillAmountDirective,
-    FillCostDirective
+    FillCostDirective,
+    AddNewComponent,
   ],
   imports: [
     BrowserModule,

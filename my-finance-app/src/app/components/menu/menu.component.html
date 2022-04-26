@@ -1,12 +1,14 @@
-<nav class="nav">
-  <ul class="nav__list">
-    <li class="nav__item"><a class="nav__link" href="#">Головна сторінка</a></li>
-    <li class="nav__item"><a class="nav__link" href="#">Архів транзакцій</a></li>
-    <li class="nav__item"><a class="nav__link" href="#">Категорії</a></li>
-    <li class="nav__item"><a class="nav__link" href="#">План бюджет</a></li>
-    <li class="nav__item"><a class="nav__link" href="#">Моніторінг витрат</a></li>
-    <li class="nav__item"><a class="nav__link" href="#">Звіт план/факт</a></li>
-    <li class="nav__item"><a class="nav__link" href="#">Введення нових даних</a></li>
-    <li class="nav__item"><a class="nav__link" href="#">Цілі накопичення</a></li>
+<nav class="header-navigation">
+  <ul class="header-menu" (click)="toggle()" [ngClass]="status ? '': 'header-menu--hide'">
+    <li *ngFor="let item of elements" class="header-menu__item"
+        (click)="select(item)">
+      <a class="header-menu__link " href="#"
+         [class.header-menu__link_active]="selected === item"
+      >{{item}}</a>
+    </li>
   </ul>
+  <button type="button" class="header-menu__switcher switcher" data-menu-switcher-btn="1" (click)="toggle()">
+    <span class="switcher__cross-line" data-cross-line-1></span>
+    <span class="switcher__cross-line" data-cross-line-2></span>
+  </button>
 </nav>
