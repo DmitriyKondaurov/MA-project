@@ -67,7 +67,7 @@ export class AppComponent {
     },
     {
       categoryName: 'Квартплата',
-      subCategoryName: 'Квартплата, Отопление и горячая вода',
+      subCategoryName: 'Квартплата, Отопление',
       date: new Date(),
       value: 3000,
     },

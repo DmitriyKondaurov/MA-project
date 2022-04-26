@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ICostArchive} from "../../app-interfaces";
+import {TransactionsService} from "../../services/transactions.service";
 
 @Component({
   selector: 'app-field-cost',
@@ -10,34 +11,13 @@ export class FieldCostComponent implements OnInit {
   @Input() transactions: ICostArchive[] = [];
   firstBiggest: ICostArchive[] = [];
   totalCostAmount: number = 0;
-constructor() { }
+constructor(private transactionsService: TransactionsService) { }
 
   ngOnInit(): void {
-    this.totalCostAmount = this.transactions.reduce((acc, curr) => {
-      return acc += curr.value;
-    },0)
-    this.reduceTransactions(this.transactions);
-    this.sortTransactions(this.transactions);
+    this.totalCostAmount = this.transactions.reduce((acc, curr) => acc += curr.value, 0)
+    this.transactions = this.transactionsService.customReduce(this.transactions);
+    this.transactions = this.transactionsService.customSort(this.transactions);
     this.firstBiggest = this.transactions.slice(0, 5)
   }
-
-  reduceTransactions(curTransactions: ICostArchive[]) {
-    let totalByCategories: ICostArchive[] = [];
-    curTransactions.forEach((item): void => {
-      let index = totalByCategories.findIndex((i) => i.categoryName == item.categoryName)
-      if (index >= 0) {
-        totalByCategories[index].value += item.value;
-      } else {
-        totalByCategories.push(item);
-      }
-    })
-  }
-
-  sortTransactions(curTransactions: ICostArchive[]) {
-    curTransactions = curTransactions.sort((a, b) => {
-      return b.value - a.value
-    })
-    return curTransactions
-}
 
 }
