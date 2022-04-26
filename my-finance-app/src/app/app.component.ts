@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ICategories, ICostArchive, IFrontPageItem} from "./app-interfaces";
+import {IAppColors, ICategories, ICostArchive, IFrontPageItem} from "./app-interfaces";
 
 @Component({
   selector: 'app-root',

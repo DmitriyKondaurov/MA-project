@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {IFrontPageItem} from "../../app-interfaces";
+import {TakeColorService} from "../../services/take-color.service";
 
 @Component({
   selector: 'app-front-page-item',
@@ -15,9 +16,12 @@ export class FrontPageItemComponent implements OnInit {
    color: ''
  };
 
- constructor() { }
+ color: string = '';
+
+ constructor(private choseHighlightColor: TakeColorService) { }
 
   ngOnInit(): void {
+    this.color = this.choseHighlightColor.takeNewColor()
   }
 
 }

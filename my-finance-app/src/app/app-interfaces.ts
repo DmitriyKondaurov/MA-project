@@ -22,5 +22,11 @@ export interface ICostArchive   {
   value: number
 }
 
+export interface IAppColors {
+  lastUsed: number
+  [key: number]: string
+  next(): void
+}
+
 
 

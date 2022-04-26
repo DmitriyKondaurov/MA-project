@@ -7,15 +7,20 @@ import {ICostArchive} from "../../app-interfaces";
   styleUrls: ['./field-cost-item.component.css']
 })
 export class FieldCostItemComponent implements OnInit {
-@Input() costByCategory: ICostArchive = {
+  @Input() totalCostAmount: number = 0;
+  @Input() costByCategory: ICostArchive = {
   categoryName: '',
   subCategoryName: '',
   date: new Date(),
   value: 0,
 }
+
+  color: string = '';
+
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

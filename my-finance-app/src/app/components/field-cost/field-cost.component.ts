@@ -7,12 +7,15 @@ import {ICostArchive} from "../../app-interfaces";
   styleUrls: ['./field-cost.component.css']
 })
 export class FieldCostComponent implements OnInit {
-@Input() transactions: ICostArchive[] = [];
-firstBiggest: ICostArchive[] = [];
-
+  @Input() transactions: ICostArchive[] = [];
+  firstBiggest: ICostArchive[] = [];
+  totalCostAmount: number = 0;
 constructor() { }
 
   ngOnInit(): void {
+    this.totalCostAmount = this.transactions.reduce((acc, curr) => {
+      return acc += curr.value;
+    },0)
     this.reduceTransactions(this.transactions);
     this.sortTransactions(this.transactions);
     this.firstBiggest = this.transactions.slice(0, 5)
