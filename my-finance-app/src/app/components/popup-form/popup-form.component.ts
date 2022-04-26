@@ -72,16 +72,23 @@ export class PopupFormComponent implements OnInit {
     this.form.controls['type'].valueChanges.subscribe( ({ value }: Type) => {
       if(!this.data) return;
       console.log(this.data, value);
-      let obj = this.data[value];
       this.categories = Object.values(this.data[value]).flat();
     } )
   }
 
   submitForm(): void {
     if(this.form.valid) {
-      this.dataStorage?.push(JSON.stringify(this.form.value));
-      localStorage.setItem("dataForm", JSON.stringify(this.dataStorage));
+      if(localStorage.length === 0) this.save()
+      else {
+        this.dataStorage = JSON.parse(localStorage.getItem('dataForm')!)
+        this.save()
+      }
     }
+  }
+
+  save() {
+    this.dataStorage?.push(JSON.stringify(this.form.value))
+    localStorage.setItem("dataForm", JSON.stringify(this.dataStorage));
   }
 
 }
