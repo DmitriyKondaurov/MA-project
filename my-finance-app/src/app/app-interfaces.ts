@@ -12,7 +12,6 @@ export interface IFrontPageItem {
   name: string
   value: number
   total: number
-  color: string
 }
 
 export interface ICostArchive   {

@@ -10,3 +10,11 @@
 .field-cost__name {
   align-self: flex-start;
 }
+
+.field-cost__list {
+  padding: 0;
+}
+
+.field-cost__item {
+  list-style: none;
+}

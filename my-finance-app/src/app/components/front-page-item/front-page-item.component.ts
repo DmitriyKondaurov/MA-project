@@ -13,7 +13,6 @@ export class FrontPageItemComponent implements OnInit {
    name: '',
    value: 0,
    total: 0,
-   color: ''
  };
 
  color: string = '';

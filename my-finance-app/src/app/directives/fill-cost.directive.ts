@@ -4,7 +4,7 @@ import {Directive, ElementRef, Input, OnInit} from '@angular/core';
   selector: '[appFillCost]'
 })
 export class FillCostDirective implements OnInit{
-  @Input() appFillAmount = 0;
+  @Input() appFillCost = 0;
   @Input() curItemColor = '';
   @Input() curItemTotal = '';
 
@@ -13,7 +13,7 @@ export class FillCostDirective implements OnInit{
   ngOnInit(): void {
     const curHighLightColor = this.curItemColor;
     const curFillAmount = this.curItemTotal ?
-      Math.round((this.appFillAmount/Number(this.curItemTotal))*100):
+      Math.round((Number(this.curItemTotal)/this.appFillCost)*100):
       0;
     this.highlight(curHighLightColor);
     this.fillAmount(curFillAmount);

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ICostArchive} from "../../app-interfaces";
+import {TakeColorService} from "../../services/take-color.service";
 
 @Component({
   selector: 'app-field-cost-item',
@@ -17,10 +18,10 @@ export class FieldCostItemComponent implements OnInit {
 
   color: string = '';
 
-  constructor() { }
+  constructor(private choseHighlightColor: TakeColorService) { }
 
   ngOnInit(): void {
-
+    this.color = this.choseHighlightColor.takeNewColor()
   }
 
 }

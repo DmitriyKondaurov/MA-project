@@ -11,24 +11,21 @@ export class AppComponent {
   categories: ICategories | undefined;
 
   income: IFrontPageItem = {
-    name:'income',
+    name:'Надходження',
     value: 1500,
     total: 5000,
-    color: '#D8BAFF'
   };
 
   goal: IFrontPageItem = {
     name:'Автомобиль',
     value: 1000,
     total: 3000,
-    color: '#7D91F6'
   };
 
   cost: IFrontPageItem = {
-    name:'cost',
+    name:'Витрати',
     value: 1000,
     total: 2000,
-    color: '#FC9999'
   };
 
   costArchive: ICostArchive[] = [
