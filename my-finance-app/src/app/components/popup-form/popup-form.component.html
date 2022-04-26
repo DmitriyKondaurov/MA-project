@@ -1,4 +1,5 @@
 <div class="popup-container">
+    <button class="btn-close" (click)="handleHideClick()">Close</button>
     <form [formGroup]="form"
           (ngSubmit)="submitForm()"
           class="popup__form">
@@ -27,6 +28,4 @@
         </select>
         <button>Submit</button>
     </form>
-    <p>Form value: {{ form.value | json }}</p>
-    <button (click)="handleHideClick()">Close</button>
 </div>

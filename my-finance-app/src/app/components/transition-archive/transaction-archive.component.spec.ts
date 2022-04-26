@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TransitionArchiveComponent } from './transition-archive.component';
+import { TransactionArchiveComponent } from './transaction-archive.component';
 
-describe('TransitionArchiveComponent', () => {
-  let component: TransitionArchiveComponent;
-  let fixture: ComponentFixture<TransitionArchiveComponent>;
+describe('TransactionArchiveComponent', () => {
+  let component: TransactionArchiveComponent;
+  let fixture: ComponentFixture<TransactionArchiveComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TransitionArchiveComponent ]
+      declarations: [ TransactionArchiveComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TransitionArchiveComponent);
+    fixture = TestBed.createComponent(TransactionArchiveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

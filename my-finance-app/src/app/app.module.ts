@@ -7,17 +7,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PopupFormComponent } from './components/popup-form/popup-form.component';
 import { Routes, RouterModule } from '@angular/router';
-import { TransitionArchiveComponent } from './components/transition-archive/transition-archive.component';
+import { TransactionArchiveComponent } from './components/transition-archive/transaction-archive.component';
 import { CardComponent } from './components/transition-archive/card/card.component';
 
 const appRoutes: Routes = [
-  { path: 'archive', component: TransitionArchiveComponent },
+  { path: 'archive', component: TransactionArchiveComponent },
 ]
 @NgModule({
   declarations: [
     AppComponent,
     PopupFormComponent,
-    TransitionArchiveComponent,
+    TransactionArchiveComponent,
     CardComponent
   ],
   imports: [

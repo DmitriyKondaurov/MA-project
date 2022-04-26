@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-transition-archive',
-  templateUrl: './transition-archive.component.html',
-  styleUrls: ['./transition-archive.component.css']
+  selector: 'app-transaction-archive',
+  templateUrl: './transaction-archive.component.html',
+  styleUrls: ['./transaction-archive.component.css']
 })
-export class TransitionArchiveComponent implements OnInit {
+export class TransactionArchiveComponent implements OnInit {
 
   data: string[] = [];
   archive: object[] = [];
   ar?: any[]
+  transitions: object[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
     if(localStorage.getItem('dataForm')) this.data = JSON.parse(localStorage.getItem('dataForm')!);
     this.makeArchive(this.data);
-    console.log(this.archive)
     this.archive.forEach( (id) => {
       this.ar = Object.values(id)
-      console.log(this.ar)
+      if (Object.values(this.ar['1']).includes('actual')) this.transitions.push(id)
     } )
   }
 
