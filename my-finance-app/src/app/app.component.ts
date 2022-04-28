@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {IAppColors, ICategories, ICostArchive, IFrontPageItem} from "./app-interfaces";
+import {RestApiService} from "./services/res-api.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -8,12 +10,13 @@ import {IAppColors, ICategories, ICostArchive, IFrontPageItem} from "./app-inter
 })
 export class AppComponent {
   title = 'my-finance-app';
-  categories: ICategories | undefined;
+  transactions = [];
+  private subscriptionGetData: Subscription | undefined;
 
   income: IFrontPageItem = {
     name:'Надходження',
-    value: 1500,
-    total: 5000,
+    value: 9500,
+    total: 15000,
   };
 
   goal: IFrontPageItem = {
@@ -24,8 +27,8 @@ export class AppComponent {
 
   cost: IFrontPageItem = {
     name:'Витрати',
-    value: 1000,
-    total: 2000,
+    value: 8100,
+    total: 10000,
   };
 
   costArchive: ICostArchive[] = [
@@ -72,4 +75,15 @@ export class AppComponent {
       value: 3000,
     },
   ]
+  constructor( public restService: RestApiService) {}
+
+  ngOnInit() {
+    return this.subscriptionGetData = this.restService.getTransactions().subscribe((dataList: []) => {
+      this.transactions = dataList;
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscriptionGetData ? this.subscriptionGetData.unsubscribe() : false
+  }
 }
