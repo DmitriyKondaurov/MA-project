@@ -2,7 +2,7 @@
 .popup-container {
     width: 100%;
     min-height: 100%;
-    background-color: red;
+    background-color: #D7D7D7;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,10 +11,66 @@
 .popup__form {
     display: flex;
     flex-direction: column;
+    width: 90%;
 }
 
 .btn-close {
     position: absolute;
     top: 0;
     right: 0;
+    border: none;
+    background-color: #BC1010;
+    padding: 15px 20px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #FFF;
+}
+
+.btn-close:hover {
+    cursor: pointer;
+    opacity: .9;
+}
+
+.column-container {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+.row-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.form__field {
+    padding: 5px;
+    border: none;
+    border-radius: 6px;
+}
+
+.form__field:focus {
+    outline: none;
+}
+
+.form__select {
+    border: 1px solid #D7D7D7;
+    scroll-behavior: smooth;
+}
+
+.form__title {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.btn-submit {
+    width: 100px;
+    align-self: center;
+    padding: 15px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #1A95E9;
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFF;
 }

@@ -1,0 +1,16 @@
+.progress-bar__line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 280px;
+  height: 20px;
+  border: 1px solid black;
+}
+
+.progress-bar__fill-value {
+  display: inline-block;
+  height: 20px;
+  border-right: 1px solid black;
+
+}
+

@@ -1,31 +1,54 @@
 <div class="popup-container">
-    <button class="btn-close" (click)="handleHideClick()">Close</button>
+    <button class="btn-close" (click)="handleHideClick()">X</button>
     <form [formGroup]="form"
           (ngSubmit)="submitForm()"
           class="popup__form">
-        <select formControlName="type">
-          <option *ngFor="let type of types" [ngValue]="type">
-            {{ type.title }}
-          </option>
-        </select>
-        <select formControlName="expense">
-          <option *ngFor="let expense of expenses" [ngValue]="expense">
-            {{ expense.title }}
-          </option>
-        </select>
-        <input type="date" formControlName="date" data-date-input>
-        <select formControlName="category">
-          <option *ngFor="let category of categories" [ngValue]="category">
-            {{ category }}
-          </option>
-        </select>
-        <input type="text" formControlName="description">
-        <input type="text" formControlName="amount">
-        <select formControlName="currency">
-          <option *ngFor="let currency of currencies" [ngValue]="currency">
-            {{ currency.title }}
-          </option>
-        </select>
-        <button>Submit</button>
+        <div class="column-container">
+          <label class="form__title">Type</label>
+          <select formControlName="type" class="form__field form__select">
+            <option *ngFor="let type of types" [ngValue]="type">
+              {{ type.title }}
+            </option>
+          </select>
+        </div>
+        <div class="column-container">
+          <label class="form__title">Actual/Planned</label>
+          <select formControlName="expense" class="form__field form__select">
+            <option *ngFor="let expense of expenses" [ngValue]="expense">
+              {{ expense.title }}
+            </option>
+          </select>
+        </div>
+        <div class="column-container">
+          <label class="form__title">Date</label>
+          <input class="form__field" type="date" formControlName="date" data-date-input>
+        </div>
+        <div class="column-container">
+          <label class="form__title">Category</label>
+          <select class="form__field form__select" formControlName="category">
+            <option *ngFor="let category of categories" [ngValue]="category">
+              {{ category }}
+            </option>
+          </select>
+        </div>
+        <div class="column-container">
+          <label class="form__title">Description</label>
+          <input class="form__field" type="text" formControlName="description">
+        </div>
+        <div class="row-container">
+          <div class="column-container">
+            <label class="form__title">Amount</label>
+            <input class="form__field" type="text" formControlName="amount">
+          </div>
+          <div class="column-container">
+            <label class="form__title">Currency</label>
+            <select class="form__field form__select" formControlName="currency">
+              <option *ngFor="let currency of currencies" [ngValue]="currency">
+                {{ currency.title }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-submit">Submit</button>
     </form>
 </div>

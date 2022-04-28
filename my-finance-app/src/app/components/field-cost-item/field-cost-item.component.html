@@ -1,0 +1,9 @@
+<span class="progress-bar">
+  <span class="progress-bar__name">{{costByCategory.subCategoryName}}</span>
+  <div class="progress-bar__line">
+    <span class="progress-bar__fill-value" [appFillCost]="totalCostAmount"
+          curItemColor="{{color}}" curItemTotal="{{costByCategory.value}}"></span>
+    <span  class="progress-bar__value-amount">{{costByCategory.value}}</span>
+  </div>
+</span>
+

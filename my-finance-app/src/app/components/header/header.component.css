@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 320px;
+  margin: auto;
+  padding: 5px;
+  background-color: transparent;
+}
+
+.balance, .login-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.balance {
+  width: 135px;
+  background-color: #DEFF80;
+}
+
+.login-user {
+  background-color: #FEFFCF;
+}
