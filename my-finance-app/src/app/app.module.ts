@@ -17,6 +17,7 @@ import { FrontPageItemComponent } from './components/front-page-item/front-page-
 import { FillAmountDirective } from './directives/fill-amount.directive';
 import { FillCostDirective } from './directives/fill-cost.directive';
 import { AddNewComponent } from './components/add-new/add-new.component';
+import {HttpClientModule} from "@angular/common/http";
 
 const appRoutes: Routes = [
   { path: 'archive', component: TransactionArchiveComponent },
