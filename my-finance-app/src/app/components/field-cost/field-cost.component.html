@@ -1,8 +1,9 @@
 <div class="field-cost">
   <span class="field-cost__name">Витрати по категоріям:</span>
   <ul class="field-cost__list">
-    <li class="field-cost__item" *ngFor=" let item of firstBiggest">
-      <app-field-cost-item [costByCategory] = item [totalCostAmount] = totalCostAmount></app-field-cost-item>
+    <li class="field-cost__item" *ngFor=" let item of transactions | transactFilterReduceSort | slice:0:6">
+      <app-field-cost-item [costByCategory] = item [totalCostAmount] =
+        "transactions | totalCostAmount"></app-field-cost-item>
     </li>
   </ul>
 </div>

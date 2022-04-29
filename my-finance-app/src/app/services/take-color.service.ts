@@ -7,6 +7,7 @@ import {IAppColors} from "../app-interfaces";
 export class TakeColorService {
   appColors: IAppColors = {
     lastUsed: 0,
+    0: '#fd7fe2',
     1: '#D8BAFF',
     2: '#7D91F6',
     3: '#FC9999',
@@ -16,9 +17,8 @@ export class TakeColorService {
     7: '#A8D3FB',
     8: '#FBD5A8',
     9: '#A8F6FB',
-    10: '#fd7fe2',
     next(): void {
-      this.lastUsed = (this.lastUsed + 1) % 11
+      this.lastUsed = (this.lastUsed + 1) % 10
     }
   }
   takeNewColor(): string {

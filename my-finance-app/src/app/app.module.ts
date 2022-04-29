@@ -11,6 +11,8 @@ import { FillAmountDirective } from './directives/fill-amount.directive';
 import { FillCostDirective } from './directives/fill-cost.directive';
 import { AddNewComponent } from './components/add-new-btn/add-new.component';
 import {HttpClientModule} from "@angular/common/http";
+import { TransactFilterPipe } from './components/pipes/transact-filter.pipe';
+import { TotalCostAmountPipe } from './components/pipes/total-cost-amount.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import {HttpClientModule} from "@angular/common/http";
     FillAmountDirective,
     FillCostDirective,
     AddNewComponent,
+    TransactFilterPipe,
+    TotalCostAmountPipe,
   ],
   imports: [
     BrowserModule,
