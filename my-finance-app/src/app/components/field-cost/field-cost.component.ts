@@ -17,7 +17,7 @@ constructor(private transactionsService: TransactionsService) { }
     this.totalCostAmount = this.transactions.reduce((acc, curr) => acc += curr.value, 0)
     this.transactions = this.transactionsService.customReduce(this.transactions);
     this.transactions = this.transactionsService.customSort(this.transactions);
-    this.firstBiggest = this.transactions.slice(0, 5)
+    this.firstBiggest = this.transactions.slice(0, 6)
   }
 
 }

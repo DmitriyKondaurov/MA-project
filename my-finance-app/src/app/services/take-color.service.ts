@@ -16,9 +16,9 @@ export class TakeColorService {
     7: '#A8D3FB',
     8: '#FBD5A8',
     9: '#A8F6FB',
-    10: '#EFA8FB',
+    10: '#fd7fe2',
     next(): void {
-      this.lastUsed += 1
+      this.lastUsed = (this.lastUsed + 1) % 11
     }
   }
   takeNewColor(): string {
