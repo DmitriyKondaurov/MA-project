@@ -2,10 +2,11 @@ import { GetDataService } from './../../services/get-data.service';
 import { Categories, Cost, Income } from './../../categories';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ICategories } from 'src/app/app-interfaces';
 
 interface Type {
   value: 'cost' | 'income',
-  title: string
+  title: string,
 }
 @Component({
   selector: 'app-popup-form',
@@ -15,7 +16,7 @@ interface Type {
 
 export class PopupFormComponent implements OnInit {
 
-  data?: Categories;
+  data?: ICategories;
   dataStorage?: string[] = [];
 
 
@@ -29,7 +30,7 @@ export class PopupFormComponent implements OnInit {
     {value: 'actual', title: 'actual'},
   ];
 
-  categories: string[] | undefined;
+  categories: any;
 
   currencies = [
     {value: 29, title: 'Dollar'},
@@ -71,8 +72,7 @@ export class PopupFormComponent implements OnInit {
     })
     this.form.controls['type'].valueChanges.subscribe( ({ value }: Type) => {
       if(!this.data) return;
-      console.log(this.data, value);
-      this.categories = Object.values(this.data[value]).flat();
+      this.categories = Object.values(this.getValues(this.data[value]));
     } )
   }
 
@@ -89,6 +89,14 @@ export class PopupFormComponent implements OnInit {
   save() {
     this.dataStorage?.push(JSON.stringify(this.form.value))
     localStorage.setItem("dataForm", JSON.stringify(this.dataStorage));
+  }
+
+  getValues(data: any): any {
+    let arr: string[] = [];
+    data.forEach((element: any) => {
+      arr.push(element.subCategories)
+    });
+    return arr.flat();
   }
 
 }
