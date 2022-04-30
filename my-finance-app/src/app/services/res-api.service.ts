@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {environment} from "../../environments/environment"
+import {ITransactArchive} from "../app-interfaces";
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class RestApiService {
 
   constructor(private http: HttpClient) { }
 
-  getTransactions(): Observable<[]> {
-    return this.http.get<[]>(environment.apiUrl + '/api/transactions')
+  getCostTransactions(): Observable<ITransactArchive[]> {
+    return this.http.get<ITransactArchive[]>(environment.apiUrl + '/api/transactions')
       .pipe(
         retry(1),
         catchError(this.handleError)

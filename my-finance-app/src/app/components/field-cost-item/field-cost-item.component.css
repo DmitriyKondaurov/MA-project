@@ -11,5 +11,11 @@
   display: inline-block;
   height: 20px;
   border-right: 1px solid black;
+}
 
+.progress-bar__name {
+  display: inline-block;
+  max-width: 270px;
+  max-height: 17px;
+  overflow: hidden;
 }

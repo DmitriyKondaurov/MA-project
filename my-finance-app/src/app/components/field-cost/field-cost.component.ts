@@ -1,6 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ICostArchive} from "../../app-interfaces";
+import {Component, OnInit} from '@angular/core';
+import {ITransactArchive} from "../../app-interfaces";
 import {TransactionsService} from "../../services/transactions.service";
+import {RestApiService} from "../../services/res-api.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-field-cost',
@@ -8,16 +10,18 @@ import {TransactionsService} from "../../services/transactions.service";
   styleUrls: ['./field-cost.component.css']
 })
 export class FieldCostComponent implements OnInit {
-  @Input() transactions: ICostArchive[] = [];
-  firstBiggest: ICostArchive[] = [];
+  transactions: ITransactArchive[] = [];
   totalCostAmount: number = 0;
-constructor(private transactionsService: TransactionsService) { }
+  private subscriptionGetData: Subscription | undefined;
 
-  ngOnInit(): void {
-    this.totalCostAmount = this.transactions.reduce((acc, curr) => acc += curr.value, 0)
-    this.transactions = this.transactionsService.customReduce(this.transactions);
-    this.transactions = this.transactionsService.customSort(this.transactions);
-    this.firstBiggest = this.transactions.slice(0, 5)
+  constructor(private transactionsService: TransactionsService, private readonly restService: RestApiService) { }
+
+  ngOnInit() {
+
+    return this.subscriptionGetData = this.restService.getCostTransactions().subscribe((dataList: ITransactArchive[]) => {
+      this.transactions = dataList;
+    });
+
   }
 
 }

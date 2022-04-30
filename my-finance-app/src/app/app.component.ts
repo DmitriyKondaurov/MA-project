@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {IAppColors, ICategories, ICostArchive, IFrontPageItem} from "./app-interfaces";
+import {IAppColors, ICategories, ITransactArchive, IFrontPageItem} from "./app-interfaces";
 import {RestApiService} from "./services/res-api.service";
-import {Subscription} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -20,9 +20,6 @@ export class AppComponent {
   hide() {
     this.isShow = false;
   }
-  categories: ICategories | undefined;
-  transactions = [];
-  private subscriptionGetData: Subscription | undefined;
 
   income: IFrontPageItem = {
     name:'Надходження',
@@ -42,59 +39,11 @@ export class AppComponent {
     total: 10000,
   };
 
-  costArchive: ICostArchive[] = [
-    {
-      categoryName: 'Дом',
-      subCategoryName: 'Дом, Аренда',
-      date: new Date(),
-      value: 1000,
-    },
-    {
-      categoryName: 'Подарки',
-      subCategoryName: 'Подарки, Благотворительность',
-      date: new Date(),
-      value: 900,
-    },
-    {
-      categoryName: 'Повседневные расходы',
-      subCategoryName: 'Повседневные расходы, Продукты',
-      date: new Date(),
-      value: 800,
-    },
-    {
-      categoryName: 'Дом',
-      subCategoryName: 'Дом, Обслуживание',
-      date: new Date(),
-      value: 700,
-    },
-    {
-      categoryName: 'Здоровье',
-      subCategoryName: 'Здоровье, Лекарства, лечебные процедуры',
-      date: new Date(),
-      value: 500,
-    },
-    {
-      categoryName: 'Транспорт',
-      subCategoryName: 'Транспорт, Топливо',
-      date: new Date(),
-      value: 1200,
-    },
-    {
-      categoryName: 'Квартплата',
-      subCategoryName: 'Квартплата, Отопление',
-      date: new Date(),
-      value: 3000,
-    },
-  ]
-  constructor( public restService: RestApiService) {}
 
+
+  constructor( ) {}
   ngOnInit() {
-    return this.subscriptionGetData = this.restService.getTransactions().subscribe((dataList: []) => {
-      this.transactions = dataList;
-    });
+
   }
 
-  ngOnDestroy() {
-    this.subscriptionGetData ? this.subscriptionGetData.unsubscribe() : false
-  }
 }

@@ -14,11 +14,17 @@ export interface IFrontPageItem {
   total: number
 }
 
-export interface ICostArchive   {
-  categoryName: string
-  subCategoryName: string
-  date: Date
-  value: number
+export interface ITransactArchive {
+  id: number,
+  userId: number,
+  date: Date,
+  flowDirection: string,
+  planFact: string,
+  categoryName: string,
+  subCategoryName: string,
+  value: number,
+  currency: string,
+  description: string
 }
 
 export interface IAppColors {

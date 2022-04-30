@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ICostArchive} from "../../app-interfaces";
+import {ITransactArchive} from "../../app-interfaces";
 import {TakeColorService} from "../../services/take-color.service";
 
 @Component({
@@ -9,11 +9,17 @@ import {TakeColorService} from "../../services/take-color.service";
 })
 export class FieldCostItemComponent implements OnInit {
   @Input() totalCostAmount: number = 0;
-  @Input() costByCategory: ICostArchive = {
-  categoryName: '',
-  subCategoryName: '',
-  date: new Date(),
-  value: 0,
+  @Input() costByCategory: ITransactArchive = {
+    id: 0,
+    userId: 0,
+    date: new Date(),
+    flowDirection: "",
+    planFact: "",
+    categoryName: "",
+    subCategoryName: "",
+    value: 0,
+    currency: "",
+    description: ""
 }
 
   color: string = '';
