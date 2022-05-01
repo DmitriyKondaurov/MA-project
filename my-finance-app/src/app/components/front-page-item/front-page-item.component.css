@@ -5,6 +5,7 @@
   width: 280px;
   height: 20px;
   border: 1px solid black;
+  background-color: #fff;
 }
 
 .progress-bar__fill-value {

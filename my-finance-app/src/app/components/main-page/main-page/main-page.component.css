@@ -1,4 +1,4 @@
-.app-root {
+.app-main-page {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,6 +12,6 @@
   box-sizing: border-box;
 }
 
-.app-root__progress-bar-field {
+.app-main-page__progress-bar-field {
   padding: 20px 0;
 }

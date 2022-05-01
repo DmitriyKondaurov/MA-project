@@ -15,7 +15,7 @@ export class FieldCostComponent implements OnInit {
   totalCostAmount: number = 0;
   private subscriptionGetData: Subscription | undefined;
 
-  constructor(private transactionsService: TransactionsService, private readonly restService: RestApiService) { }
+  constructor(private readonly restService: RestApiService) { }
 
   ngOnInit() {
 

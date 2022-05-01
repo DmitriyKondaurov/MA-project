@@ -175,14 +175,14 @@
     "planFact": "Факт",
     "categoryName": "Квартплата",
     "subCategoryName": "Квартплата, Отопление",
-    "value": 3000.00,
+    "value": 1000.00,
     "currency": "грн",
     "description": "отопление за январь"
   },
   {
     "id": 15,
     "userId": 1,
-    "date": "Tue Feb 02 2022 00:00:00 GMT+0200 (Eastern European Standard Time)",
+    "date": "Sun May 01 2022 00:00:00 GMT+0200 (Eastern European Standard Time)",
     "flowDirection": "Расходы",
     "planFact": "План",
     "categoryName": "Повседневные расходы",
@@ -194,19 +194,19 @@
   {
     "id": 14,
     "userId": 1,
-    "date": "Tue Feb 03 2022 00:00:00 GMT+0200 (Eastern European Standard Time)",
+    "date": "Sun May 01 2022 00:00:00 GMT+0200 (Eastern European Standard Time)",
     "flowDirection": "Расходы",
     "planFact": "План",
     "categoryName": "Дом",
     "subCategoryName": "Дом, Аренда",
-    "value": 1000.00,
+    "value": 1500.00,
     "currency": "грн",
     "description": "Арендная плата"
   },
   {
     "id": 13,
     "userId": 1,
-    "date": "Tue Feb 04 2022 00:00:00 GMT+0200 (Eastern European Standard Time)",
+    "date": "Sun May 01 2022 00:00:00 GMT+0200 (Eastern European Standard Time)",
     "flowDirection": "Расходы",
     "planFact": "План",
     "categoryName": "Подарки",
@@ -218,7 +218,7 @@
   {
     "id": 12,
     "userId": 1,
-    "date": "Tue Feb 05 2022 00:00:00 GMT+0200 (Eastern European Standard Time)",
+    "date": "Sun May 01 2022 00:00:00 GMT+0200 (Eastern European Standard Time)",
     "flowDirection": "Расходы",
     "planFact": "План",
     "categoryName": "Дом",
@@ -230,7 +230,7 @@
   {
     "id": 11,
     "userId": 1,
-    "date": "Tue Feb 06 2022 00:00:00 GMT+0200 (Eastern European Standard Time)",
+    "date": "Sun May 01 2022 00:00:00 GMT+0200 (Eastern European Standard Time)",
     "flowDirection": "Расходы",
     "planFact": "План",
     "categoryName": "Здоровье",
@@ -242,19 +242,19 @@
   {
     "id": 10,
     "userId": 1,
-    "date": "Tue Feb 07 2022 00:00:00 GMT+0200 (Eastern European Standard Time)",
+    "date": "Sun May 01 2022 00:00:00 GMT+0200 (Eastern European Standard Time)",
     "flowDirection": "Расходы",
     "planFact": "План",
     "categoryName": "Транспорт",
     "subCategoryName": "Транспорт, Топливо",
-    "value": 1500.00,
+    "value": 2500.00,
     "currency": "грн",
     "description": "бензин"
   },
   {
     "id": 9,
     "userId": 1,
-    "date": "Tue Feb 08 2022 00:00:00 GMT+0200 (Eastern European Standard Time)",
+    "date": "Sun May 01 2022 00:00:00 GMT+0200 (Eastern European Standard Time)",
     "flowDirection": "Расходы",
     "planFact": "План",
     "categoryName": "Квартплата",
@@ -271,7 +271,7 @@
     "planFact": "Факт",
     "categoryName": "Квартплата",
     "subCategoryName": "Квартплата, Отопление",
-    "value": 4000.00,
+    "value": 2000.00,
     "currency": "грн",
     "description": "отопление за январь"
   },
@@ -358,5 +358,41 @@
     "value": 1534.00,
     "currency": "грн",
     "description": "Мясо"
+  },
+  {
+    "id": 105,
+    "userId": 1,
+    "date": "Sun May 01 2022 00:00:00 GMT+0200 (Eastern European Standard Time)",
+    "flowDirection": "Расходы",
+    "planFact": "План",
+    "categoryName": "Повседневные расходы",
+    "subCategoryName": "Повседневные расходы, Продукты",
+    "value": 1534.00,
+    "currency": "грн",
+    "description": "Мясо"
+  },
+  {
+    "id": 103,
+    "userId": 1,
+    "date": "Tue Feb 01 2022 03:24:00 GMT+0200 (Eastern European Standard Time)",
+    "flowDirection": "Расходы",
+    "planFact": "Факт",
+    "categoryName": "Цели",
+    "subCategoryName": "Автомобиль",
+    "value": 1500.00,
+    "currency": "грн",
+    "description": "на автомобиль"
+  },
+  {
+    "id": 104,
+    "userId": 1,
+    "date": "Sun May 01 2022 03:24:00 GMT+0200 (Eastern European Standard Time)",
+    "flowDirection": "Расходы",
+    "planFact": "Факт",
+    "categoryName": "Цели",
+    "subCategoryName": "Автомобиль",
+    "value": 1500.00,
+    "currency": "грн",
+    "description": "на автомобиль"
   }
 ]
