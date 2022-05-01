@@ -13,7 +13,6 @@ export class GetDataService {
   constructor(private http: HttpClient) {}
 
   getData(): Observable<ICategories> {
-
     return this.http.get<ICategories>(`${environment.apiUrl}/api/categories`)
   }
 

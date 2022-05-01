@@ -12,16 +12,20 @@ import { CardComponent } from './components/transition-archive/card/card.compone
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FieldCostComponent } from './components/field-cost/field-cost.component';
-import { FieldCostItemComponent } from './components/field-cost-item/field-cost-item.component';
-import { FrontPageItemComponent } from './components/front-page-item/front-page-item.component';
+
 import { FillAmountDirective } from './directives/fill-amount.directive';
 import { FillCostDirective } from './directives/fill-cost.directive';
 import { AddNewComponent } from './components/add-new-btn/add-new.component';
 import { TransactFilterPipe } from './components/pipes/transact-filter.pipe';
 import { TotalCostAmountPipe } from './components/pipes/total-cost-amount.pipe';
+import { MainPageComponent } from './components/main-page/main-page/main-page.component';
+import { FrontPageItemComponent } from './components/front-page-item/front-page-item.component';
+import { FieldCostItemComponent } from './components/field-cost-item/field-cost-item.component';
+
 
 const appRoutes: Routes = [
   { path: 'archive', component: TransactionArchiveComponent },
+  { path: '', component: MainPageComponent }
 ]
 @NgModule({
   declarations: [
@@ -39,6 +43,7 @@ const appRoutes: Routes = [
     AddNewComponent,
     TransactFilterPipe,
     TotalCostAmountPipe,
+    MainPageComponent,
   ],
   imports: [
     BrowserModule,

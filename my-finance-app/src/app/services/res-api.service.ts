@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {environment} from "../../environments/environment"
-import {ITransactArchive} from "../app-interfaces";
+import {ICategories, ITransactArchive} from "../app-interfaces";
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +33,15 @@ export class RestApiService {
         catchError(this.handleError)
       )
       ;
+  }
+
+  getData(): Observable<ICategories> {
+    return this.http.get<ICategories>(`${environment.apiUrl}/api/categories`)
+  }
+
+
+  sendTest(test: any): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/api/test`, test)
   }
 
   handleError(error: { error: { message: string; }; status: any; message: any; }) {
