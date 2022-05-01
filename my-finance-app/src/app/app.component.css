@@ -1,5 +1,14 @@
+.header {
+  padding-bottom: 25px;
+  margin: 20px;
+}
+
+.header__bar {
+  position: fixed;
+}
+
 .btn-add {
-    position: absolute;
+    position: fixed;
     bottom: 20px;
     right: 20px;
     border: none;
