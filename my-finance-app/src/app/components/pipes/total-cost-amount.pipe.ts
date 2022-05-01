@@ -6,12 +6,11 @@ import {ITransactArchive} from "../../app-interfaces";
 })
 export class TotalCostAmountPipe implements PipeTransform {
 
-  transform(value: ITransactArchive[]): number {
+  transform(value: ITransactArchive[], flow: string, planFact: string, date: Date): number {
     return  value.reduce((acc, curr) => {
-      const currDate = new Date();
-      if (curr.flowDirection === 'Расходы'
-        && curr.planFact === 'Факт'
-      && new Date(curr.date).getMonth() === currDate.getMonth()) {
+      if (curr.flowDirection === flow
+        && curr.planFact === planFact
+      && new Date(curr.date).getMonth() === date.getMonth()) {
         return acc += curr.value
       } else return acc
     }, 0);

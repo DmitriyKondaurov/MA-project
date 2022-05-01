@@ -33,5 +33,10 @@ export interface IAppColors {
   next(): void
 }
 
+export interface IBalance {
+  balance: number,
+  currency: string,
+  date: Date
+}
 
 

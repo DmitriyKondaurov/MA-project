@@ -3,6 +3,7 @@ const app = express();
 const user = { email: 'invisibl@ukr.net', pass: '3Fgv$DRj'};
 const transactions = require('./transactions');
 const categories = require('./category');
+const balance = require('./balance');
 
 app.use( function(req, res, next) {
   console.log('Request URL:', req.originalUrl);
@@ -25,6 +26,10 @@ app.get('/api/transactions', (req, res) => {
 
 app.get('/api/categories', (req, res) => {
   res.send(categories);
+});
+
+app.get('/api/balance', (req, res) => {
+  res.send(balance);
 });
 
 app.listen(8080, () => console.log('Started server at http://localhost:8080!'));

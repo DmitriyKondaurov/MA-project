@@ -6,17 +6,16 @@ import {ITransactArchive} from "../app-interfaces";
 })
 export class TransactionsService {
 
-  customReduce(curTransactions: ITransactArchive[]): ITransactArchive[] {
+  customReduce(curTransactions: ITransactArchive[], flow: string, planFact: string, date: Date): ITransactArchive[] {
     let totalByCategories: ITransactArchive[] = [];
-    const date: Date = new Date();
     curTransactions.forEach((item): void => {
-      let index = totalByCategories.findIndex((i) => i.categoryName === item.categoryName)
-      if (index >= 0) {
-        totalByCategories[index].value += item.value;
-      } else if (item.planFact === 'Факт'
-        && item.flowDirection === 'Расходы'
-      && new Date(item.date).getMonth() === date.getMonth()) {
-        totalByCategories.push(item);
+      if (item.planFact === planFact
+        && item.flowDirection === flow
+        && new Date(item.date).getMonth() === date.getMonth()) {
+        let index = totalByCategories.findIndex((i) => i.categoryName === item.categoryName)
+        if (index >= 0) {
+          totalByCategories[index].value += item.value;
+        } else totalByCategories.push(item)
       }
     })
     return totalByCategories;
