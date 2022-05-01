@@ -21,10 +21,15 @@ import { TotalCostAmountPipe } from './components/pipes/total-cost-amount.pipe';
 import { MainPageComponent } from './components/main-page/main-page/main-page.component';
 import { FrontPageItemComponent } from './components/front-page-item/front-page-item.component';
 import { FieldCostItemComponent } from './components/field-cost-item/field-cost-item.component';
+import { CostMonitoringComponent } from './components/cost-monitoring/cost-monitoring.component';
+import { StatisticComponent } from './components/cost-monitoring/statistic/statistic.component';
+import { StatisticDiagramComponent } from './components/cost-monitoring/statistic-diagram/statistic-diagram.component';
+import { StatisticFieldComponent } from './components/cost-monitoring/statistic/statistic-field/statistic-field.component';
 
 
 const appRoutes: Routes = [
   { path: 'archive', component: TransactionArchiveComponent },
+  { path: 'monitoring', component: CostMonitoringComponent },
   { path: '', component: MainPageComponent }
 ]
 @NgModule({
@@ -44,6 +49,10 @@ const appRoutes: Routes = [
     TransactFilterPipe,
     TotalCostAmountPipe,
     MainPageComponent,
+    CostMonitoringComponent,
+    StatisticComponent,
+    StatisticDiagramComponent,
+    StatisticFieldComponent,
   ],
   imports: [
     BrowserModule,
