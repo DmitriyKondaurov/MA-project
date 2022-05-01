@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {environment} from "../../environments/environment"
-import {ICategories, ITransactArchive} from "../app-interfaces";
+import {ICategories, ITransactArchive, IBalance} from "../app-interfaces";
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +26,8 @@ export class RestApiService {
       ;
   }
 
-  getBalance(): Observable<number> {
-    return this.http.get<number>(environment.apiUrl + '/api/balance')
+  getBalance(): Observable<IBalance> {
+    return this.http.get<IBalance>(environment.apiUrl + '/api/balance')
       .pipe(
         retry(1),
         catchError(this.handleError)

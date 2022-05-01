@@ -11,6 +11,7 @@ import {Subscription} from "rxjs";
 })
 export class FieldCostComponent implements OnInit {
   transactions: ITransactArchive[] = [];
+  currDate: Date = new Date();
   totalCostAmount: number = 0;
   private subscriptionGetData: Subscription | undefined;
 

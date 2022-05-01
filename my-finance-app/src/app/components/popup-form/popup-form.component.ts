@@ -39,14 +39,14 @@ export class PopupFormComponent implements OnInit {
   ]
 
   form = new FormGroup({
-    type: new FormControl("", Validators.required),
-    expense: new FormControl("", Validators.required),
+    type: new FormControl('', Validators.required),
+    expense: new FormControl(this.expenses[1], Validators.required),
     date: new FormControl("", Validators.required),
     category: new FormControl("", Validators.required),
     description: new FormControl(),
-    amount: new FormControl("", [Validators.required,
+    amount: new FormControl(0, [Validators.required,
                                 Validators.pattern("^[0-9]*$")]),
-    currency: new FormControl("", Validators.required),
+    currency: new FormControl(this.currencies[2], Validators.required),
   });
 
 
