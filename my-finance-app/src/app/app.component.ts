@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import {IAppColors, ICategories, ITransactArchive, IFrontPageItem} from "./app-interfaces";
-import {RestApiService} from "./services/res-api.service";
-import {Observable, Subscription} from "rxjs";
+import { IFrontPageItem } from "./app-interfaces";
 
 @Component({
   selector: 'app-root',
