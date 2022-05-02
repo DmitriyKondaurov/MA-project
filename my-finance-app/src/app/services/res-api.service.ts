@@ -20,7 +20,7 @@ export class RestApiService {
 
   constructor(private http: HttpClient) { }
 
-  getCostTransactions(): Observable<ITransactArchive[]> {
+  getAllTransactions(): Observable<ITransactArchive[]> {
     return this.http.get<ITransactArchive[]>(environment.apiUrl + '/api/transactions')
       .pipe(
         retry(1),

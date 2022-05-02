@@ -17,12 +17,13 @@ export class FieldCostComponent implements OnInit {
   constructor(private readonly restService: RestApiService, private customReduce: TransactionsService) { }
 
   ngOnInit() {
-    this.restService.getCostTransactions().subscribe((transactionList: ITransactArchive[]) => {
-      this.transactions = transactionList;
-      console.log('field cost',this.transactions[0].value)
-      // let buffer: ITransactArchive[] = this.customReduce.customReduce(transactionList, 'Расходы', 'Факт', this.currDate);
-      // buffer = this.customReduce.customSort(buffer);
-      // buffer.length > 1 ? this.biggestCostAmount = buffer[0].value: this.biggestCostAmount = 0
+    this.restService.getAllTransactions().subscribe((transactionList: ITransactArchive[]) => {
+      this.transactions = this.customReduce
+        .customReduce(transactionList, 'Расходы', 'Факт', this.currDate)
+        .slice(0, 6).sort( (a, b) => b.value - a.value)
+      this.biggestCostAmount = this.customReduce.biggestCategoryAmount(this.transactions, 'Расходы', 'Факт', this.currDate)
+      console.log('biggest',this.biggestCostAmount)
+      console.log('field cost',this.transactions)
     });
   }
 

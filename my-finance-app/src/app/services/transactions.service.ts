@@ -43,6 +43,12 @@ export class TransactionsService {
     return totalByCategories;
   }
 
+  biggestCategoryAmount(curTransactions: ITransactArchive[], flow: string, planFact: string, date: Date) {
+    const reducedTransactions = this.customReduce(curTransactions, flow, planFact, date)
+    return this.customSort(reducedTransactions)[0].value
+  }
+
+
   customSort(curTransactions: ITransactArchive[]) {
     curTransactions = curTransactions.sort((a, b) => {
       return b.value - a.value

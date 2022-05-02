@@ -28,6 +28,7 @@ export class FieldCostItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.color = this.choseHighlightColor.takeNewColor()
+    console.log('costByCategory', this.costByCategory)
   }
 
 }

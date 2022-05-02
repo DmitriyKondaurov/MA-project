@@ -34,8 +34,8 @@ export class MainPageComponent implements OnInit {
   constructor(private transactionsService: TransactionsService, private readonly restService: RestApiService) { }
 
   ngOnInit() {
-    this.restService.getCostTransactions().subscribe((dataList: ITransactArchive[]) => {
-      this.transactionList = dataList
+    this.restService.getAllTransactions().subscribe((dataList: ITransactArchive[]) => {
+      this.transactionList = [...dataList]
       console.log('main page:',this.transactionList[0].value)
 
 // INCOME
