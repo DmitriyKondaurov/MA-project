@@ -29,21 +29,5 @@
   height: 100%;
   width: 100%;
 }
-.app-root {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  max-width: 320px;
-  margin: auto;
-  border: 1px solid black;
-  font-family: 'open sans', sans-serif;
-  background-color: #FFFBEF;
-  padding: 5px;
-  box-sizing: border-box;
-}
 
-.app-root__progress-bar-field {
-  padding: 20px 0;
-}
 

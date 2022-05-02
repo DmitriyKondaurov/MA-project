@@ -2,10 +2,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 320px;
   margin: auto;
   padding: 5px;
-  background-color: transparent;
+  border-bottom: none;
+  box-sizing: border-box;
+  
 }
 
 .balance, .login-user {
@@ -13,14 +14,16 @@
   justify-content: space-between;
   align-items: center;
   padding: 5px;
-  border: 1px solid black;
 }
 
 .balance {
   width: 195px;
-  background-color: #DEFF80;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .login-user {
-  background-color: #FEFFCF;
+  background-color: #F2FBFA;
+  padding: 15px 10px;
+  border-radius: 50%;
 }

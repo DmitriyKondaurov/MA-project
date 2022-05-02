@@ -25,6 +25,7 @@ import { CostMonitoringComponent } from './components/cost-monitoring/cost-monit
 import { StatisticComponent } from './components/cost-monitoring/statistic/statistic.component';
 import { StatisticDiagramComponent } from './components/cost-monitoring/statistic-diagram/statistic-diagram.component';
 import { StatisticFieldComponent } from './components/cost-monitoring/statistic/statistic-field/statistic-field.component';
+import { CostsFilterPipe } from './components/pipes/costs-filter.pipe';
 
 
 const appRoutes: Routes = [
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
     StatisticComponent,
     StatisticDiagramComponent,
     StatisticFieldComponent,
+    CostsFilterPipe,
   ],
   imports: [
     BrowserModule,

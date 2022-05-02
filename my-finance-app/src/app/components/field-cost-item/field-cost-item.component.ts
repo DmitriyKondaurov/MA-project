@@ -12,7 +12,7 @@ export class FieldCostItemComponent implements OnInit {
   @Input() costByCategory: ITransactArchive = {
     id: 0,
     userId: 0,
-    date: new Date(),
+    date: new Date(0,0,0),
     flowDirection: "",
     planFact: "",
     categoryName: "",

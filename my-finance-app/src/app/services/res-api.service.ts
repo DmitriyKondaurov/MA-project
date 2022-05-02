@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {catchError, Observable, retry, throwError} from "rxjs";
+import {HttpClient, HttpHeaders } from "@angular/common/http";
+import {Observable, throwError} from "rxjs";
+import {catchError, retry} from "rxjs/operators";
 import {environment} from "../../environments/environment"
 import {ICategories, ITransactArchive, IBalance} from "../app-interfaces";
 
@@ -12,7 +13,9 @@ export class RestApiService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
-    })
+    }),
+    observe: 'body',
+    responseType: 'json'
   };
 
   constructor(private http: HttpClient) { }

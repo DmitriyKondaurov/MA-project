@@ -39,4 +39,17 @@ export interface IBalance {
   date: Date
 }
 
+export interface Transaction {
+  amount: string,
+  category: string,
+  currency: Currency,
+  date: string,
+  description: string,
+  expense: object,
+  type: object
+}
 
+export interface Currency {
+  value: number,
+  title: string
+}
