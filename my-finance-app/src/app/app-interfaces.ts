@@ -39,4 +39,8 @@ export interface IBalance {
   date: Date
 }
 
+export interface ITotalByCategory {
+  categoryName: string,
+  value: number
+}
 

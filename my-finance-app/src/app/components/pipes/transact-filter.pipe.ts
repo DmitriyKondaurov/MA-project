@@ -8,7 +8,7 @@ import {TransactionsService} from "../../services/transactions.service";
 export class TransactFilterPipe implements PipeTransform {
   constructor(private transactionsService: TransactionsService) { }
 
-  transform(value: ITransactArchive[], flow: string, planFact: string, date: Date): ITransactArchive[] {
+  transform(value: ITransactArchive[], flow: string, planFact: string, date?: Date): ITransactArchive[] {
     value = this.transactionsService.customReduce(value, flow, planFact, date);
     return this.transactionsService.customSort(value);
   }

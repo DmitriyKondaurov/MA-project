@@ -18,11 +18,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.color = this.choseHighlightColor.takeNewColor();
-    return this.subscriptionGetData = this.restApiService.getBalance().subscribe((dataList: IBalance) => {
+    // return this.subscriptionGetData = this.restApiService.getBalance().subscribe((dataList: IBalance) => {
 
       // let data: number = dataList;
-      this.balance = 0;
-    });
+      // this.balance = 0;
+    // });
   }
 
 

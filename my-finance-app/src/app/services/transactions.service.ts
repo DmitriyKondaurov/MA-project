@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ITransactArchive} from "../app-interfaces";
+import {ITotalByCategory, ITransactArchive} from "../app-interfaces";
 
 @Injectable({
   providedIn: 'root'
@@ -8,26 +8,38 @@ export class TransactionsService {
 
   customReduce(curTransactions: ITransactArchive[], flow: string, planFact: string, date?: Date): ITransactArchive[] {
     let totalByCategories: ITransactArchive[] = [];
-    curTransactions.forEach((item): void => {
-      if(date) {
-        if (item.planFact === planFact
-          && item.flowDirection === flow
-          && new Date(item.date).getMonth() === date.getMonth()) {
-          let index = totalByCategories.findIndex((i) => i.categoryName === item.categoryName)
+
+    if (date) {
+      curTransactions
+        .filter((item) => item.planFact === planFact)
+        .filter((item) => item.flowDirection === flow)
+        .filter((item) => new Date(item.date).getMonth() === date.getMonth())
+        .reduce((acc, curr):ITransactArchive[] => {
+          const index: number = acc.findIndex((i) => i.categoryName === curr.categoryName)
+                if (index >= 0) {
+                  acc[index].value += curr.value;
+                  return acc
+                } else {
+                  acc.push(curr);
+                  return acc;
+                }
+        }, totalByCategories)
+    } else {
+      curTransactions
+        .filter((item) => item.planFact === planFact)
+        .filter((item) => item.flowDirection === flow)
+        .reduce((acc, curr):ITransactArchive[] => {
+          const index: number = acc.findIndex((i) => i.categoryName === curr.categoryName)
           if (index >= 0) {
-            totalByCategories[index].value += item.value;
-          } else totalByCategories.push(item)
-        }
-      } else {
-        if (item.planFact === planFact
-          && item.flowDirection === flow) {
-          let index = totalByCategories.findIndex((i) => i.categoryName === item.categoryName)
-          if (index >= 0) {
-            totalByCategories[index].value += item.value;
-          } else totalByCategories.push(item)
-        }
-      }
-    })
+            acc[index].value += curr.value;
+            return acc
+          } else {
+            acc.push(curr);
+            return acc;
+          }
+        }, totalByCategories)
+    }
+
     return totalByCategories;
   }
 
