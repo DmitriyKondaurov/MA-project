@@ -1,5 +1,7 @@
+import { Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { MonitoringInfoService } from '../../services/monitoring-info.service'
+import { RestApiService } from '../../services/res-api.service'
 
 @Component({
   selector: 'app-transaction-archive',
@@ -8,12 +10,17 @@ import { MonitoringInfoService } from '../../services/monitoring-info.service'
 })
 export class TransactionArchiveComponent implements OnInit {
 
+  data: string[] = []
   transitions: object[] = [];
 
-  constructor(private MonitoringInfoService: MonitoringInfoService) { }
+  constructor(private RestApiService: RestApiService, private MonitoringInfoService: MonitoringInfoService) { }
 
-  ngOnInit(): void {
-    this.transitions = this.MonitoringInfoService.monitoringInfo();
+  ngOnInit() {
+    this.RestApiService.getTest().subscribe(res => {
+      this.data = res;
+      this.transitions = this.MonitoringInfoService.monitoringInfo(this.data);
+    })
+    
   }
 
 }

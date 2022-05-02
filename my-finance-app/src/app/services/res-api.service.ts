@@ -39,6 +39,9 @@ export class RestApiService {
     return this.http.get<ICategories>(`${environment.apiUrl}/api/categories`)
   }
 
+  getTest(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/api/test`);
+  }
 
   sendTest(test: any): Observable<any> {
     return this.http.post(`${environment.apiUrl}/api/test`, test)

@@ -1,4 +1,3 @@
-import { GetDataService } from './../../services/get-data.service';
 import { RestApiService } from './../../services/res-api.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -53,7 +52,7 @@ export class PopupFormComponent implements OnInit {
   @Output() handleHide = new EventEmitter();
  
 
-  constructor(private GetDataService: GetDataService, private RestApiService: RestApiService) { }
+  constructor(private RestApiService: RestApiService) { }
 
   handleHideClick(): void {
     this.handleHide.emit();
@@ -83,7 +82,6 @@ export class PopupFormComponent implements OnInit {
         this.dataStorage = JSON.parse(localStorage.getItem('dataForm')!)
         this.save()
       }
-      console.log('ok');
       this.RestApiService.sendTest({storage: this.dataStorage}).subscribe()
     }
   }

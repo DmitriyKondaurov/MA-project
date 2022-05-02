@@ -4,6 +4,8 @@ const user = { email: 'invisibl@ukr.net', pass: '3Fgv$DRj'};
 const transactions = require('./transactions');
 const categories = require('./category');
 const balance = require('./balance');
+const test = require('../test.json');
+const fs = require('fs')
 
 app.use( function(req, res, next) {
   console.log('Request URL:', req.originalUrl);
@@ -22,18 +24,23 @@ app.use(function(req, res, next) {
 
 app.get('/api/transactions', (req, res) => {
   res.send(transactions);
-  console.log('222')
 });
 
 app.get('/api/categories', (req, res) => {
   res.send(categories);
 });
 
+app.get('/api/test', (req, res) => {
+  fs.readFile("test.json", (err, data) => {
+    if (err) {
+       throw error;
+    }
+    res.send(data)
+  });
+});
+
 app.post('/api/test', (req, res) => {
   data = JSON.stringify(req.body.storage);
-  // console.log(data);
-  // console.log('____________________________')
-  let fs = require('fs')
   fs.writeFile("test.json", data, 'utf8', (err) => {
     if (err) {
        throw error;
