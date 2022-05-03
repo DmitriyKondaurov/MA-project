@@ -13,23 +13,15 @@ export class FrontPageItemComponent implements OnInit {
     name: '',
     value: 0,
     total: 0,
+    progress: ''
   };
 
   color: string = '';
-  width: string = '';
-
 
  constructor(private choseHighlightColor: TakeColorService) { }
 
   ngOnInit(): void {
     this.color = this.choseHighlightColor.takeNewColor()
-
-  }
-  ngOnChanges() {
-    let fillAmountValue = 0
-    fillAmountValue = Math.round((Number(this.frontPageItem.value)/Number(this.frontPageItem.total))*100)
-    this.width = `${fillAmountValue}%`
-    console.log(this.frontPageItem)
   }
 
 }

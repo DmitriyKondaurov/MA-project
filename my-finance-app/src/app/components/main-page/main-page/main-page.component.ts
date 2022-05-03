@@ -17,18 +17,21 @@ export class MainPageComponent implements OnInit {
     name:'Надходження',
     value: 0,
     total: 0,
+    progress: ''
   };
 
   goal: IFrontPageItem = {
     name:'',
     value: 0,
     total: 0,
+    progress: ''
   };
 
   cost: IFrontPageItem = {
     name:'Витрати',
     value: 0,
     total: 0,
+    progress: ''
   };
 
   constructor(private transactionsService: TransactionsService, private readonly restService: RestApiService) { }
@@ -54,6 +57,7 @@ export class MainPageComponent implements OnInit {
     variable.value = incomeTransReduce.reduce((acc, curr) => acc += curr.value, 0)
     incomeTransReduce = this.transactionsService.customReduce(this.transactionList, flowDirection, 'План', this.currDate);
     variable.total = incomeTransReduce.reduce((acc, curr) => acc += curr.value, 0)
+    variable.progress = Math.round(variable.value/variable.total*100).toString()+'%'
   }
 
   getGoals() {
@@ -73,6 +77,7 @@ export class MainPageComponent implements OnInit {
     } else {
       this.goal.value = 0
     }
+    this.goal.total ? this.goal.progress = Math.round(this.goal.value/this.goal.total*100).toString()+'%' : 0
   }
 
 

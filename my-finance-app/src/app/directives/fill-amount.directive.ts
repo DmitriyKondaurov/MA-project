@@ -15,17 +15,9 @@ export class FillAmountDirective implements OnInit {
 
   ngOnInit(): void {
     const curHighLightColor = this.curItemColor;
-    const curFillAmount = this.appFillAmount ?
-      Math.round((Number(this.appFillAmount.value)/Number(this.appFillAmount.total))*100)
-      : 0;
     this.highlight(curHighLightColor);
-    this.fillAmount(curFillAmount);
   }
   private highlight (color: string) {
     this.element.nativeElement.style.backgroundColor = color;
-  }
-  private fillAmount (fillAmountValue: number) {
-    this.element.nativeElement.style.width = `${fillAmountValue}%`;
-    console.log(`${fillAmountValue}%`)
   }
 }

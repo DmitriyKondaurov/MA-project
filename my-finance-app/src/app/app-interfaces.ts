@@ -12,6 +12,7 @@ export interface IFrontPageItem {
   name: string
   value: number
   total: number
+  progress: string
 }
 
 export interface ITransactArchive {
