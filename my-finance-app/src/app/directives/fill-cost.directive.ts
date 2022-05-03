@@ -12,9 +12,7 @@ export class FillCostDirective implements OnInit{
 
   ngOnInit(): void {
     const curHighLightColor = this.curItemColor;
-    const curFillAmount = this.curItemTotal ?
-      Math.round((Number(this.curItemTotal)/this.appFillCost)*100):
-      0;
+    const curFillAmount = this.curItemTotal ? Math.round((Number(this.curItemTotal)/this.appFillCost)*100) : 0;
     this.highlight(curHighLightColor);
     this.fillAmount(curFillAmount);
   }
