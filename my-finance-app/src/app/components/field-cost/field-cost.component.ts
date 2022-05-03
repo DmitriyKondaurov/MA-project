@@ -22,8 +22,6 @@ export class FieldCostComponent implements OnInit {
         .customReduce(transactionList, 'Расходы', 'Факт', this.currDate)
         .slice(0, 6).sort( (a, b) => b.value - a.value)
       this.biggestCostAmount = this.customReduce.biggestCategoryAmount(this.transactions, 'Расходы', 'Факт', this.currDate)
-      console.log('biggest',this.biggestCostAmount)
-      console.log('field cost',this.transactions)
     });
   }
 

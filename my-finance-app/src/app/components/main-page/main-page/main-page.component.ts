@@ -27,7 +27,7 @@ export class MainPageComponent implements OnInit {
 
   cost: IFrontPageItem = {
     name:'Витрати',
-    value: 0, //4602
+    value: 0,
     total: 0,
   };
 
@@ -35,8 +35,7 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
     this.restService.getAllTransactions().subscribe((dataList: ITransactArchive[]) => {
-      this.transactionList = [...dataList]
-      console.log('main page:',this.transactionList[0].value)
+      this.transactionList = dataList
 
 // INCOME
       let incomeTransReduce = this.transactionsService.customReduce(this.transactionList, 'Доходы', 'Факт', this.currDate);
