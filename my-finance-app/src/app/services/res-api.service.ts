@@ -4,11 +4,15 @@ import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import {environment} from "../../environments/environment"
 import {ICategories, ITransactArchive, IBalance} from "../app-interfaces";
-
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
 @Injectable({
   providedIn: 'root'
 })
 export class RestApiService {
+
+  transactionsRef?: AngularFireList<any>;
+  private dbTransactionPath = '/transaction-list';
+  private dbCategoriesPath = '/categories';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -18,9 +22,24 @@ export class RestApiService {
     responseType: 'json'
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private db: AngularFireDatabase) { 
+   }
 
-  getCostTransactions(): Observable<ITransactArchive[]> {
+  addTransaction(transaction: any) {
+    this.transactionsRef?.push(transaction);
+  }
+
+  getTransactions() {
+    this.transactionsRef = this.db.list(this.dbTransactionPath);
+    return this.transactionsRef;
+  }
+
+  getData() {
+    this.transactionsRef = this.db.list(this.dbCategoriesPath);
+    return this.transactionsRef;
+  }
+
+  getAllTransactions(): Observable<ITransactArchive[]> {
     return this.http.get<ITransactArchive[]>(environment.apiUrl + '/api/transactions')
       .pipe(
         retry(1),
@@ -38,9 +57,9 @@ export class RestApiService {
       ;
   }
 
-  getData(): Observable<ICategories> {
-    return this.http.get<ICategories>(`${environment.apiUrl}/api/categories`)
-  }
+  // getData(): Observable<ICategories> {
+  //   return this.http.get<ICategories>(`${environment.apiUrl}/api/categories`)
+  // }
 
   getTest(): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/api/test`);
@@ -48,6 +67,11 @@ export class RestApiService {
 
   sendTest(test: any): Observable<any> {
     return this.http.post(`${environment.apiUrl}/api/test`, test)
+  }
+
+  send(form: any) {
+    console.log(form);
+    return this.http.get('https://financy-6ebf1-default-rtdb.europe-west1.firebasedatabase.app/f.json', form);
   }
 
   handleError(error: { error: { message: string; }; status: any; message: any; }) {

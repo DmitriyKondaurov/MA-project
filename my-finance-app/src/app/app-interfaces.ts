@@ -48,6 +48,10 @@ export interface Transaction {
   expense: object,
   type: object
 }
+export interface ITotalByCategory {
+  categoryName: string,
+  value: number
+}
 
 export interface Currency {
   value: number,

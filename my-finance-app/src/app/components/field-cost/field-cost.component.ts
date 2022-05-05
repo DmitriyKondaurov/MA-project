@@ -13,18 +13,16 @@ export class FieldCostComponent implements OnInit {
   transactions: ITransactArchive[] = [];
   currDate: Date = new Date();
   biggestCostAmount: number = 0;
-  private subscriptionGetData: Subscription | undefined;
 
   constructor(private readonly restService: RestApiService, private customReduce: TransactionsService) { }
 
   ngOnInit() {
-    return this.subscriptionGetData = this.restService.getCostTransactions().subscribe((dataList: ITransactArchive[]) => {
-      this.transactions = dataList;
-      let buffer: ITransactArchive[] = this.customReduce.customReduce(dataList, 'Расходы', 'Факт', this.currDate);
-      buffer = this.customReduce.customSort(buffer);
-      buffer.length > 1 ? this.biggestCostAmount = buffer[0].value: this.biggestCostAmount = 0
+    this.restService.getAllTransactions().subscribe((transactionList: ITransactArchive[]) => {
+      this.transactions = this.customReduce
+        .customReduce(transactionList, 'Расходы', 'Факт', this.currDate)
+        .slice(0, 6).sort( (a, b) => b.value - a.value)
+      this.biggestCostAmount = this.customReduce.biggestCategoryAmount(this.transactions, 'Расходы', 'Факт', this.currDate)
     });
-
   }
 
 }

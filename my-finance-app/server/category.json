@@ -1,184 +1,186 @@
 {
-  "income": [
+  "categories": {
+    "income": [
     {
-      "categoryName": "Заработная плата",
+      "categoryName": "Salary",
       "subCategories": [
-        "Заработная плата Аванс",
-        "Заработная плата Остаток"
+        "Salary Advance",
+        "Salary Balance"
       ]
     },
     {
-      "categoryName": "Подарки",
+      "categoryName": "Gifts",
       "subCategories": [
-        "Подарки личные",
-        "Подарки общественные"
+        "Personal Gifts",
+        "Public Gifts"
       ]
     },
     {
-      "categoryName": "Аренда",
+      "categoryName": "Rent",
       "subCategories": [
-        "Аренда Текущий платёж",
-        "Аренда Авансовый платёж"
+        "Rent Current payment",
+        "Rent Advance Payment"
       ]
     },
     {
-      "categoryName": "Депозит %",
+      "categoryName": "Deposit %",
       "subCategories": [
-        "Депозит % в нац. валюте",
-        "Депозит % в ин. валюте"
+        "Deposit % in national currency",
+        "Deposit % in foreign currency"
       ]
     },
     {
-      "categoryName": "Депозит",
+      "categoryName": "Deposit",
       "subCategories": [
-        "Депозит в нац. валюте",
-        "Депозит в ин. валюте"
+        "Deposit in national currency",
+        "Deposit in foreign currency"
       ]
     },
     {
-      "categoryName": "Роялти",
+      "categoryName": "Royalties",
       "subCategories": [
-        "Роялти моё",
-        "Роялти жены"
+        "Royalties mine",
+        "Royalties Wife"
       ]
     },
     {
-      "categoryName": "Роялти",
+      "categoryName": "Royalties",
       "subCategories": [
-        "Прочие"
+        "Other"
       ]
     }
   ],
   "cost": [
     {
-      "categoryName": "Повседневные расходы",
+      "categoryName": "Daily Expenses",
       "subCategories": [
-        "Повседневные расходы, Продукты",
-        "Повседневные расходы, Одежда",
-        "Повседневные расходы, Косметические средства"
+        "Daily Expenses, Groceries",
+        "Daily Expenses, Clothes",
+        "Daily expenses, Cosmetics"
       ]
     },
     {
-      "categoryName": "Квартплата",
+      "categoryName": "Rent",
       "subCategories": [
-        "Квартплата, Отопление и горячая вода",
-        "Квартплата, мусор",
-        "Квартплата, Эл. энергия",
-        "Квартплата, Интернет и телефон",
-        "Квартплата, Водоснабжение и водоотведение",
-        "Квартплата, Газ",
-        "Квартплата, Другое"
+        "Rent, Heating and hot water",
+        "Rent, garbage",
+        "Rent, El. energy",
+        "Rent, Internet and phone",
+        "Rent, Water supply and sanitation",
+        "Rent, Gas",
+        "Rent, Other"
       ]
     },
     {
-      "categoryName": "Транспорт",
+      "categoryName": "Vehicle",
       "subCategories": [
-        "Транспорт, Страхование",
-        "Транспорт, Топливо",
-        "Транспорт, Ремонт, ТО, запчасти",
-        "Транспорт, Общественный",
-        "Транспорт, Другое"
+        "Transport, Insurance",
+        "Transport, Fuel",
+        "Transport, Repair, maintenance, spare parts",
+        "Transport, Public",
+        "Transport, Other"
       ]
     },
     {
-      "categoryName": "Дети",
+      "categoryName": "Children",
       "subCategories": [
-        "Дети, Кружки и секции",
-        "Дети, Карманные деньги",
-        "Дети, Медицинские расходы",
-        "Дети, Детский сад",
-        "Дети, Одежда",
-        "Дети, Школа",
-        "Дети, Игрушки",
-        "Дети, Образование",
-        "Дети, Другое"
+        "Children, Mugs and sections",
+        "Children, Pocket Money",
+        "Children, Medical Expenses",
+        "Children, Kindergarten",
+        "Children, Clothes",
+        "Children, School",
+        "Children, Toys",
+        "Children, Education",
+        "Children, Other"
       ]
     },
     {
-      "categoryName": "Здоровье",
+      "categoryName": "Health",
       "subCategories": [
-        "Здоровье, Обследования врачей",
-        "Здоровье, Лекарства, лечебные процедуры",
-        "Здоровье, Другое"
+        "Health, Examinations of doctors",
+        "Health, Medicines, medical procedures",
+        "Health, Other"
       ]
     },
     {
-      "categoryName": "Дом",
+      "categoryName": "House",
       "subCategories": [
-        "Дом, Аренда",
-        "Дом, Мебель",
-        "Дом, Товары для быта",
-        "Дом, Обслуживание",
-        "Дом, Ремонт",
-        "Дом, Другое"
+        "House, Rent",
+        "House, Furniture",
+        "Home, Household Goods",
+        "Home, Service",
+        "House, Repair",
+        "Home, Other"
       ]
     },
     {
-      "categoryName": "Развлечения",
+      "categoryName": "Entertainment",
       "subCategories": [
-        "Развлечения, Книги",
-        "Развлечения, Концерты",
-        "Развлечения, Игры",
-        "Развлечения, Хобби",
-        "Развлечения, Досуг",
-        "Развлечения, Другое"
+        "Entertainment, Books",
+        "Entertainment, Concerts",
+        "Entertainment, Games",
+        "Entertainment, Hobby",
+        "Entertainment, Leisure",
+        "Entertainment, Other"
       ]
     },
     {
-      "categoryName": "Подарки",
+      "categoryName": "Gifts",
       "subCategories": [
-        "Подарки, Родственникам, друзьям",
-        "Подарки, Благотворительность",
-        "Подарки, Другое"
+        "Gifts, Relatives, friends",
+        "Gifts, Charity",
+        "Gifts, Other"
       ]
     },
     {
-      "categoryName": "Кредиты",
+      "categoryName": "Credits",
       "subCategories": [
-        "Кредиты, Ипотека",
-        "Кредиты, Авто",
-        "Кредиты, Прочие"
+        "Loans, Mortgages",
+        "Loans, Auto",
+        "Loans, Other"
       ]
     },
     {
-      "categoryName": "Депозит",
+      "categoryName": "Deposit",
       "subCategories": [
-        "Депозит, пополнение на вклад в банк"
+        "Deposit, replenishment on a bank deposit"
       ]
     },
     {
-      "categoryName": "Бизнес",
+      "categoryName": "Business",
       "subCategories": [
-        "Бизнес, Онлайн-сервисы",
-        "Бизнес, Оборудование",
-        "Бизнес, Сырье, товар",
-        "Бизнес, Услуги",
-        "Бизнес, Инструменты",
-        "Бизнес, Другое"
+        "Business, Online Services",
+        "Business, Equipment",
+        "Business, Raw Materials, Commodity",
+        "Business, Services",
+        "Business, Tools",
+        "Business, Other"
       ]
     },
     {
-      "categoryName": "Путешествия",
+      "categoryName": "Travel",
       "subCategories": [
-        "Путешествия, Авиабилеты",
-        "Путешествия, Отели",
-        "Путешествия, Питание",
-        "Путешествия, Транспорт",
-        "Путешествия, Развлечения",
-        "Путешествия, Другое"
+        "Travel, Flights",
+        "Travel, Hotels",
+        "Travel, Meals",
+        "Travel, Transport",
+        "Travel, Entertainment",
+        "Travel, Other"
       ]
     },
     {
-      "categoryName": "Прочие расходы",
+      "categoryName": "Other expenses",
       "subCategories": [
-        "Прочие расходы"
+        "Other expenses"
       ]
     },
     {
-      "categoryName": "Цели",
+      "categoryName": "Goals",
       "subCategories": [
-        "Автомобиль"
+        "Automobile"
       ]
     }
-  ]
+    ]
+  }
 }

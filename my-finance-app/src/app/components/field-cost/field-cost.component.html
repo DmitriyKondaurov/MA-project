@@ -1,8 +1,8 @@
 <div class="field-cost">
-  <span class="field-cost__name">Витрати по категоріям:</span>
+  <span class="field-cost__name">Расходы по категориям:</span>
   <ul class="field-cost__list">
     <li class="field-cost__item"
-        *ngFor=" let item of transactions | transactFilterReduceSort:'Расходы':'Факт': currDate | slice:0:6">
+        *ngFor=" let item of transactions">
       <app-field-cost-item [costByCategory] = item [totalCostAmount] = "biggestCostAmount"></app-field-cost-item>
     </li>
   </ul>

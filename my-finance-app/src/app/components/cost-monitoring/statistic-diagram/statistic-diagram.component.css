@@ -1,0 +1,58 @@
+.chart{
+    margin: 20px;
+}
+.pieContainer {
+    height: 190px;
+    width: 190px;
+    padding: 0px 20px;
+}
+.pieBackground {
+    background-color: #e6e6e6;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    -moz-border-radius: 75px;
+    -webkit-border-radius: 75px;
+    -o-border-radius: 75px;
+    border-radius: 75px;
+}
+
+.pie2 {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    -moz-border-radius: 75px;
+    -webkit-border-radius: 75px;
+    -o-border-radius: 75px;
+    border-radius: 75px;
+    clip: rect(0px, 75px, 150px, 0px);
+    background-color: #b8366c;
+}
+ 
+.pie {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    -moz-border-radius: 75px;
+    -webkit-border-radius: 75px;
+    -o-border-radius: 75px;
+    border-radius: 75px;
+    clip: rect(0px, 75px, 150px, 0px);
+    background-color: #53b836;
+}
+.hold {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    -moz-border-radius: 75px;
+    -webkit-border-radius: 75px;
+    -o-border-radius: 75px;
+    border-radius: 75px;
+    clip: rect(0px, 150px, 150px, 75px);
+}
+.pieSlice2 {
+    -webkit-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    -o-transform:rotate(180deg);
+    transform:rotate(180deg);
+}
