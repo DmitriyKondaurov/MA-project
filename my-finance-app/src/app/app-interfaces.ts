@@ -35,9 +35,9 @@ export interface IAppColors {
 }
 
 export interface IBalance {
-  balance: number,
+  amount: number,
   currency: string,
-  date: Date
+  dateString: string
 }
 
 export interface ITotalByCategory {

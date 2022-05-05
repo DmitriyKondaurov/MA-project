@@ -41,10 +41,10 @@ export class MainPageComponent implements OnInit {
       this.transactionList = dataList
 
 // INCOME
-      this.getTransactions('Доходы', this.income);
+      this.getTransactions(this.transactionList, 'Доходы', this.income);
 
 // COST
-      this.getTransactions('Расходы', this.cost);
+      this.getTransactions(this.transactionList, 'Расходы', this.cost);
 
 // GOALS
       this.getGoals()
@@ -52,11 +52,11 @@ export class MainPageComponent implements OnInit {
     });
   }
 
-  getTransactions(flowDirection: string, variable: IFrontPageItem) {
-    let incomeTransReduce = this.transactionsService.customReduce(this.transactionList, flowDirection, 'Факт', this.currDate);
-    variable.value = incomeTransReduce.reduce((acc, curr) => acc += curr.value, 0)
-    incomeTransReduce = this.transactionsService.customReduce(this.transactionList, flowDirection, 'План', this.currDate);
-    variable.total = incomeTransReduce.reduce((acc, curr) => acc += curr.value, 0)
+  getTransactions(transactionsList: ITransactArchive[], flowDirection: string, variable: IFrontPageItem) {
+    let transactionsReduce = this.transactionsService.customReduce(transactionsList, flowDirection, 'Факт', this.currDate);
+    variable.value = transactionsReduce.reduce((acc, curr) => acc += curr.value, 0)
+    transactionsReduce = this.transactionsService.customReduce(transactionsList, flowDirection, 'План', this.currDate);
+    variable.total = transactionsReduce.reduce((acc, curr) => acc += curr.value, 0)
     variable.progress = Math.round(variable.value/variable.total*100).toString()+'%'
   }
 
