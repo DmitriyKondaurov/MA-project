@@ -68,3 +68,8 @@ export interface Type {
   title: string;
   value: string;
 }
+
+export interface Categories {
+  categoryName: string;
+  subCategories: object;
+}
