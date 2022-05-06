@@ -1,9 +1,13 @@
 <span class="progress-bar">
   <span class="progress-bar__name">{{frontPageItem.name}}</span>
   <div class="progress-bar__line">
-    <span class="progress-bar__fill-value" [appFillAmount]="frontPageItem.value"
-          curItemColor="{{color}}" curItemTotal="{{frontPageItem.total}}">{{frontPageItem.value}}</span>
-    <span  class="progress-bar__value-amount">{{frontPageItem.total}}</span>
+    <span class="progress-bar__fill-value" [appFillAmount]="frontPageItem" curItemColor="{{color}}"
+    [ngStyle]="{'width':frontPageItem.progress}">
+      {{frontPageItem.value}}
+    </span>
+    <span  class="progress-bar__value-amount">
+      {{frontPageItem.total}}
+    </span>
   </div>
 </span>
 

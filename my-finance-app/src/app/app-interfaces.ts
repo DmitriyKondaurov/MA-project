@@ -12,6 +12,7 @@ export interface IFrontPageItem {
   name: string
   value: number
   total: number
+  progress: string
 }
 
 export interface ITransactArchive {
@@ -34,9 +35,9 @@ export interface IAppColors {
 }
 
 export interface IBalance {
-  balance: number,
+  amount: number,
   currency: string,
-  date: Date
+  dateString: string
 }
 
 export interface Transaction {

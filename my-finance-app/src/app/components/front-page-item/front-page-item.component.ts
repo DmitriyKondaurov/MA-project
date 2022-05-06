@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {IFrontPageItem} from "../../app-interfaces";
 import {TakeColorService} from "../../services/take-color.service";
-import {RestApiService} from "../../services/res-api.service";
 
 @Component({
   selector: 'app-front-page-item',
@@ -10,25 +9,19 @@ import {RestApiService} from "../../services/res-api.service";
 })
 export class FrontPageItemComponent implements OnInit {
 
- @Input()  frontPageItem: IFrontPageItem = {
-   name: '',
-   value: 0,
-   total: 0,
- };
+  @Input()  frontPageItem: IFrontPageItem = {
+    name: '',
+    value: 0,
+    total: 0,
+    progress: ''
+  };
 
- color: string = '';
+  color: string = '';
 
- constructor(private choseHighlightColor: TakeColorService, private readonly restService: RestApiService) { }
+ constructor(private choseHighlightColor: TakeColorService) { }
 
   ngOnInit(): void {
     this.color = this.choseHighlightColor.takeNewColor()
-
-
-    // this.frontPageItem = {
-    //   name: 'DFDSFS',
-    //   value: 10,
-    //   total: 20,
-    // };
   }
 
 }
