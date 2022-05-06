@@ -20,3 +20,27 @@
   max-height: 17px;
   overflow: hidden;
 }
+
+@media only screen and (min-width: 600px) {
+  .progress-bar__line {
+    width: 400px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .progress-bar__line {
+    width: 500px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .progress-bar__line {
+    width: 700px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .progress-bar__line {
+    width: 800px;
+  }
+}

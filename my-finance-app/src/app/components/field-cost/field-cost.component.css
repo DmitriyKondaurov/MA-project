@@ -18,3 +18,27 @@
 .field-cost__item {
   list-style: none;
 }
+
+@media only screen and (min-width: 600px) {
+  .field-cost {
+    width: 400px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .field-cost {
+    width: 500px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .field-cost {
+    width: 700px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .field-cost {
+    width: 800px;
+  }
+}
