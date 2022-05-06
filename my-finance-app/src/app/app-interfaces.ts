@@ -40,8 +40,32 @@ export interface IBalance {
   dateString: string
 }
 
+export interface Transaction {
+  amount: string,
+  category: string,
+  currency: Currency,
+  date: string,
+  description?: string,
+  expense: Expenses,
+  type: Type
+}
 export interface ITotalByCategory {
   categoryName: string,
   value: number
 }
 
+export interface Currency {
+  value: number,
+  title: string
+}
+
+export interface Expenses {
+  title: string;
+  value: string
+}
+
+export interface Type {
+  id: number;
+  title: string;
+  value: string;
+}

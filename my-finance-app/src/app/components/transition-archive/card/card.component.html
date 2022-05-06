@@ -1,4 +1,7 @@
-<div class="card">
+<div class="card" [ngStyle]="{
+    background: (card.type.title) === 'income' ? 
+    '#2ABF8B' : '#FD3A30'}">
+    
     <div class="card__group-one">
         <div class="card__title">{{card.type.title}}</div>
         <div class="card__money">

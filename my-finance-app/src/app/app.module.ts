@@ -26,10 +26,17 @@ import { FieldCostItemComponent } from './components/field-cost-item/field-cost-
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { CostMonitoringComponent } from './components/cost-monitoring/cost-monitoring.component';
+import { StatisticComponent } from './components/cost-monitoring/statistic/statistic.component';
+import { StatisticDiagramComponent } from './components/cost-monitoring/statistic-diagram/statistic-diagram.component';
+import { StatisticFieldComponent } from './components/cost-monitoring/statistic/statistic-field/statistic-field.component';
+import { CostsFilterPipe } from './components/pipes/costs-filter.pipe';
+
 
 
 const appRoutes: Routes = [
   { path: 'archive', component: TransactionArchiveComponent },
+  { path: 'monitoring', component: CostMonitoringComponent },
   { path: '', component: MainPageComponent }
 ]
 @NgModule({
@@ -49,6 +56,11 @@ const appRoutes: Routes = [
     TransactFilterPipe,
     TotalCostAmountPipe,
     MainPageComponent,
+    CostMonitoringComponent,
+    StatisticComponent,
+    StatisticDiagramComponent,
+    StatisticFieldComponent,
+    CostsFilterPipe,
   ],
   imports: [
     BrowserModule,

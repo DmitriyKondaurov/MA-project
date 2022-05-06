@@ -20,6 +20,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "angularfire2"
+           ],
             "outputPath": "dist/my-finance-app",
             "index": "src/index.html",
             "main": "src/main.ts",
