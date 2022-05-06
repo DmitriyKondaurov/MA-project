@@ -43,9 +43,10 @@
 }
 
 .form__field {
-    padding: 5px;
+    padding: 7px 5px;
     border: none;
     border-radius: 6px;
+    font-size: 18px;
 }
 
 .form__field:focus {
