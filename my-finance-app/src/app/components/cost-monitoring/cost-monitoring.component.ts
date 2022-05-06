@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestApiService } from '../../services/res-api.service'
 import { CostInfoService } from 'src/app/services/cost-info.service';
+import { Categories, Transaction } from 'src/app/app-interfaces';
 
 @Component({
   selector: 'app-cost-monitoring',
@@ -9,54 +10,55 @@ import { CostInfoService } from 'src/app/services/cost-info.service';
 })
 export class CostMonitoringComponent implements OnInit {
 
-  data: string[] = [];
-  costs: object[] = []
-  arrCategories: object[] = [];
+  data: any[] = [];
+  costs: Transaction[] = []
+  arrCategories: any[] = [];
+  costCategories: any[] = [];
   notZeroCategories: object[] = [];
 
   constructor(private RestApiService: RestApiService, private CostInfoService: CostInfoService) { }
 
   ngOnInit(): void {
-  //   this.RestApiService.getTest().subscribe(res => {
-  //     this.data = res;
-  //     this.costs = this.CostInfoService.costInfo(this.data);
-  //     this.calculateCosts(this.costs);
-  //   })
-  // }
+    this.RestApiService.getCategories().snapshotChanges().subscribe( res => {
+      res.forEach( item => {
+        this.arrCategories.push(item.payload.toJSON());
+      })
+      let categories: Categories[] = Object.values(this.arrCategories[0])
+      categories.forEach( (item: Categories)  => {
+        this.costCategories.push(Object.values(item.subCategories))
+      })
+      this.costCategories = this.costCategories.flat();
+    })
+    this.RestApiService.getTransactions().snapshotChanges().subscribe( res => {
+      res.forEach( item => {
+        this.data.push(item.payload.toJSON());
+      } )
+      this.calculateCosts(this.CostInfoService.costInfo(this.data));
+    })
+    
+  }
 
-  // calculateCosts(data: object[]) {
-  //   let categories;
-  //   let object: any = {};
-  //   this.RestApiService.getData().subscribe( res => {
-  //     categories = res.cost;
-  //     let costValue = Object.values(res)[1]
-  //     let costsCategories: string[] = [];
-  //     costValue.forEach((element: object) => {
-  //       costsCategories.push(Object.values(element)[1])
-  //     });
-  //     costsCategories = costsCategories.flat()
+  calculateCosts(data: Transaction[]) {
+    let object: any = {};
+    let allCosts: any = [];
+      data.forEach((element: Transaction) => {
+        allCosts.push({[element.category]: +element.amount * element.currency.value})
+      });
 
-  //     costsCategories.forEach((key)=>{
-  //       object[key]=0
-  //     }); 
 
-  //     costsCategories.forEach( category => {
-  //       data.forEach( (el) => {
-  //         if(Object.values(el).includes(category)) {
-  //         let amount =  Object.values(el)[5];
-  //         object[category] = object[category] + + amount
-  //         }
-  //       })
-  //     })
-
-  //     for (const [key, value] of Object.entries(object)) {
-  //       this.arrCategories.push({ [key]: value });
-  //     }
-  //     this.arrCategories.forEach( (category: object) => {
-  //       if(Object.values(category)[0] != '0') this.notZeroCategories.push(category);
-  //     })
-  //     return this.notZeroCategories;
-  //   })
+      this.costCategories.forEach( (category: string) => {
+        object[category] = 0;
+        allCosts.forEach( (el: any) => {
+          if(Object.keys(el).includes(category)) {
+          object[category] = object[category] + el[category]
+          }
+        })
+      })
+      let arr = Object.entries(object);
+      arr.forEach( (category) => {
+        if((category)[1] != 0) this.notZeroCategories.push({[category[0]]: category[1]});
+      })
+      return this.notZeroCategories;
   }
 
 }

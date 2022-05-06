@@ -1,7 +1,7 @@
 import { RestApiService } from './../../services/res-api.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ICategories } from 'src/app/app-interfaces';
+import { Transaction } from 'src/app/app-interfaces';
 
 interface Type {
   value: 'cost' | 'income',
@@ -62,14 +62,14 @@ export class PopupFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-    let s = this.RestApiService.getTransactions();
-    s.snapshotChanges().subscribe( res => {
-      res.forEach( item => {
-        let a = item.payload.toJSON();
-      } )
-    })
+    this.RestApiService.getTransactions();
+    // s.snapshotChanges().subscribe( res => {
+    //   res.forEach( item => {
+    //     let a = item.payload.toJSON();
+    //   } )
+    // })
     this.data = this.RestApiService.getCategories();
-    this.data.snapshotChanges().subscribe((res: any) => {
+    this.RestApiService.getCategories().snapshotChanges().subscribe((res: any) => {
       res.forEach( (category: any) => {
         this.dataCategories.push(category.payload.toJSON());
       } )
@@ -87,30 +87,14 @@ export class PopupFormComponent implements OnInit {
   }
 
   submitForm(): void {
-    if(this.form.valid) {
-      this.RestApiService.addTransaction(this.form.value);
-      if(localStorage.length === 0) this.save()
-      else {
-        this.dataStorage = JSON.parse(localStorage.getItem('dataForm')!)
-        this.save()
-      }
-      this.RestApiService.sendTest({storage: this.dataStorage}).subscribe()
-      this.RestApiService.send(this.form.value);
-    }
-  }
-
-  save() {
-    this.dataStorage?.push(JSON.stringify(this.form.value))
-    localStorage.setItem("dataForm", JSON.stringify(this.dataStorage));
+    if(this.form.valid) this.RestApiService.addTransaction(this.form.value);
   }
 
   getValues(data: any): any {
-    console.log(Object.values(data), 'here')
     let arr: any[] = [];
     Object.values(data).forEach((element: any) => {
       arr.push(Object.values(element.subCategories));
     });
     return arr.flat();
   }
-
 }

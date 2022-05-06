@@ -58,21 +58,12 @@ export class RestApiService {
       ;
   }
 
-  // getData(): Observable<ICategories> {
-  //   return this.http.get<ICategories>(`${environment.apiUrl}/api/categories`)
-  // }
-
   getTest(): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/api/test`);
   }
 
   sendTest(test: any): Observable<any> {
     return this.http.post(`${environment.apiUrl}/api/test`, test)
-  }
-
-  send(form: any) {
-    console.log(form);
-    return this.http.get('https://financy-6ebf1-default-rtdb.europe-west1.firebasedatabase.app/f.json', form);
   }
 
   handleError(error: { error: { message: string; }; status: any; message: any; }) {
