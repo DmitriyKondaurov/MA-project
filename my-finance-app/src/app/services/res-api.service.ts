@@ -26,6 +26,7 @@ export class RestApiService {
    }
 
   addTransaction(transaction: any) {
+    this.transactionsRef = this.db.list(this.dbTransactionPath);
     this.transactionsRef?.push(transaction);
   }
 
@@ -34,7 +35,7 @@ export class RestApiService {
     return this.transactionsRef;
   }
 
-  getData() {
+  getCategories() {
     this.transactionsRef = this.db.list(this.dbCategoriesPath);
     return this.transactionsRef;
   }

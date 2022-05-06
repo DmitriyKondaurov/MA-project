@@ -44,9 +44,9 @@ export interface Transaction {
   category: string,
   currency: Currency,
   date: string,
-  description: string,
-  expense: object,
-  type: object
+  description?: string,
+  expense: Expenses,
+  type: Type
 }
 export interface ITotalByCategory {
   categoryName: string,
@@ -56,4 +56,15 @@ export interface ITotalByCategory {
 export interface Currency {
   value: number,
   title: string
+}
+
+export interface Expenses {
+  title: string;
+  value: string
+}
+
+export interface Type {
+  id: number;
+  title: string;
+  value: string;
 }

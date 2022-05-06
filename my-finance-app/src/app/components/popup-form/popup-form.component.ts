@@ -67,8 +67,8 @@ export class PopupFormComponent implements OnInit {
       res.forEach( item => {
         let a = item.payload.toJSON();
       } )
-    } )
-    this.data = this.RestApiService.getData();
+    })
+    this.data = this.RestApiService.getCategories();
     this.data.snapshotChanges().subscribe((res: any) => {
       res.forEach( (category: any) => {
         this.dataCategories.push(category.payload.toJSON());
