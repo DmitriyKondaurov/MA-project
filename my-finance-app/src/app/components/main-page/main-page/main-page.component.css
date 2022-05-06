@@ -15,3 +15,27 @@
 .app-main-page__progress-bar-field {
   padding: 5px 0;
 }
+
+@media only screen and (min-width: 600px) {
+  .main {
+    max-width: 480px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .main {
+    max-width: 720px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .main {
+    max-width: 940px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .main {
+    max-width: 1024px;
+  }
+}

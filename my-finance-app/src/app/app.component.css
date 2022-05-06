@@ -2,6 +2,9 @@
   position: sticky;
   top: 0;
   padding: 15px;
+  max-width: 320px;
+  margin: auto;
+  box-sizing: border-box;
   background-color: #25A779;
 }
 
@@ -30,4 +33,26 @@
   width: 100%;
 }
 
+@media only screen and (min-width: 600px) {
+  .header {
+    max-width: 480px;
+  }
+}
 
+@media only screen and (min-width: 768px) {
+  .header {
+    max-width: 720px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .header {
+    max-width: 940px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .header {
+    max-width: 1024px;
+  }
+}
