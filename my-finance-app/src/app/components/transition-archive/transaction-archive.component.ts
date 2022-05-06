@@ -1,4 +1,8 @@
+import { Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+import { MonitoringInfoService } from '../../services/monitoring-info.service'
+import { RestApiService } from '../../services/res-api.service'
+import { Transaction } from 'src/app/app-interfaces';
 
 @Component({
   selector: 'app-transaction-archive',
@@ -7,25 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionArchiveComponent implements OnInit {
 
-  data: string[] = [];
-  archive: object[] = [];
-  ar?: any[]
-  transitions: object[] = [];
+  data: any[] = []
+  transitions: Transaction[] = [];
 
-  constructor() { }
+  constructor(private RestApiService: RestApiService, private MonitoringInfoService: MonitoringInfoService) { }
 
-  ngOnInit(): void {
-    if(localStorage.getItem('dataForm')) this.data = JSON.parse(localStorage.getItem('dataForm')!);
-    this.makeArchive(this.data);
-    this.archive.forEach( (id) => {
-      this.ar = Object.values(id)
-      if (Object.values(this.ar['1']).includes('actual')) this.transitions.push(id)
-    } )
-  }
-
-  makeArchive(data: string[]) {
-    data.forEach( (item: string) => {
-      this.archive.push(JSON.parse(item));
+  ngOnInit() {
+    this.RestApiService.getTransactions().snapshotChanges().subscribe( res => {
+      res.forEach( item => {
+        this.data.push(item.payload.toJSON());
+      } )
+      this.transitions = this.MonitoringInfoService.monitoringInfo(this.data);
     })
   }
 }
