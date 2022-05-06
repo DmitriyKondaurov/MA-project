@@ -21,6 +21,9 @@ import { TotalCostAmountPipe } from './components/pipes/total-cost-amount.pipe';
 import { MainPageComponent } from './components/main-page/main-page/main-page.component';
 import { FrontPageItemComponent } from './components/front-page-item/front-page-item.component';
 import { FieldCostItemComponent } from './components/field-cost-item/field-cost-item.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
 
 
 const appRoutes: Routes = [
@@ -51,6 +54,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideDatabase(() => getDatabase()),
   ],
   providers: [],
   bootstrap: [AppComponent]
