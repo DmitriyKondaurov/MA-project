@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TakeColorService} from "../../services/take-color.service";
 import {RestApiService} from "../../services/res-api.service";
-import {Subscription} from "rxjs";
-import {IBalance, IFrontPageItem, ITransactArchive} from "../../app-interfaces";
+import {IBalance, ITransactArchive} from "../../app-interfaces";
 import {TransactionsService} from "../../services/transactions.service";
 
 @Component({
