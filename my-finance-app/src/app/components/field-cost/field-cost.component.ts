@@ -23,9 +23,9 @@ export class FieldCostComponent implements OnInit {
         transactionList.push(item.payload.toJSON());
       } )
       this.transactions = this.customReduce
-        .customReduce(transactionList, 'Расходы', 'Факт', this.currDate)
+        .customReduce(transactionList, 'costs', 'actual', this.currDate)
         .slice(0, 6).sort( (a, b) => b.amount - a.amount)
-      this.biggestCostAmount = this.customReduce.biggestCategoryAmount(this.transactions, 'Расходы', 'Факт', this.currDate)
+      this.biggestCostAmount = this.customReduce.biggestCategoryAmount(this.transactions, 'costs', 'actual', this.currDate)
     });
   }
 
