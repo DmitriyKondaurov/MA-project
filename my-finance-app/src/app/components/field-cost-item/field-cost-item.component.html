@@ -2,11 +2,11 @@
   <span class="progress-bar__name">{{costByCategory.subCategoryName}}</span>
   <div class="progress-bar__line">
     <span class="progress-bar__fill-value" [appFillCost]="totalCostAmount"
-          curItemColor="{{color}}" curItemTotal="{{costByCategory.value}}">
+          curItemColor="{{color}}" curItemTotal="{{costByCategory.amount}}">
 
     </span>
     <span  class="progress-bar__value-amount">
-      {{costByCategory.value}}
+      {{costByCategory.amount}}
     </span>
   </div>
 </span>

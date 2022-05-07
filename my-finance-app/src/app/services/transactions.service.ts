@@ -11,13 +11,13 @@ export class TransactionsService {
 
     if (date) {
       curTransactions
-        .filter((item) => item.planFact === planFact)
-        .filter((item) => item.flowDirection === flow)
+        .filter((item) => item.expense.value === planFact)
+        .filter((item) => item.type.value === flow)
         .filter((item) => new Date(item.date).getMonth() === date.getMonth())
         .reduce((acc, curr):ITransactArchive[] => {
           const index: number = acc.findIndex((i) => i.categoryName === curr.categoryName)
                 if (index >= 0) {
-                  acc[index].value += curr.value;
+                  acc[index].amount += curr.amount;
                   return acc
                 } else {
                   acc.push(curr);
@@ -26,12 +26,12 @@ export class TransactionsService {
         }, totalByCategories)
     } else {
       curTransactions
-        .filter((item) => item.planFact === planFact)
-        .filter((item) => item.flowDirection === flow)
+        .filter((item) => item.expense.value === planFact)
+        .filter((item) => item.type.value === flow)
         .reduce((acc, curr):ITransactArchive[] => {
           const index: number = acc.findIndex((i) => i.categoryName === curr.categoryName)
           if (index >= 0) {
-            acc[index].value += curr.value;
+            acc[index].amount += curr.amount;
             return acc
           } else {
             acc.push(curr);
@@ -45,13 +45,13 @@ export class TransactionsService {
 
   biggestCategoryAmount(curTransactions: ITransactArchive[], flow: string, planFact: string, date: Date) {
     const reducedTransactions = this.customReduce(curTransactions, flow, planFact, date)
-    return this.customSort(reducedTransactions)[0].value
+    return this.customSort(reducedTransactions)[0].amount
   }
 
 
   customSort(curTransactions: ITransactArchive[]) {
     curTransactions = curTransactions.sort((a, b) => {
-      return b.value - a.value
+      return b.amount - a.amount
     })
     return curTransactions
   }

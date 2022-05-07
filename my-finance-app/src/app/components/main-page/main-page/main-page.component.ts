@@ -10,7 +10,7 @@ import {RestApiService} from "../../../services/res-api.service";
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
-  transactionList : ITransactArchive[] = []
+  transactionList : any[] = []
   currDate: Date = new Date();
 
   income: IFrontPageItem = {
@@ -37,8 +37,10 @@ export class MainPageComponent implements OnInit {
   constructor(private transactionsService: TransactionsService, private readonly restService: RestApiService) { }
 
   ngOnInit() {
-    this.restService.getAllTransactions().subscribe((dataList: ITransactArchive[]) => {
-      this.transactionList = dataList
+    this.restService.getTransactions().snapshotChanges().subscribe( res => {
+      res.forEach( item => {
+        this.transactionList.push(item.payload.toJSON());
+      } )
 
 // INCOME
       this.getTransactions(this.transactionList, 'Доходы', this.income);
@@ -54,9 +56,9 @@ export class MainPageComponent implements OnInit {
 
   getTransactions(transactionsList: ITransactArchive[], flowDirection: string, variable: IFrontPageItem) {
     let transactionsReduce = this.transactionsService.customReduce(transactionsList, flowDirection, 'Факт', this.currDate);
-    variable.value = transactionsReduce.reduce((acc, curr) => acc += curr.value, 0)
+    variable.value = transactionsReduce.reduce((acc, curr) => acc += curr.amount, 0)
     transactionsReduce = this.transactionsService.customReduce(transactionsList, flowDirection, 'План', this.currDate);
-    variable.total = transactionsReduce.reduce((acc, curr) => acc += curr.value, 0)
+    variable.total = transactionsReduce.reduce((acc, curr) => acc += curr.amount, 0)
     variable.progress = Math.round(variable.value/variable.total*100).toString()+'%'
   }
 
@@ -65,7 +67,7 @@ export class MainPageComponent implements OnInit {
     let index = goalTransReduce.findIndex((item) => item.categoryName === 'Цели')
     if (index >= 0 ) {
       this.goal.name = goalTransReduce[index].subCategoryName
-      this.goal.total = goalTransReduce[index].value
+      this.goal.total = goalTransReduce[index].amount
     } else {
       this.goal.name = ''
       this.goal.total = 0
@@ -73,7 +75,7 @@ export class MainPageComponent implements OnInit {
     goalTransReduce = this.transactionsService.customReduce(this.transactionList, 'Расходы', 'Факт');
     index = goalTransReduce.findIndex((item) => item.categoryName === 'Цели')
     if (index >= 0 ) {
-      this.goal.value = goalTransReduce[index].value
+      this.goal.value = goalTransReduce[index].amount
     } else {
       this.goal.value = 0
     }

@@ -13,6 +13,7 @@ export class RestApiService {
   transactionsRef?: AngularFireList<any>;
   private dbTransactionPath = '/transaction-list';
   private dbCategoriesPath = '/categories';
+  private dbBalancePath = '/balance';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -22,7 +23,7 @@ export class RestApiService {
     responseType: 'json'
   };
 
-  constructor(private http: HttpClient, private db: AngularFireDatabase) { 
+  constructor(private http: HttpClient, private db: AngularFireDatabase) {
    }
 
   addTransaction(transaction: any) {
@@ -40,14 +41,19 @@ export class RestApiService {
     return this.transactionsRef;
   }
 
-  getAllTransactions(): Observable<ITransactArchive[]> {
-    return this.http.get<ITransactArchive[]>(environment.apiUrl + '/api/transactions')
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
-      ;
+  getBalanceAmount() {
+    this.transactionsRef = this.db.list(this.dbBalancePath);
+    return this.transactionsRef;
   }
+
+  // getAllTransactions(): Observable<ITransactArchive[]> {
+  //   return this.http.get<ITransactArchive[]>(environment.apiUrl + '/api/transactions')
+  //     .pipe(
+  //       retry(1),
+  //       catchError(this.handleError)
+  //     )
+  //     ;
+  // }
 
   getBalance(): Observable<IBalance> {
     return this.http.get<IBalance>(environment.apiUrl + '/api/balance')
