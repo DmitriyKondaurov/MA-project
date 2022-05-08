@@ -1,24 +1,19 @@
 import { Injectable } from '@angular/core';
+import { Transaction } from '../app-interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CostInfoService {
 
-  archive: object[] = [];
-  archiveValues?: object[]
-  transitions: object[] = [];
+  transitions: Transaction[] = [];
 
   constructor() { }
 
-  costInfo(data: string[]) {
-    data.forEach( (el: any) => {
-      this.archive.push(JSON.parse(el));
-    });
-    this.archive.forEach( (id: object) => {
-      this.archiveValues = Object.values(id)
-      if ((Object.values(this.archiveValues['1']).includes('actual'))&&(Object.values(this.archiveValues['0']).includes('cost'))) this.transitions.push(id)
-    } )
+  costInfo(data: Transaction[]): Transaction[] {
+    data.forEach((id: Transaction) => {
+      if ((id.expense.value === 'actual')&&(id.type.value === 'cost')) this.transitions.push(id)
+    })
     return this.transitions;
   }
 }

@@ -1,12 +1,11 @@
 .header {
   position: sticky;
   top: 0;
-  padding: 5px 15px;
+  padding: 15px;
   max-width: 320px;
   margin: auto;
   box-sizing: border-box;
   background-color: #25A779;
-  font-family: 'open sans', sans-serif;
 }
 
 .btn-add {
@@ -35,15 +34,15 @@
 }
 
 @media only screen and (min-width: 600px) {
-  /*.header {*/
-  /*  max-width: 480px;*/
-  /*}*/
+  .header {
+    max-width: 480px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
-  /*.header {*/
-  /*  max-width: 720px;*/
-  /*}*/
+  .header {
+    max-width: 720px;
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -53,7 +52,7 @@
 }
 
 @media only screen and (min-width: 1200px) {
-  /*.header {*/
-  /*  max-width: 1024px;*/
-  /*}*/
+  .header {
+    max-width: 1024px;
+  }
 }
