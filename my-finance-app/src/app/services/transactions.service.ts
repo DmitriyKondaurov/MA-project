@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ITotalByCategory, ITransactArchive} from "../app-interfaces";
+import {ITransactArchive} from "../app-interfaces";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class TransactionsService {
         .filter((item) => item.type.value === flow)
         .filter((item) => new Date(item.date).getMonth() === date.getMonth())
         .reduce((acc, curr):ITransactArchive[] => {
-          const index: number = acc.findIndex((i) => i.categoryName === curr.categoryName)
+          const index: number = acc.findIndex((i) => i.category === curr.category)
                 if (index >= 0) {
                   acc[index].amount += curr.amount;
                   return acc
@@ -29,7 +29,7 @@ export class TransactionsService {
         .filter((item) => item.expense.value === planFact)
         .filter((item) => item.type.value === flow)
         .reduce((acc, curr):ITransactArchive[] => {
-          const index: number = acc.findIndex((i) => i.categoryName === curr.categoryName)
+          const index: number = acc.findIndex((i) => i.category === curr.category)
           if (index >= 0) {
             acc[index].amount += curr.amount;
             return acc

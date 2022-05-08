@@ -1,10 +1,9 @@
-import { RestApiService } from './../../services/res-api.service';
+import { RestApiService } from '../../services/res-api.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Transaction } from 'src/app/app-interfaces';
 
 interface Type {
-  value: 'cost' | 'income',
+  value: 'costs' | 'income',
   title: string,
   id: number
 }
@@ -22,7 +21,7 @@ export class PopupFormComponent implements OnInit {
 
 
   types: Type[] = [
-    {value: 'cost', title: 'consumption', id: 0},
+    {value: 'costs', title: 'consumption', id: 0},
     {value: 'income', title: 'income', id: 1},
   ];
 

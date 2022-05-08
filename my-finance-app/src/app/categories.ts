@@ -4,13 +4,13 @@ export interface Categories {
 }
 
 export interface Income {
-    salaryIncome: string[]; 
-    giftsIncome: string[]; 
-    rentalIncome: string[]; 
-    depositInterestIncome: string[]; 
-    depositIncome: string[]; 
-    royaltyIncome: string[]; 
-    otherIncome: string[]; 
+    salaryIncome: string[];
+    giftsIncome: string[];
+    rentalIncome: string[];
+    depositInterestIncome: string[];
+    depositIncome: string[];
+    royaltyIncome: string[];
+    otherIncome: string[];
 }
 
 export interface Cost {

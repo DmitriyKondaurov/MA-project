@@ -1,4 +1,3 @@
-import { Categories } from './../../categories';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

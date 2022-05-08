@@ -1,4 +1,3 @@
-import { Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { MonitoringInfoService } from '../../services/monitoring-info.service'
 import { RestApiService } from '../../services/res-api.service'

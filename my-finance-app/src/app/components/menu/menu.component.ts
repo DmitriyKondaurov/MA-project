@@ -1,6 +1,6 @@
-import {Component, ElementRef, HostBinding, OnInit} from '@angular/core';
+import {Component, ElementRef} from '@angular/core';
 import {Router} from "@angular/router";
-import {Expenses} from "../../app-interfaces";
+import {IMenuItem} from "../../app-interfaces";
 
 @Component({
   selector: 'app-menu',
@@ -11,34 +11,34 @@ export class MenuComponent {
   selected: string = '';
   status: boolean = false;
 
-  elements: Expenses[] = [
+  elements: IMenuItem[] = [
     {
       title: 'Main page',
-      value: ''
+      url: ''
     },
     {
       title: 'Costs analysis',
-      value: 'monitoring'
+      url: 'monitoring'
     },
     {
       title: 'Category',
-      value: ''
+      url: ''
     },
     {
       title: 'Planned budget',
-      value: ''
+      url: ''
     },
     {
       title: 'Last transaction',
-      value: 'archive'
+      url: 'archive'
     },
     {
       title: 'Plan/Actual report',
-      value: ''
+      url: ''
     },
     {
       title: 'Goals',
-      value: ''
+      url: ''
     },
   ];
   constructor(private router: Router, private element: ElementRef) { }
@@ -50,9 +50,9 @@ export class MenuComponent {
   ngOnInit(): void {
   }
 
-  select(item: Expenses) {
+  select(item: IMenuItem) {
     this.selected = item.title;
-    this.router.navigateByUrl(item.value).then();
+    this.router.navigateByUrl(item.url).then();
   }
 
   hideMenu(): void {
