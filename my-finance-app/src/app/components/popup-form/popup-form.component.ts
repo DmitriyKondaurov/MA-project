@@ -52,7 +52,7 @@ export class PopupFormComponent implements OnInit {
 
 
   @Output() handleHide = new EventEmitter();
- 
+
 
   constructor(private RestApiService: RestApiService) { }
 
@@ -94,7 +94,7 @@ export class PopupFormComponent implements OnInit {
         this.dataStorage = JSON.parse(localStorage.getItem('dataForm')!)
         this.save()
       }
-      this.RestApiService.sendTest({storage: this.dataStorage}).subscribe()
+      // this.RestApiService.sendTest({storage: this.dataStorage}).subscribe()
       this.RestApiService.send(this.form.value);
     }
   }

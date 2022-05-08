@@ -22,9 +22,11 @@ export class FieldCostComponent implements OnInit {
       res.forEach( item => {
         transactionList.push(item.payload.toJSON());
       } )
+
       this.transactions = this.customReduce
         .customReduce(transactionList, 'costs', 'actual', this.currDate)
-        .slice(0, 6).sort( (a, b) => b.amount - a.amount)
+        .sort( (a, b) => b.amount - a.amount)
+        .slice(0, 6)
       this.biggestCostAmount = this.customReduce.biggestCategoryAmount(this.transactions, 'costs', 'actual', this.currDate)
     });
   }

@@ -11,7 +11,7 @@ export class MenuComponent {
   status: boolean = false;
 
   elements: string[] = [
-    'Головна сторінка',
+    'Main page',
     'Архів транзакцій',
     'Категорії',
     'План бюджет',
