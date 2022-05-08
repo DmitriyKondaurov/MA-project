@@ -45,8 +45,7 @@ export class PopupFormComponent implements OnInit {
     date: new FormControl("", Validators.required),
     category: new FormControl("", Validators.required),
     description: new FormControl(),
-    amount: new FormControl(0, [Validators.required,
-                                Validators.pattern("^[0-9]*$")]),
+    amount: new FormControl( Validators.required),
     currency: new FormControl(this.currencies[2], Validators.required),
   });
 
@@ -63,11 +62,6 @@ export class PopupFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.RestApiService.getTransactions();
-    // s.snapshotChanges().subscribe( res => {
-    //   res.forEach( item => {
-    //     let a = item.payload.toJSON();
-    //   } )
-    // })
     this.data = this.RestApiService.getCategories();
     this.RestApiService.getCategories().snapshotChanges().subscribe((res: any) => {
       res.forEach( (category: any) => {
