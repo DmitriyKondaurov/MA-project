@@ -1,10 +1,10 @@
 <nav class="header-navigation">
   <ul class="header-menu" (click)="toggle()" [ngClass]="status ? '': 'header-menu--hide'">
     <li *ngFor="let item of elements" class="header-menu__item"
-        (click)="select(item)">
+        routerLink="{{item.value}}">
       <a class="header-menu__link " href="#"
-         [class.header-menu__link_active]="selected === item"
-      >{{item}}</a>
+         [class.header-menu__link_active]="selected === item.title"
+      >{{item.title}}</a>
     </li>
   </ul>
   <button type="button" class="header-menu__switcher switcher" data-menu-switcher-btn="1" (click)="toggle()">
