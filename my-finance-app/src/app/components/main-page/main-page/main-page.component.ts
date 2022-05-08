@@ -14,7 +14,7 @@ export class MainPageComponent implements OnInit {
   currDate: Date = new Date();
 
   income: IFrontPageItem = {
-    name:'Надходження',
+    name:'Income',
     value: 0,
     total: 0,
     progress: ''
@@ -28,7 +28,7 @@ export class MainPageComponent implements OnInit {
   };
 
   cost: IFrontPageItem = {
-    name:'Витрати',
+    name:'Costs',
     value: 0,
     total: 0,
     progress: ''
@@ -38,6 +38,7 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
     this.restService.getTransactions().snapshotChanges().subscribe( res => {
+      this.transactionList = [];
       res.forEach( item => {
         this.transactionList.push(item.payload.toJSON());
       } )

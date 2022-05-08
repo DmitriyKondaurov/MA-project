@@ -8,6 +8,8 @@
 }
 
 .field-cost__name {
+  font-size: 18px;
+  text-decoration: underline;
   align-self: flex-start;
 }
 
