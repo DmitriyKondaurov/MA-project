@@ -12,13 +12,13 @@ export class MenuComponent {
 
   elements: string[] = [
     'Main page',
-    'Архів транзакцій',
-    'Категорії',
-    'План бюджет',
-    'Моніторінг витрат',
-    'Звіт план/факт',
-    'Введення нових даних',
-    'Цілі накопичення'
+    'Costs analysis',
+    'Category',
+    'Planned budget',
+    'Last transaction',
+    'Plan/Actual report',
+    'Add new',
+    'Goals'
   ];
   constructor(private router: Router, private element: ElementRef) { }
 
