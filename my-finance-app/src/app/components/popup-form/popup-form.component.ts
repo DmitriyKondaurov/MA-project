@@ -32,6 +32,7 @@ export class PopupFormComponent implements OnInit {
   ];
 
   categories: any;
+  subCategories: any;
 
   currencies = [
     {value: 29, title: 'Dollar'},
@@ -43,6 +44,7 @@ export class PopupFormComponent implements OnInit {
     type: new FormControl('', Validators.required),
     expense: new FormControl(this.expenses[1], Validators.required),
     date: new FormControl("", Validators.required),
+    subCategory: new FormControl("", Validators.required),
     category: new FormControl("", Validators.required),
     description: new FormControl(),
     amount: new FormControl( Validators.required),
@@ -76,19 +78,31 @@ export class PopupFormComponent implements OnInit {
     })
     this.form.controls['type'].valueChanges.subscribe( ({ id }: Type) => {
       if(!this.dataCategories) return;
-      this.categories = this.getValues(this.dataCategories[id]);
-    } )
+      this.categories = this.getMainCategories(this.dataCategories[id]);
+      this.form.controls['category'].valueChanges.subscribe( category => {
+        this.subCategories = this.getSubCategories(this.dataCategories[id], category)
+      })
+    })
   }
 
   submitForm(): void {
-    if(this.form.valid) this.RestApiService.addTransaction(this.form.value);
+    if(this.form.valid) {
+      this.RestApiService.addTransaction(this.form.value);
+    }
   }
 
-  getValues(data: any): any {
-    let arr: any[] = [];
+  getMainCategories(data: any): any {
+    let categories: any[] = [];
     Object.values(data).forEach((element: any) => {
-      arr.push(Object.values(element.subCategories));
+      categories.push(Object.values(element)[0]);
     });
-    return arr.flat();
+    return categories.flat();
+  }
+
+  getSubCategories(data: any, category: string) {
+    Object.values(data).forEach((element: any) => {
+      if (element.categoryName === category) this.subCategories = Object.values(element.subCategories);
+    });
+    return this.subCategories;
   }
 }
