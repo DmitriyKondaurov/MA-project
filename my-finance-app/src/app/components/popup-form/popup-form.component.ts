@@ -33,16 +33,16 @@ export class PopupFormComponent implements OnInit {
   categories: any;
 
   currencies = [
-    {value: 29, title: 'Dollar'},
-    {value: 30, title: 'Euro'},
-    {value: 1, title: 'Hryvnia'},
+    {value: 29, title: 'USD'},
+    {value: 30, title: 'EUR'},
+    {value: 1, title: 'UAH'},
   ]
 
   form = new FormGroup({
     type: new FormControl('', Validators.required),
     expense: new FormControl(this.expenses[1], Validators.required),
     date: new FormControl("", Validators.required),
-    category: new FormControl("", Validators.required),
+    subCategoryName: new FormControl("", Validators.required),
     description: new FormControl(),
     amount: new FormControl( Validators.required),
     currency: new FormControl(this.currencies[2], Validators.required),
