@@ -1,13 +1,13 @@
 <div class="card" [ngStyle]="{
     background: (card.type.title) === 'income' ?
-    '#5ebf9d' : '#f89792'}">
+    '#2ABF8B' : '#FD3A30'}">
 
     <div class="card__group-one">
         <div class="card__money">
             <div class="money__amount">
-                {{card.amount  | currency:card.currency.title:'symbol-narrow'}}
+                {{card.amount}}
             </div>
-            <div class="money__currency">
+            <div class="money__curency">
                 {{card.currency.title}}
             </div>
         </div>
