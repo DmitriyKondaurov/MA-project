@@ -20,7 +20,7 @@ export interface ITransactArchive {
   date: Date | string,
   type: Type,
   expense: Expenses,
-  category: string,
+  categoryName: string,
   subCategoryName: string,
   amount: number,
   currency: Currency,

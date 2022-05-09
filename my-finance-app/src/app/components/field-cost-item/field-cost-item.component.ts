@@ -11,7 +11,7 @@ export class FieldCostItemComponent implements OnInit {
   @Input() totalCostAmount: number = 0;
   @Input() costByCategory: ITransactArchive = {
     amount: 0,
-    category: "",
+    categoryName: "",
     currency: {
       title: "",
       value: 0
