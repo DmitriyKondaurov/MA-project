@@ -48,7 +48,7 @@ export interface Transaction {
   expense: Expenses,
   type: Type,
   userId?: number,
-  subCategory?: string;
+  subCategory: string;
 }
 export interface ITotalByCategory {
   categoryName: string,
