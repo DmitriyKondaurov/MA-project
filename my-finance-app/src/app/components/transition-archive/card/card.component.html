@@ -5,13 +5,13 @@
     <div class="card__group-one">
         <div class="card__money">
             <div class="money__amount">
-                {{card.amount}}
+                {{card.amount  | currency:card.currency.title:'symbol-narrow'}}
             </div>
             <div class="money__currency">
                 {{card.currency.title}}
             </div>
         </div>
     </div>
-    <div class="card__category">{{card.category}}</div>
+    <div class="card__category">{{card.subCategoryName}}</div>
     <div class="card_date">{{card.date}}</div>
 </div>
