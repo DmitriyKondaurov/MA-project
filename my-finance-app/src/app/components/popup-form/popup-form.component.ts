@@ -47,7 +47,7 @@ export class PopupFormComponent implements OnInit {
     subCategoryName: new FormControl("", Validators.required),
     categoryName: new FormControl("", Validators.required),
     description: new FormControl(),
-    amount: new FormControl( Validators.required),
+    amount: new FormControl(Validators.required),
     currency: new FormControl(this.currencies[2], Validators.required),
   });
 

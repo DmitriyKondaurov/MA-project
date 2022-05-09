@@ -31,7 +31,7 @@ export class CostMonitoringComponent implements OnInit {
       this.RestApiService.getTransactions().snapshotChanges().subscribe( res => {
         res.forEach( item => {
           this.data.push(item.payload.toJSON());
-        } )
+        })
         this.calculateCosts(this.CostInfoService.costInfo(this.data));
       })
     })
