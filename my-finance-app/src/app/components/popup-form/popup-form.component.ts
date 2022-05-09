@@ -44,8 +44,8 @@ export class PopupFormComponent implements OnInit {
     type: new FormControl('', Validators.required),
     expense: new FormControl(this.expenses[1], Validators.required),
     date: new FormControl("", Validators.required),
-    subCategory: new FormControl("", Validators.required),
-    category: new FormControl("", Validators.required),
+    subCategoryName: new FormControl("", Validators.required),
+    categoryName: new FormControl("", Validators.required),
     description: new FormControl(),
     amount: new FormControl( Validators.required),
     currency: new FormControl(this.currencies[2], Validators.required),
@@ -79,7 +79,7 @@ export class PopupFormComponent implements OnInit {
     this.form.controls['type'].valueChanges.subscribe( ({ id }: Type) => {
       if(!this.dataCategories) return;
       this.categories = this.getMainCategories(this.dataCategories[id]);
-      this.form.controls['category'].valueChanges.subscribe( category => {
+      this.form.controls['categoryName'].valueChanges.subscribe( category => {
         this.subCategories = this.getSubCategories(this.dataCategories[id], category)
       })
     })

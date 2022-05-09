@@ -41,7 +41,7 @@ export class CostMonitoringComponent implements OnInit {
     let object: any = {};
     let allCosts: any = [];
       data.forEach((element: Transaction) => {
-        allCosts.push({[element.subCategory]: +element.amount * element.currency.value})
+        allCosts.push({[element.subCategoryName]: +element.amount * element.currency.value})
       });
       this.costCategories.forEach( (category: string) => {
         object[category] = 0;
