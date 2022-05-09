@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { IFrontPageItem } from "./app-interfaces";
 
 @Component({
   selector: 'app-root',

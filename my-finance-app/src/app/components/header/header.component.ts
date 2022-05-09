@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   data: any[] = []
   curBalance: IBalance = {
     amount: 0,
-    currency: 'грн',
+    currency: 'UAH',
     dateString: '',
   };
   color: string = '';

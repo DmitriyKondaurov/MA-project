@@ -24,10 +24,18 @@
           <input class="form__field" type="date" formControlName="date" data-date-input>
         </div>
         <div class="column-container">
-          <label class="form__title">Category</label>
+          <label class="form__title">Main category</label>
           <select class="form__field form__select" formControlName="category">
             <option *ngFor="let category of categories" [ngValue]="category">
               {{ category }}
+            </option>
+          </select>
+        </div>
+        <div class="column-container">
+          <label class="form__title">Category</label>
+          <select class="form__field form__select" formControlName="subCategory">
+            <option *ngFor="let subCategory of subCategories" [ngValue]="subCategory">
+              {{ subCategory }}
             </option>
           </select>
         </div>

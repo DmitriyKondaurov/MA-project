@@ -11,12 +11,12 @@ export class FieldCostItemComponent implements OnInit {
   @Input() totalCostAmount: number = 0;
   @Input() costByCategory: ITransactArchive = {
     amount: 0,
-    categoryName: "",
+    category: "",
     currency: {
       title: "",
       value: 0
     },
-    date: new Date(0, 0, 0),
+    date: "",
     description: "",
     expense:{
       title: "",

@@ -1,6 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IFrontPageItem, ITransactArchive} from 'src/app/app-interfaces';
-import {Observable, Subscription} from "rxjs";
 import {TransactionsService} from "../../../services/transactions.service";
 import {RestApiService} from "../../../services/res-api.service";
 
@@ -65,7 +64,7 @@ export class MainPageComponent implements OnInit {
 
   getGoals() {
     let goalTransReduce = this.transactionsService.customReduce(this.transactionList, 'costs', 'planned');
-    let index = goalTransReduce.findIndex((item) => item.categoryName === 'Goals')
+    let index = goalTransReduce.findIndex((item) => item.category === 'Goals')
     if (index >= 0 ) {
       this.goal.name = goalTransReduce[index].subCategoryName
       this.goal.total = goalTransReduce[index].amount
@@ -74,7 +73,7 @@ export class MainPageComponent implements OnInit {
       this.goal.total = 0
     }
     goalTransReduce = this.transactionsService.customReduce(this.transactionList, 'costs', 'actual');
-    index = goalTransReduce.findIndex((item) => item.categoryName === 'Goals')
+    index = goalTransReduce.findIndex((item) => item.category === 'Goals')
     if (index >= 0 ) {
       this.goal.value = goalTransReduce[index].amount
     } else {

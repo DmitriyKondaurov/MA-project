@@ -2,7 +2,7 @@ export interface ICategories {
   income: {
     [key: string]: string[]
   }
-  cost: {
+  costs: {
     [key: string]: string[],
     goals: string[]
   }
@@ -16,24 +16,14 @@ export interface IFrontPageItem {
 }
 
 export interface ITransactArchive {
-  userId: number,
-  date: Date,
-  type: {
-    id: number,
-    title: string,
-    value: string
-  },
-  expense: {
-    title: string,
-    value: string
-  },
-  categoryName: string,
+  userId?: number,
+  date: Date | string,
+  type: Type,
+  expense: Expenses,
+  category: string,
   subCategoryName: string,
   amount: number,
-  currency: {
-    title: string,
-    value: number
-  },
+  currency: Currency,
   description: string
 }
 
@@ -58,7 +48,7 @@ export interface Transaction {
   expense: Expenses,
   type: Type,
   userId?: number,
-  categoryName?: string;
+  subCategory?: string;
 }
 export interface ITotalByCategory {
   categoryName: string,
@@ -84,4 +74,9 @@ export interface Type {
 export interface Categories {
   categoryName: string;
   subCategories: object;
+}
+
+export interface IMenuItem {
+  title: string;
+  url: string
 }

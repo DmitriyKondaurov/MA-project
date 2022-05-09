@@ -12,7 +12,7 @@ export class CostInfoService {
 
   costInfo(data: Transaction[]): Transaction[] {
     data.forEach((id: Transaction) => {
-      if ((id.expense.value === 'actual')&&(id.type.value === 'cost')) this.transitions.push(id)
+      if ((id.expense.value === 'actual')&&(id.type.value === 'costs')) this.transitions.push(id)
     })
     return this.transitions;
   }

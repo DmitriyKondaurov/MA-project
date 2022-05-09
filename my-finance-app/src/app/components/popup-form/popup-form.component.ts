@@ -1,10 +1,9 @@
-import { RestApiService } from './../../services/res-api.service';
+import { RestApiService } from '../../services/res-api.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Transaction } from 'src/app/app-interfaces';
 
 interface Type {
-  value: 'cost' | 'income',
+  value: 'costs' | 'income',
   title: string,
   id: number
 }
@@ -22,7 +21,7 @@ export class PopupFormComponent implements OnInit {
 
 
   types: Type[] = [
-    {value: 'cost', title: 'consumption', id: 0},
+    {value: 'costs', title: 'consumption', id: 0},
     {value: 'income', title: 'income', id: 1},
   ];
 
@@ -32,6 +31,7 @@ export class PopupFormComponent implements OnInit {
   ];
 
   categories: any;
+  subCategories: any;
 
   currencies = [
     {value: 29, title: 'Dollar'},
@@ -43,6 +43,7 @@ export class PopupFormComponent implements OnInit {
     type: new FormControl('', Validators.required),
     expense: new FormControl(this.expenses[1], Validators.required),
     date: new FormControl("", Validators.required),
+    subCategory: new FormControl("", Validators.required),
     category: new FormControl("", Validators.required),
     description: new FormControl(),
     amount: new FormControl( Validators.required),
@@ -76,19 +77,31 @@ export class PopupFormComponent implements OnInit {
     })
     this.form.controls['type'].valueChanges.subscribe( ({ id }: Type) => {
       if(!this.dataCategories) return;
-      this.categories = this.getValues(this.dataCategories[id]);
-    } )
+      this.categories = this.getMainCategories(this.dataCategories[id]);
+      this.form.controls['category'].valueChanges.subscribe( category => {
+        this.subCategories = this.getSubCategories(this.dataCategories[id], category)
+        console.log(this.subCategories);
+      })
+    })
   }
 
   submitForm(): void {
     if(this.form.valid) this.RestApiService.addTransaction(this.form.value);
   }
 
-  getValues(data: any): any {
-    let arr: any[] = [];
+  getMainCategories(data: any): any {
+    let categories: any[] = [];
     Object.values(data).forEach((element: any) => {
-      arr.push(Object.values(element.subCategories));
+      categories.push(Object.values(element)[0]);
     });
-    return arr.flat();
+    return categories.flat();
+  }
+
+  getSubCategories(data: any, category: string) {
+    let subCategories: any[] = [];
+    Object.values(data).forEach((element: any) => {
+      if (element.categoryName === category) this.subCategories = Object.values(element.subCategories);
+    });
+    return this.subCategories;
   }
 }

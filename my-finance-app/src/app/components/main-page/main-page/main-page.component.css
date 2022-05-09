@@ -1,10 +1,14 @@
 .main {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   margin: auto;
-  border: 1px solid black;
+  min-height: 100%;
   font-family: 'open sans', sans-serif;
   background-color: #efefef;
   padding: 5px;
@@ -16,25 +20,25 @@
 }
 
 @media only screen and (min-width: 600px) {
-  .main {
-    max-width: 480px;
-  }
+  /*.main {*/
+  /*  max-width: 480px;*/
+  /*}*/
 }
 
 @media only screen and (min-width: 768px) {
-  .main {
-    max-width: 720px;
-  }
+  /*.main {*/
+  /*  max-width: 720px;*/
+  /*}*/
 }
 
 @media only screen and (min-width: 992px) {
-  .main {
-    max-width: 940px;
-  }
+  /*.main {*/
+  /*  max-width: 940px;*/
+  /*}*/
 }
 
 @media only screen and (min-width: 1200px) {
-  .main {
-    max-width: 1024px;
-  }
+  /*.main {*/
+  /*  max-width: 1024px;*/
+  /*}*/
 }

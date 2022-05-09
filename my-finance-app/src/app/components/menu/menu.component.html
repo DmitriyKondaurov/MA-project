@@ -1,7 +1,7 @@
 <nav class="header-navigation">
   <ul class="header-menu" (click)="toggle()" [ngClass]="status ? '': 'header-menu--hide'">
     <li *ngFor="let item of elements" class="header-menu__item"
-        routerLink="{{item.value}}">
+        (click)="select(item)">
       <a class="header-menu__link " href="#"
          [class.header-menu__link_active]="selected === item.title"
       >{{item.title}}</a>

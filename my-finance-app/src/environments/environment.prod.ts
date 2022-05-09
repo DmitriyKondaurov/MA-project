@@ -9,5 +9,4 @@ export const environment = {
     messagingSenderId: '1017625874697',
   },
   production: true,
-  apiUrl: 'http://localhost:8080',
 };
