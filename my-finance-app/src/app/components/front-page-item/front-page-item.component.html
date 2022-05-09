@@ -3,10 +3,10 @@
   <div class="progress-bar__line">
     <span class="progress-bar__fill-value" [appFillAmount]="frontPageItem" curItemColor="{{color}}"
     [ngStyle]="{'width':frontPageItem.progress}">
-      {{frontPageItem.value}}
+      {{frontPageItem.value | currency:'UAH':'symbol-narrow'}}
     </span>
     <span  class="progress-bar__value-amount">
-      {{frontPageItem.total}}
+      {{frontPageItem.total | currency:'UAH':'symbol-narrow'}}
     </span>
   </div>
 </span>

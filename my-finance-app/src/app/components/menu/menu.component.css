@@ -23,6 +23,7 @@
 .header-menu__item {
   list-style: none;
   padding: 20px;
+  cursor: pointer;
 }
 
 .header-menu__link {
