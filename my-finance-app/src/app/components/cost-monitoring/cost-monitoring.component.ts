@@ -28,14 +28,13 @@ export class CostMonitoringComponent implements OnInit {
         this.costCategories.push(Object.values(item.subCategories))
       })
       this.costCategories = this.costCategories.flat();
+      this.RestApiService.getTransactions().snapshotChanges().subscribe( res => {
+        res.forEach( item => {
+          this.data.push(item.payload.toJSON());
+        } )
+        this.calculateCosts(this.CostInfoService.costInfo(this.data));
+      })
     })
-    this.RestApiService.getTransactions().snapshotChanges().subscribe( res => {
-      res.forEach( item => {
-        this.data.push(item.payload.toJSON());
-      } )
-      this.calculateCosts(this.CostInfoService.costInfo(this.data));
-    })
-
   }
 
   calculateCosts(data: Transaction[]) {
@@ -44,8 +43,6 @@ export class CostMonitoringComponent implements OnInit {
       data.forEach((element: Transaction) => {
         allCosts.push({[element.subCategoryName]: +element.amount * element.currency.value})
       });
-
-
       this.costCategories.forEach( (category: string) => {
         object[category] = 0;
         allCosts.forEach( (el: any) => {
@@ -60,5 +57,4 @@ export class CostMonitoringComponent implements OnInit {
       })
       return this.notZeroCategories;
   }
-
 }
