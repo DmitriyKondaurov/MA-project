@@ -10,6 +10,10 @@
               {{ type.title }}
             </option>
           </select>
+          <div class="alert alert-danger"
+                *ngIf="form.controls['type'].invalid && form.controls['type'].touched">
+                Required field
+          </div>
         </div>
         <div class="column-container">
           <label class="form__title">Actual/Planned</label>
@@ -18,10 +22,18 @@
               {{ expense.title }}
             </option>
           </select>
+          <div class="alert alert-danger"
+              *ngIf="form.controls['expense'].invalid && form.controls['expense'].touched">
+              Required field
+          </div>
         </div>
         <div class="column-container">
           <label class="form__title">Date</label>
           <input class="form__field" type="date" formControlName="date" data-date-input>
+          <div class="alert alert-danger"
+              *ngIf="form.controls['date'].invalid && form.controls['date'].touched">
+              Required field
+          </div>
         </div>
         <div class="column-container">
           <label class="form__title">Main category</label>
@@ -30,6 +42,10 @@
               {{ category }}
             </option>
           </select>
+          <div class="alert alert-danger"
+            *ngIf="form.controls['categoryName'].invalid && form.controls['categoryName'].touched">
+            Required field
+          </div>
         </div>
         <div class="column-container">
           <label class="form__title">Category</label>
@@ -38,6 +54,10 @@
               {{ subCategory }}
             </option>
           </select>
+          <div class="alert alert-danger"
+              *ngIf="form.controls['subCategoryName'].invalid && form.controls['subCategoryName'].touched">
+              Required field
+          </div>
         </div>
         <div class="column-container">
           <label class="form__title">Description</label>
@@ -47,6 +67,10 @@
           <div class="column-container">
             <label class="form__title">Amount</label>
             <input class="form__field" type="number" formControlName="amount">
+            <div class="alert alert-danger"
+                *ngIf="form.controls['amount'].invalid && form.controls['amount'].touched">
+                Required field
+            </div>
           </div>
           <div class="column-container">
             <label class="form__title">Currency</label>

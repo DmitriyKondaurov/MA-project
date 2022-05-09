@@ -76,6 +76,11 @@
     color: #FFF;
 }
 
+.alert {
+    min-height: 20px;
+    color: #BC1010;
+}
+
 @media (min-width:1200px) {
     .popup-container {
         width: 90%;
