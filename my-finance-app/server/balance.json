@@ -1,6 +1,5 @@
 {
   "amount": 5850,
   "currency": "UAH",
-  "dateString": "Sat Jan 01 2022 00:00:00 GMT+0200 (Eastern European Standard Time)",
-  "getDate": "function () {return new Date(this.dateString)}"
+  "dateString": "Sat Jan 01 2022 00:00:00 GMT+0200 (Eastern European Standard Time)"
 }

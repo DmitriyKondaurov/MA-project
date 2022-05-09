@@ -17,11 +17,17 @@ export class FieldCostComponent implements OnInit {
   constructor(private readonly restService: RestApiService, private customReduce: TransactionsService) { }
 
   ngOnInit() {
-    this.restService.getAllTransactions().subscribe((transactionList: ITransactArchive[]) => {
+    this.restService.getTransactions().snapshotChanges().subscribe( res => {
+      const transactionList: any[] = [];
+      res.forEach( item => {
+        transactionList.push(item.payload.toJSON());
+      } )
+
       this.transactions = this.customReduce
-        .customReduce(transactionList, 'Расходы', 'Факт', this.currDate)
-        .slice(0, 6).sort( (a, b) => b.value - a.value)
-      this.biggestCostAmount = this.customReduce.biggestCategoryAmount(this.transactions, 'Расходы', 'Факт', this.currDate)
+        .customReduce(transactionList, 'costs', 'actual', this.currDate)
+        .sort( (a, b) => b.amount - a.amount)
+        .slice(0, 6)
+      this.biggestCostAmount = this.customReduce.biggestCategoryAmount(this.transactions, 'costs', 'actual', this.currDate)
     });
   }
 

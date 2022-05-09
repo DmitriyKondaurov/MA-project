@@ -16,15 +16,24 @@ export interface IFrontPageItem {
 }
 
 export interface ITransactArchive {
-  id: number,
   userId: number,
   date: Date,
-  flowDirection: string,
-  planFact: string,
+  type: {
+    id: number,
+    title: string,
+    value: string
+  },
+  expense: {
+    title: string,
+    value: string
+  },
   categoryName: string,
   subCategoryName: string,
-  value: number,
-  currency: string,
+  amount: number,
+  currency: {
+    title: string,
+    value: number
+  },
   description: string
 }
 

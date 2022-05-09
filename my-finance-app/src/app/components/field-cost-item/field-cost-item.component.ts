@@ -10,16 +10,25 @@ import {TakeColorService} from "../../services/take-color.service";
 export class FieldCostItemComponent implements OnInit {
   @Input() totalCostAmount: number = 0;
   @Input() costByCategory: ITransactArchive = {
-    id: 0,
-    userId: 0,
-    date: new Date(0,0,0),
-    flowDirection: "",
-    planFact: "",
+    amount: 0,
     categoryName: "",
+    currency: {
+      title: "",
+      value: 0
+    },
+    date: new Date(0, 0, 0),
+    description: "",
+    expense:{
+      title: "",
+      value: ""
+    },
     subCategoryName: "",
-    value: 0,
-    currency: "",
-    description: ""
+    type: {
+      id: 0,
+      title: "",
+      value: ""
+    },
+    userId: 0
 }
 
   color: string = '';
