@@ -55,4 +55,9 @@
   /*.header {*/
   /*  max-width: 1024px;*/
   /*}*/
+    .popup {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 }

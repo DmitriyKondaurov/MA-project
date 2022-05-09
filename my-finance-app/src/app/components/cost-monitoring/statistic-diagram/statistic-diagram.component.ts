@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class StatisticDiagramComponent implements OnInit {
 
-  @Input() notZeroCategories: any;
+  @Input() notZeroCategories: any = [];
 
   constructor() { }
 

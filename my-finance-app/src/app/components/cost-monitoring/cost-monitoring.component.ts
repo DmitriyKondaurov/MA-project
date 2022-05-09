@@ -15,6 +15,7 @@ export class CostMonitoringComponent implements OnInit {
   arrCategories: any[] = [];
   costCategories: any[] = [];
   notZeroCategories: object[] = [];
+  diagramCategories: object[] = [];
 
   constructor(private RestApiService: RestApiService, private CostInfoService: CostInfoService) { }
 
@@ -55,6 +56,24 @@ export class CostMonitoringComponent implements OnInit {
       arr.forEach( (category) => {
         if((category)[1] != 0) this.notZeroCategories.push({[category[0]]: category[1]});
       })
+      this.diagramInfo(this.notZeroCategories);
       return this.notZeroCategories;
+  }
+
+  diagramInfo(data: any) {
+    let test = data
+    let amount = 0;
+    data.forEach((element: any) => {
+      let elAmount: any = Object.values(element)[0]
+      amount = amount + elAmount;
+    });
+    data.forEach((element: any) => {
+      let percentPart = 0;
+      let elAmount: any = Object.values(element)[0]
+      percentPart = elAmount/amount*100;
+      element.percentPart = +percentPart.toFixed(2);
+      element.color = '#'+(Math.random().toString(16)+'00000').slice(2,8);
+      this.diagramCategories.push(element);
+    });
   }
 }
