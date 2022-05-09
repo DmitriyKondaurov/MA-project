@@ -39,7 +39,6 @@ export class CostMonitoringComponent implements OnInit {
   }
 
   calculateCosts(data: Transaction[]) {
-    console.log(data)
     let object: any = {};
     let allCosts: any = [];
       data.forEach((element: Transaction) => {

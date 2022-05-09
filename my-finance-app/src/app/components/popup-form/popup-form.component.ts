@@ -80,13 +80,14 @@ export class PopupFormComponent implements OnInit {
       this.categories = this.getMainCategories(this.dataCategories[id]);
       this.form.controls['category'].valueChanges.subscribe( category => {
         this.subCategories = this.getSubCategories(this.dataCategories[id], category)
-        console.log(this.subCategories);
       })
     })
   }
 
   submitForm(): void {
-    if(this.form.valid) this.RestApiService.addTransaction(this.form.value);
+    if(this.form.valid) {
+      this.RestApiService.addTransaction(this.form.value);
+    }
   }
 
   getMainCategories(data: any): any {
@@ -98,7 +99,6 @@ export class PopupFormComponent implements OnInit {
   }
 
   getSubCategories(data: any, category: string) {
-    let subCategories: any[] = [];
     Object.values(data).forEach((element: any) => {
       if (element.categoryName === category) this.subCategories = Object.values(element.subCategories);
     });
