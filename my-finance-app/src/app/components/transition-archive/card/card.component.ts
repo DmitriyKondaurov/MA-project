@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {Transaction} from "../../../app-interfaces";
 
 @Component({
   selector: 'app-card',
@@ -8,27 +7,7 @@ import {Transaction} from "../../../app-interfaces";
 })
 export class CardComponent implements OnInit {
 
-  @Input() card: Transaction = {
-    amount: NaN,
-    subCategoryName: "",
-    currency: {
-      value: NaN,
-      title: ""
-    },
-    date: '',
-    description: '',
-    expense: {
-      title: '',
-      value: ''
-    },
-    type: {
-      id: NaN,
-      value: '',
-      title: ''
-    },
-    userId: NaN,
-    categoryName: ''
-  }
+  @Input() card: any
 
   constructor() { }
 

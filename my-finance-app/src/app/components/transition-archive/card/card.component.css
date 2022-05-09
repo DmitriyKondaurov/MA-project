@@ -1,33 +1,20 @@
 .card {
     display: flex;
-    /*flex-direction: column;*/
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
 }
 
 .card__group-one {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
+    width: 50%;
 }
 
 .card__money {
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-}
-
-.money__currency {
-  display: none;
-}
-
-
-
-@media only screen and (min-width: 600px) {
-  .card__money {
-  width: 125px;
-  }
-  .money__currency {
-    display: block;
-  }
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    font-weight: 600;
 }

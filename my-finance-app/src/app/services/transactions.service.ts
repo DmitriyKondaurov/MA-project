@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ITransactArchive} from "../app-interfaces";
+import {ITotalByCategory, ITransactArchive} from "../app-interfaces";
 
 @Injectable({
   providedIn: 'root'

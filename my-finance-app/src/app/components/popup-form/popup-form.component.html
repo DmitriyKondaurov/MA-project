@@ -4,7 +4,7 @@
           (ngSubmit)="submitForm()"
           class="popup__form">
         <div class="column-container">
-          <label class="form__title">Type:</label>
+          <label class="form__title">Тип расходов:</label>
           <select formControlName="type" class="form__field form__select">
             <option *ngFor="let type of types" [ngValue]="type">
               {{ type.title }}
@@ -12,7 +12,7 @@
           </select>
         </div>
         <div class="column-container">
-          <label class="form__title">Actual/Planned</label>
+          <label class="form__title">Актуальные/Планируемые</label>
           <select formControlName="expense" class="form__field form__select">
             <option *ngFor="let expense of expenses" [ngValue]="expense">
               {{ expense.title }}
@@ -20,28 +20,28 @@
           </select>
         </div>
         <div class="column-container">
-          <label class="form__title">Date</label>
+          <label class="form__title">Дата</label>
           <input class="form__field" type="date" formControlName="date" data-date-input>
         </div>
         <div class="column-container">
-          <label class="form__title">Category</label>
-          <select class="form__field form__select" formControlName="subCategoryName">
+          <label class="form__title">Категория</label>
+          <select class="form__field form__select" formControlName="category">
             <option *ngFor="let category of categories" [ngValue]="category">
               {{ category }}
             </option>
           </select>
         </div>
         <div class="column-container">
-          <label class="form__title">Description</label>
+          <label class="form__title">Описание</label>
           <input class="form__field" type="text" formControlName="description">
         </div>
         <div class="row-container">
           <div class="column-container">
-            <label class="form__title">Amount</label>
-            <input class="form__field" type="number" formControlName="amount">
+            <label class="form__title">Сумма</label>
+            <input class="form__field" type="text" formControlName="amount">
           </div>
           <div class="column-container">
-            <label class="form__title">Currency</label>
+            <label class="form__title">Валюта</label>
             <select class="form__field form__select" formControlName="currency">
               <option *ngFor="let currency of currencies" [ngValue]="currency">
                 {{ currency.title }}
@@ -49,6 +49,6 @@
             </select>
           </div>
         </div>
-        <button class="btn-submit">Submit</button>
+        <button class="btn-submit">Отправить</button>
     </form>
 </div>
