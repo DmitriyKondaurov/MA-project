@@ -16,6 +16,17 @@ interface Type {
 
 export class PopupFormComponent implements OnInit {
 
+  isShow = false;
+
+  show() {
+    this.isShow = true;
+    setTimeout(() => this.hide(), 1000);
+  }
+
+  hide() {
+    this.isShow = false;
+  }
+
   data?: any;
   dataStorage?: string[] = [];
   dataCategories: any = [];
@@ -88,6 +99,7 @@ export class PopupFormComponent implements OnInit {
   submitForm(): void {
     if(this.form.valid) {
       this.RestApiService.addTransaction(this.form.value);
+      this.show();
     }
   }
 

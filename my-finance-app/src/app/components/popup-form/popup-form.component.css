@@ -7,6 +7,19 @@
     filter: blur(8px);
 }
 
+.modal-dialog {
+    top: 10%;
+    width: 230px;
+    height: 150px;
+    background-color: #08F26E;
+    z-index: 2000;
+    position: absolute;
+    font-size: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .popup-container {
     position: relative;
     z-index: 1000;
