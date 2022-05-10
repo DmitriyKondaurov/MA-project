@@ -1,14 +1,37 @@
 <div class="report">
   <h3 class="report__title">Report of planned and actual cash flow</h3>
   <div class="report__filter filter">
-      <select [(ngModel)]="selectedMonthFrom" class="filter__month" name="filter__month-from" id="filter__month-from">
-        <option *ngFor="let month of months " disabled>{{month.title}}</option>
+      <select [(ngModel)]="selectedFlowDirection" class="filter__month" name="filter__month-from" id="filter__month-from">
+        <option *ngFor="let flow of flowDirection" value="{{flow}}">{{flow}}</option>
       </select>
     <select [(ngModel)]="selectedMonthTill" class="filter__month" name="filter__month-till" id="filter__month-till">
-      <option *ngFor="let month of months">{{month.title}}</option>
+      <option *ngFor="let month of months" value="{{month.value}}">{{month.title}}</option>
     </select>
     <select [(ngModel)]="selectedYear" class="filter__year" name="filter__year" id="filter__year">
-      <option *ngFor="let year of years">{{year}}</option>
+      <option *ngFor="let year of years"  value="{{year}}">{{year}}</option>
     </select>
   </div>
+  <table class="report__data-table data-table">
+    <thead>
+    <tr>
+      <th>Month</th>
+      <th>Flow</th>
+      <th>Plan</th>
+      <th>Actual</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let month of months">
+    <tr class="data-table__row-header" >
+      <th rowspan="2">{{month.title}}</th>
+      <td>income</td>
+      <td>1000$</td>
+      <td>1200$</td>
+    </tr>
+    <tr>
+      <td>costs</td>
+      <td>210$</td>
+      <td>200$</td>
+    </tr>
+    </tbody>
+  </table>
 </div>

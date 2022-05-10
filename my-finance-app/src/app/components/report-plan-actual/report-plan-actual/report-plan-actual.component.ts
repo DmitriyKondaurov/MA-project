@@ -7,11 +7,12 @@ import months from "./months";
   styleUrls: ['./report-plan-actual.component.css']
 })
 export class ReportPlanActualComponent implements OnInit {
-  selectedMonthFrom: number = 1;
-  selectedMonthTill: number = new Date().getMonth();
+  selectedFlowDirection: string = 'costs';
+  selectedMonthTill: number = new Date().getMonth() + 1;
   selectedYear: number = new Date().getFullYear();
+  flowDirection = ['costs', 'income'];
   months = months;
-  years = [new Date().getFullYear()];
+  years = [new Date().getFullYear()]; // it must be taken from transactions
 
   constructor() { }
 
