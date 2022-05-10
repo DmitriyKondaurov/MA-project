@@ -25,7 +25,7 @@
         </div>
         <div class="column-container">
           <label class="form__title">Main category</label>
-          <select class="form__field form__select" formControlName="category">
+          <select class="form__field form__select" formControlName="categoryName">
             <option *ngFor="let category of categories" [ngValue]="category">
               {{ category }}
             </option>
@@ -33,7 +33,7 @@
         </div>
         <div class="column-container">
           <label class="form__title">Category</label>
-          <select class="form__field form__select" formControlName="subCategory">
+          <select class="form__field form__select" formControlName="subCategoryName">
             <option *ngFor="let subCategory of subCategories" [ngValue]="subCategory">
               {{ subCategory }}
             </option>

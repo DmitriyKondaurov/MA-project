@@ -40,15 +40,14 @@ export interface IBalance {
 }
 
 export interface Transaction {
-  amount: number,
+  amount: string,
   categoryName: string,
+  subCategoryName: string,
   currency: Currency,
   date: string,
   description?: string,
   expense: Expenses,
-  type: Type,
-  userId?: number,
-  subCategoryName: string;
+  type: Type
 }
 export interface ITotalByCategory {
   categoryName: string,
