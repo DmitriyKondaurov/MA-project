@@ -1,10 +1,10 @@
 import { RestApiService } from './../../services/res-api.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Transaction } from 'src/app/app-interfaces';
 
 interface Type {
-  value: 'cost' | 'income',
+  value: 'costs' | 'income',
   title: string,
   id: number
 }
@@ -33,7 +33,7 @@ export class PopupFormComponent implements OnInit {
 
 
   types: Type[] = [
-    {value: 'cost', title: 'consumption', id: 0},
+    {value: 'costs', title: 'consumption', id: 0},
     {value: 'income', title: 'income', id: 1},
   ];
 
@@ -52,7 +52,7 @@ export class PopupFormComponent implements OnInit {
   ]
 
   form = new FormGroup({
-    type: new FormControl('', Validators.required),
+    type: new FormControl( Validators.required),
     expense: new FormControl(this.expenses[1], Validators.required),
     date: new FormControl("", Validators.required),
     subCategoryName: new FormControl("", Validators.required),
@@ -66,7 +66,7 @@ export class PopupFormComponent implements OnInit {
   @Output() handleHide = new EventEmitter();
 
 
-  constructor(private RestApiService: RestApiService) { }
+  constructor(private RestApiService: RestApiService, private element: ElementRef) { }
 
   handleHideClick(): void {
     this.handleHide.emit();
@@ -74,6 +74,7 @@ export class PopupFormComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log(this.element.nativeElement.closest('body').style.overflow = 'hidden')
     this.RestApiService.getTransactions();
     this.data = this.RestApiService.getCategories();
     this.RestApiService.getCategories().snapshotChanges().subscribe((res: any) => {
@@ -100,6 +101,7 @@ export class PopupFormComponent implements OnInit {
     if(this.form.valid) {
       this.RestApiService.addTransaction(this.form.value);
       this.show();
+      this.element.nativeElement.closest('body').style.overflow = 'auto'
     }
   }
 

@@ -34,31 +34,34 @@ export class CostMonitoringComponent implements OnInit {
         res.forEach( item => {
           this.data.push(item.payload.toJSON());
         })
-        this.calculateCosts(this.CostInfoService.costInfo(this.data));
+        this.notZeroCategories = this.calculateCosts(this.CostInfoService.costInfo(this.data));
+        console.log(this.notZeroCategories);
       })
     })
   }
 
   calculateCosts(data: Transaction[]) {
+    console.log(data)
     let object: any = {};
     let allCosts: any = [];
-      data.forEach((element: Transaction) => {
-        allCosts.push({[element.subCategoryName]: +element.amount * element.currency.value})
-      });
-      this.costCategories.forEach( (category: string) => {
-        object[category] = 0;
-        allCosts.forEach( (el: any) => {
-          if(Object.keys(el).includes(category)) {
+    data.forEach((element: Transaction) => {
+      allCosts.push({[element.subCategoryName]: +element.amount * element.currency.value})
+    });
+    console.log(allCosts)
+    this.costCategories.forEach( (category: string) => {
+      object[category] = 0;
+      allCosts.forEach( (el: any) => {
+        if(Object.keys(el).includes(category)) {
           object[category] = object[category] + el[category]
-          }
-        })
+        }
       })
-      let arr = Object.entries(object);
-      arr.forEach( (category) => {
-        if((category)[1] != 0) this.notZeroCategories.push({[category[0]]: category[1]});
-      })
-      this.diagramInfo(this.notZeroCategories);
-      return this.notZeroCategories;
+    })
+    let arr = Object.entries(object);
+    arr.forEach( (category) => {
+      if((category)[1] != 0) this.notZeroCategories.push({[category[0]]: category[1]});
+    })
+    this.diagramInfo(this.notZeroCategories);
+    return this.diagramCategories;
   }
 
   diagramInfo(data: any) {

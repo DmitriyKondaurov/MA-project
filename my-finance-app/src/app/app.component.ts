@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +16,10 @@ export class AppComponent {
 
   hide() {
     this.isShow = false;
+    this.element.nativeElement.closest('body').style.overflow = 'auto'
   }
 
-  constructor( ) {}
+  constructor(private element: ElementRef ) {}
   ngOnInit() {
 
   }
