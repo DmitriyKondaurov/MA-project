@@ -75,3 +75,21 @@
     font-weight: 600;
     color: #FFF;
 }
+
+.alert {
+    min-height: 20px;
+    color: #BC1010;
+}
+
+@media (min-width:1200px) {
+    .popup-container {
+        width: 90%;
+        min-height: 90%;
+    }
+}
+
+@media (max-width: 600px) {
+    .btn-close {
+        padding: 10px 17px;
+    }
+  }

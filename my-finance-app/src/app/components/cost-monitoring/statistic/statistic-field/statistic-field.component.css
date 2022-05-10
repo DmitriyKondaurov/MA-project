@@ -1,3 +1,12 @@
+.field {
+  display: flex;
+  margin: 10px 0;
+}
+
+.field__color {
+  padding: 5px 7px;
+}
+
 .field__name {
   font-size: 22px;
   font-weight: 500;
@@ -5,4 +14,22 @@
 
 .field__value {
   font-size: 22px;
+}
+
+@media (min-width:769px) {
+  .field__name {
+      font-size: 28px;
+  }
+  .field__value {
+    font-size: 28px;
+  }
+}
+
+@media (min-width:1200px) {
+  .field__name {
+    font-size: 30px;
+  }
+  .field__value {
+    font-size: 30px;
+  }
 }
