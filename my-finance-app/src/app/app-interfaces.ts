@@ -40,7 +40,7 @@ export interface IBalance {
 }
 
 export interface Transaction {
-  amount: string,
+  amount: number,
   categoryName: string,
   subCategoryName: string,
   currency: Currency,
