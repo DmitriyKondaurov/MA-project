@@ -35,9 +35,9 @@ export class PopupFormComponent implements OnInit {
   subCategories: any;
 
   currencies = [
-    {value: 29, title: 'Dollar'},
-    {value: 30, title: 'Euro'},
-    {value: 1, title: 'Hryvnia'},
+    {value: 29, title: 'USD'},
+    {value: 30, title: 'EUR'},
+    {value: 1, title: 'UAH'},
   ]
 
   form = new FormGroup({

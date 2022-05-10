@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class StatisticComponent implements OnInit {
 
+  @Input() amount: number = 0;
   @Input() notZeroCategories: any;
 
   constructor() { }
