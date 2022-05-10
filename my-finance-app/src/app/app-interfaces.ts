@@ -79,3 +79,8 @@ export interface IMenuItem {
   title: string;
   url: string
 }
+
+export interface IMonth {
+  title: string;
+  value: number
+}

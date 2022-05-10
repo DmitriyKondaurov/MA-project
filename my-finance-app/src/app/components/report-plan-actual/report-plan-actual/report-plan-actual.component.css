@@ -1,0 +1,13 @@
+.report {
+  max-width: 1024px;
+  margin: auto;
+  padding: 5px;
+  font-family: 'open sans', sans-serif;
+}
+
+.report__filter {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+
+}

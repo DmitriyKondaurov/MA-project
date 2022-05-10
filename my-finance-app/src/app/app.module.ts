@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
 import { AngularFireModule } from '@angular/fire/compat';
@@ -32,12 +32,14 @@ import { StatisticDiagramComponent } from './components/cost-monitoring/statisti
 import { StatisticFieldComponent } from './components/cost-monitoring/statistic/statistic-field/statistic-field.component';
 import { CostsFilterPipe } from './components/pipes/costs-filter.pipe';
 import { DiagramBarComponent } from './components/cost-monitoring/statistic-diagram/diagram-bar/diagram-bar.component';
+import { ReportPlanActualComponent } from './components/report-plan-actual/report-plan-actual/report-plan-actual.component';
 
 
 
 const appRoutes: Routes = [
   { path: 'archive', component: TransactionArchiveComponent },
   { path: 'monitoring', component: CostMonitoringComponent },
+  { path: 'report', component: ReportPlanActualComponent },
   { path: '', component: MainPageComponent }
 ]
 @NgModule({
@@ -63,6 +65,7 @@ const appRoutes: Routes = [
     StatisticFieldComponent,
     CostsFilterPipe,
     DiagramBarComponent,
+    ReportPlanActualComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,6 +77,7 @@ const appRoutes: Routes = [
     provideDatabase(() => getDatabase()),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
