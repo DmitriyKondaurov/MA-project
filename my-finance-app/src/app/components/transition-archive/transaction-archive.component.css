@@ -13,8 +13,14 @@
     width: 100%;
 }
 
-@media (min-width:1200px) {
+@media (min-width:769px) {
     .transaction-card {
         max-width: 50%;
+    }
+}
+
+@media (min-width:1200px) {
+    .transaction-card {
+        max-width: 35%;
     }
 }

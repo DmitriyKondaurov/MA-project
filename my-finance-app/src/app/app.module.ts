@@ -31,6 +31,7 @@ import { StatisticComponent } from './components/cost-monitoring/statistic/stati
 import { StatisticDiagramComponent } from './components/cost-monitoring/statistic-diagram/statistic-diagram.component';
 import { StatisticFieldComponent } from './components/cost-monitoring/statistic/statistic-field/statistic-field.component';
 import { CostsFilterPipe } from './components/pipes/costs-filter.pipe';
+import { DiagramBarComponent } from './components/cost-monitoring/statistic-diagram/diagram-bar/diagram-bar.component';
 
 
 
@@ -61,6 +62,7 @@ const appRoutes: Routes = [
     StatisticDiagramComponent,
     StatisticFieldComponent,
     CostsFilterPipe,
+    DiagramBarComponent,
   ],
   imports: [
     BrowserModule,

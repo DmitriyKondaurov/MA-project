@@ -1,8 +1,3 @@
-<div class="chart">
-    <div class="pieContainer">
-        <div class="pieBackground" *ngFor="let pie of notZeroCategories"></div>
-        <div class="hold pieSlice1"><div class="pie" style="transform: rotate(180deg);"></div></div>
-        <div class="hold pieSlice2"><div class="pie" style="transform: rotate(61deg);"></div></div>
-        <div class="hold pieSlice2" *ngFor="let pie of notZeroCategories"><div class="pie2" style="transform: rotate(62deg);"></div></div>
-    </div>
+<div class="diagram">
+    <app-diagram-bar class="diagram__pie" *ngFor="let pie of notZeroCategories" [pie]="pie">{{pie.color}}</app-diagram-bar>
 </div>

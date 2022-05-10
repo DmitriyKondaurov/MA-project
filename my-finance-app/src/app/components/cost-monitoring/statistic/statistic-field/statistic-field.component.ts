@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-statistic-field',
@@ -8,14 +9,15 @@ import { Component, Input, OnInit } from '@angular/core';
 export class StatisticFieldComponent implements OnInit {
 
   @Input() field: any;
-  key?: string[];
-  value?: string[];
+  key?: string;
+  value?: any;
 
-  constructor() { }
+  constructor(private ElementRef: ElementRef) { }
 
   ngOnInit(): void {
-    this.key = Object.keys(this.field)
-    this.value = Object.values(this.field)
+    this.key = Object.keys(this.field)[0]
+    this.value = Object.values(this.field)[0]
+    this.ElementRef.nativeElement.children[0].children[0].style.setProperty('background-color', this.field.color);
   }
 
 }

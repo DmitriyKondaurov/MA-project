@@ -14,7 +14,6 @@ export class MonitoringInfoService {
     data.forEach( (id: Transaction) => {
       if (id.expense.value === 'actual') this.transitions.push(id)
     } )
-    console.log(this.transitions)
     return this.transitions;
   }
 }
