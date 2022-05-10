@@ -16,6 +16,7 @@ export class CostMonitoringComponent implements OnInit {
   costCategories: any[] = [];
   notZeroCategories: object[] = [];
   diagramCategories: object[] = [];
+  amount = 0;
 
   constructor(private RestApiService: RestApiService, private CostInfoService: CostInfoService) { }
 
@@ -62,15 +63,14 @@ export class CostMonitoringComponent implements OnInit {
 
   diagramInfo(data: any) {
     let test = data
-    let amount = 0;
     data.forEach((element: any) => {
       let elAmount: any = Object.values(element)[0]
-      amount = amount + elAmount;
+      this.amount = this.amount + elAmount;
     });
     data.forEach((element: any) => {
       let percentPart = 0;
       let elAmount: any = Object.values(element)[0]
-      percentPart = elAmount/amount*100;
+      percentPart = elAmount/this.amount*100;
       element.percentPart = +percentPart.toFixed(2);
       element.color = '#'+(Math.random().toString(16)+'00000').slice(2,8);
       this.diagramCategories.push(element);

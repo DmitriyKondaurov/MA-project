@@ -1,3 +1,4 @@
+<div class="popup__background" (click)="handleHideClick()"></div>
 <div class="popup-container">
     <button class="btn-close" (click)="handleHideClick()">X</button>
     <form [formGroup]="form"
@@ -81,6 +82,9 @@
             </select>
           </div>
         </div>
-        <button class="btn-submit">Submit</button>
+        <button class="btn-submit"
+                [disabled]="form?.invalid"
+                [ngClass]="{'button': form?.invalid === false}">
+                Submit</button>
     </form>
 </div>
