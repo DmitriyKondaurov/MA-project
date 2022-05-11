@@ -4,7 +4,7 @@
       <select [(ngModel)]="selectedFlowDirection" class="filter__month" name="filter__month-from" id="filter__month-from">
         <option *ngFor="let flow of flowDirection" value="{{flow}}">{{flow}}</option>
       </select>
-    <select [(ngModel)]="selectedMonthTill" class="filter__month" name="filter__month-till" id="filter__month-till">
+    <select [(ngModel)]="selectedMonth" class="filter__month" name="filter__month-till" id="filter__month-till">
       <option *ngFor="let month of months" value="{{month.value}}">{{month.title}}</option>
     </select>
     <select [(ngModel)]="selectedYear" class="filter__year" name="filter__year" id="filter__year">
@@ -20,18 +20,20 @@
       <th>Actual</th>
     </tr>
     </thead>
-    <tbody *ngFor="let month of months">
-    <tr class="data-table__row-header" >
-      <th rowspan="2">{{month.title}}</th>
-      <td>income</td>
-      <td>1000$</td>
-      <td>1200$</td>
-    </tr>
-    <tr>
-      <td>costs</td>
-      <td>210$</td>
-      <td>200$</td>
-    </tr>
+    <tbody *ngFor="let month of months; index as i;">
+      <tr class="data-table__row-header" >
+        <th rowspan="2">{{month.title}}</th>
+        <td class="data-table__flow">income</td>
+        <td>{{plannedIncomeTransByMonths[i].total}}</td>
+        <td>{{actualIncomeTransByMonths[i].total}}</td>
+      </tr>
+      <tr>
+        <td class="data-table__flow">costs</td>
+        <td>{{i}}</td>
+<!--        <td>{{plannedCostsTransByMonths[i].total}}</td>-->
+        <td>{{i}}</td>
+<!--        <td>{{actualCostsTransByMonths[i].total}}</td>-->
+      </tr>
     </tbody>
   </table>
 </div>

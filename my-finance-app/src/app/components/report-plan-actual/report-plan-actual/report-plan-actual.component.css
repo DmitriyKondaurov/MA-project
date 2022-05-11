@@ -14,6 +14,10 @@
   padding-bottom: 10px;
 }
 
+.filter__month, .filter__year {
+  font-size: 18px;
+}
+
 .report__data-table {
   width: 100%;
   border: 1px solid black;
@@ -35,4 +39,8 @@ td {
 
 .data-table__row-header {
   border-bottom: none;
+}
+
+.data-table__flow {
+  text-align: center;
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {ITotalByCategory, ITransactArchive} from "../app-interfaces";
+import {IMonth, ITotalByCategory, ITransactArchive} from "../app-interfaces";
+import months from "../components/report-plan-actual/report-plan-actual/months";
 
 @Injectable({
   providedIn: 'root'
@@ -43,16 +44,54 @@ export class TransactionsService {
     return totalByCategories;
   }
 
-  biggestCategoryAmount(curTransactions: ITransactArchive[], flow: string, planFact: string, date: Date) {
-    const reducedTransactions = this.customReduce(curTransactions, flow, planFact, date)
+  customReduceByMonth(curTransactions: ITransactArchive[]): IMonth[] {
+    let totalByMonths: IMonth[] = [... months];
+
+      curTransactions.reduce((acc, curr):IMonth[] => {
+        const index = new Date(curr.date).getMonth();
+        acc[index].total += curr.amount;
+        return acc;
+        }, totalByMonths)
+
+    return totalByMonths;
+  }
+
+  biggestCategoryAmount(transactions: ITransactArchive[], flow: string, planFact: string, date: Date) {
+    const reducedTransactions = this.customReduce(transactions, flow, planFact, date)
     return this.customSort(reducedTransactions)[0].amount
   }
 
 
-  customSort(curTransactions: ITransactArchive[]) {
-    curTransactions = curTransactions.sort((a, b) => {
+  customSort(transactions: ITransactArchive[]) {
+    transactions = transactions.sort((a, b) => {
       return b.amount - a.amount
     })
-    return curTransactions
+    return transactions
+  }
+
+  filterByYear(transactions: ITransactArchive[], year: number) {
+    return transactions.filter((item) => {
+      return new Date(item.date).getFullYear() === year;
+    })
+  }
+  filterByMonth(transactions: ITransactArchive[], month: number) {
+    return transactions.filter((item) => {
+      return new Date(item.date).getMonth() === month;
+    })
+  }
+  filterByFlow(transactions: ITransactArchive[], flowDirection: "costs" | "income") {
+    return transactions.filter((item) => {
+      return item.type.value === flowDirection;
+    })
+  }
+  filterByPlanActual(transactions: ITransactArchive[], planActual: "planned" | "actual") {
+    return transactions.filter((item) => {
+      return item.expense.value === planActual;
+    })
+  }
+  filterByCategory(transactions: ITransactArchive[], category: string) {
+    return transactions.filter((item) => {
+      return item.categoryName === category;
+    })
   }
 }

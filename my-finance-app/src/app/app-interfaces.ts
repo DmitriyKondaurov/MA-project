@@ -82,5 +82,6 @@ export interface IMenuItem {
 
 export interface IMonth {
   title: string;
-  value: number
+  value: number;
+  total: number
 }
