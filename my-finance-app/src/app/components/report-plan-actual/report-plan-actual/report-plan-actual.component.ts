@@ -38,28 +38,17 @@ export class ReportPlanActualComponent implements OnInit {
       transactionsByYear.sort((a, b) => a.amount - b.amount);
       const plannedTransactions = this.transactionsService.filterByPlanActual(transactionsByYear, 'planned');
       const actualTransactions = this.transactionsService.filterByPlanActual(transactionsByYear, 'actual');
-      if (this.selectedFlowDirection === 'costs') {
-        const actualCostsTrans = this.transactionsService.filterByFlow(actualTransactions, 'costs');
-        const plannedCostsTrans = this.transactionsService.filterByFlow(plannedTransactions, 'costs');
-      } else if (this.selectedFlowDirection === 'income') {
-        const actualIncomeTrans = this.transactionsService.filterByFlow(actualTransactions, 'income');
-        const plannedIncomeTrans = this.transactionsService.filterByFlow(plannedTransactions, 'income');
-      } else  {
-        const plannedIncomeTrans = this.transactionsService.filterByFlow(plannedTransactions, 'income');
-        const plannedCostsTrans = this.transactionsService.filterByFlow(plannedTransactions, 'costs');
-        const actualIncomeTrans = this.transactionsService.filterByFlow(actualTransactions, 'income');
-        const actualCostsTrans = this.transactionsService.filterByFlow(actualTransactions, 'costs');
-        this.plannedIncomeTransByMonths = this.transactionsService.customReduceByMonth(plannedIncomeTrans);
-        this.plannedCostsTransByMonths = this.transactionsService.customReduceByMonth(plannedCostsTrans);
-        this.actualIncomeTransByMonths = this.transactionsService.customReduceByMonth(actualIncomeTrans);
-        this.actualCostsTransByMonths = this.transactionsService.customReduceByMonth(actualCostsTrans);
-      }
+      const plannedIncomeTrans = this.transactionsService.filterByFlow(plannedTransactions, 'income');
+      const plannedCostsTrans = this.transactionsService.filterByFlow(plannedTransactions, 'costs');
+      const actualIncomeTrans = this.transactionsService.filterByFlow(actualTransactions, 'income');
+      const actualCostsTrans = this.transactionsService.filterByFlow(actualTransactions, 'costs');
+      this.plannedIncomeTransByMonths = this.transactionsService.customReduceByMonth(plannedIncomeTrans);
+      this.plannedCostsTransByMonths = this.transactionsService.customReduceByMonth(plannedCostsTrans);
+      this.actualIncomeTransByMonths = this.transactionsService.customReduceByMonth(actualIncomeTrans);
+      this.actualCostsTransByMonths = this.transactionsService.customReduceByMonth(actualCostsTrans);
 
     })
   }
- test() {
-      console.log(this.selectedMonth)
- }
 
 
       // transReduceByCategories.reduce((acc, curr) => acc += curr.amount, 0)

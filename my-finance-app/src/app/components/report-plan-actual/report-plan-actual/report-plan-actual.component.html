@@ -4,8 +4,7 @@
       <select [(ngModel)]="selectedFlowDirection" class="filter__month" name="filter__month-from" id="filter__month-from">
         <option *ngFor="let flow of flowDirection" value="{{flow}}">{{flow}}</option>
       </select>
-    <select [(ngModel)]="selectedMonth" class="filter__month" name="filter__month-till" id="filter__month-till"
-            (change)="test()">
+    <select [(ngModel)]="selectedMonth" class="filter__month" name="filter__month-till" id="filter__month-till">
       <option *ngFor="let month of monthsForSelect" value="{{month.value}}">{{month.title}}</option>
     </select>
     <select [(ngModel)]="selectedYear" class="filter__year" name="filter__year" id="filter__year">
@@ -16,7 +15,7 @@
   <table *ngIf="selectedFlowDirection; then thenBlock else elseBlock"></table>
   <ng-template #elseBlock>
     <table *ngIf="selectedMonth == 0; then thenBlockMonth else elseBlockMonth"></table>
-    <ng-template #elseBlockMonth>
+    <ng-template #thenBlockMonth>
     <table class="report__data-table data-table" >
       <thead>
       <tr>
@@ -42,13 +41,47 @@
     </table>
     </ng-template>
 
-    <ng-template #thenBlockMonth>
+    <ng-template #elseBlockMonth>
       <div class="d">chose month please</div>
     </ng-template>
 
   </ng-template>
   <ng-template #thenBlock>
+    <table *ngIf="selectedMonth == 0; then thenBlockMonth else elseBlockMonth"></table>
+    <ng-template #thenBlockMonth>
+      <table class="report__data-table data-table" >
+        <thead>
+        <tr>
+          <th>Month</th>
+          <th>Flow</th>
+          <th>Plan</th>
+          <th>Actual</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let month of monthsForTable; index as i;">
+        <tr class="data-table__row-header" >
+          <th *ngIf="selectedFlowDirection == 'costs'; then thenBlockFlow else elseBlockFlow"></th>
+          <ng-template #elseBlockFlow>
+          <th>{{month.title}}</th>
+          <td class="data-table__flow">income</td>
+          <td>{{plannedIncomeTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
+          <td>{{actualIncomeTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
+        </ng-template>
+        <ng-template #thenBlockFlow>
+          <th>{{month.title}}</th>
+          <td class="data-table__flow">costs</td>
+          <td>{{plannedCostsTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
+          <td>{{actualCostsTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
+        </ng-template>
+        </tr>
 
+        </tbody>
+      </table>
+    </ng-template>
+
+    <ng-template #elseBlockMonth>
+      <div class="d">chose month please</div>
+    </ng-template>
   </ng-template>
 
 </div>
