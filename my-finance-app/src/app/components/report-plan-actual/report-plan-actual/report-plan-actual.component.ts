@@ -57,7 +57,9 @@ export class ReportPlanActualComponent implements OnInit {
 
     })
   }
-
+ test() {
+      console.log(this.selectedMonth)
+ }
 
 
       // transReduceByCategories.reduce((acc, curr) => acc += curr.amount, 0)
