@@ -2,6 +2,11 @@ import {IMonth} from "../../../app-interfaces";
 
 const months: IMonth[] = [
   {
+    title:'',
+    value: 0,
+    total: NaN
+  },
+  {
     title:'January',
     value:1,
     total: 0

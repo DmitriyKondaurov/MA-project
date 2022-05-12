@@ -13,8 +13,9 @@ export class ReportPlanActualComponent implements OnInit {
   selectedFlowDirection: "costs" | "income" | '' = '';
   selectedMonth: number = new Date().getMonth() + 1;
   selectedYear: number = new Date().getFullYear();
-  flowDirection = ['costs', 'income'];
-  months = [...months];
+  flowDirection = ['', 'costs', 'income'];
+  monthsForSelect = [...months];
+  monthsForTable = [...months];
   years = [new Date().getFullYear()]; // it must be taken from transactions
   transactions: ITransactArchive[] = [];
   data: any[] = [];
@@ -24,15 +25,17 @@ export class ReportPlanActualComponent implements OnInit {
   actualCostsTransByMonths: IMonth[] = Array(12).fill({title:'', value: 0, total: 0},);
 
     constructor( private readonly restApiService: RestApiService,
-               private transactionsService: TransactionsService) { }
+                 private transactionsService: TransactionsService) { }
 
   ngOnInit() {
+    this.monthsForTable.shift();
     this.restApiService.getTransactions().snapshotChanges().subscribe( res => {
       res.forEach( item => {
         this.data.push(item.payload.toJSON());
       } )
       const date = new Date(this.selectedYear, this.selectedMonth, 1);
       const transactionsByYear = this.transactionsService.filterByYear(this.data, this.selectedYear);
+      transactionsByYear.sort((a, b) => a.amount - b.amount);
       const plannedTransactions = this.transactionsService.filterByPlanActual(transactionsByYear, 'planned');
       const actualTransactions = this.transactionsService.filterByPlanActual(transactionsByYear, 'actual');
       if (this.selectedFlowDirection === 'costs') {
@@ -50,10 +53,6 @@ export class ReportPlanActualComponent implements OnInit {
         this.plannedCostsTransByMonths = this.transactionsService.customReduceByMonth(plannedCostsTrans);
         this.actualIncomeTransByMonths = this.transactionsService.customReduceByMonth(actualIncomeTrans);
         this.actualCostsTransByMonths = this.transactionsService.customReduceByMonth(actualCostsTrans);
-        this.plannedIncomeTransByMonths.sort((a, b) => a.value - b.value);
-        this.plannedCostsTransByMonths.sort((a, b) => a.value - b.value);
-        this.actualIncomeTransByMonths.sort((a, b) => a.value - b.value);
-        this.actualCostsTransByMonths.sort((a, b) => a.value - b.value);
       }
 
     })

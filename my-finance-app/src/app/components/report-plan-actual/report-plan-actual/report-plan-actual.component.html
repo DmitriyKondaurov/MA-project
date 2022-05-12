@@ -5,7 +5,7 @@
         <option *ngFor="let flow of flowDirection" value="{{flow}}">{{flow}}</option>
       </select>
     <select [(ngModel)]="selectedMonth" class="filter__month" name="filter__month-till" id="filter__month-till">
-      <option *ngFor="let month of months" value="{{month.value}}">{{month.title}}</option>
+      <option *ngFor="let month of monthsForSelect" value="{{month.value}}">{{month.title}}</option>
     </select>
     <select [(ngModel)]="selectedYear" class="filter__year" name="filter__year" id="filter__year">
       <option *ngFor="let year of years"  value="{{year}}">{{year}}</option>
@@ -20,7 +20,7 @@
       <th>Actual</th>
     </tr>
     </thead>
-    <tbody *ngFor="let month of months; index as i;">
+    <tbody *ngFor="let month of monthsForTable; index as i;">
       <tr class="data-table__row-header" >
         <th rowspan="2">{{month.title}}</th>
         <td class="data-table__flow">income</td>
