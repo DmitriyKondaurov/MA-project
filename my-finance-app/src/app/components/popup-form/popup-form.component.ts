@@ -74,7 +74,6 @@ export class PopupFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.element.nativeElement.closest('body').style.overflow = 'hidden')
     this.RestApiService.getTransactions();
     this.data = this.RestApiService.getCategories();
     this.RestApiService.getCategories().snapshotChanges().subscribe((res: any) => {

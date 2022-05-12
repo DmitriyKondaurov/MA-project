@@ -131,6 +131,10 @@
         padding: 10px 17px;
     }
 
+    .row-container {
+        justify-content: left;
+    }
+
     .modal-dialog {
         left: 40%;
     }
