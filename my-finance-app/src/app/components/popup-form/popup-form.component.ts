@@ -52,13 +52,13 @@ export class PopupFormComponent implements OnInit {
   ]
 
   form = new FormGroup({
-    type: new FormControl( Validators.required),
+    type: new FormControl('', Validators.required),
     expense: new FormControl(this.expenses[1], Validators.required),
     date: new FormControl("", Validators.required),
     subCategoryName: new FormControl("", Validators.required),
     categoryName: new FormControl("", Validators.required),
     description: new FormControl(),
-    amount: new FormControl(Validators.required),
+    amount: new FormControl('', Validators.required),
     currency: new FormControl(this.currencies[2], Validators.required),
   });
 
@@ -102,6 +102,7 @@ export class PopupFormComponent implements OnInit {
       this.RestApiService.addTransaction(this.form.value);
       this.show();
       this.element.nativeElement.closest('body').style.overflow = 'auto'
+      this.form.reset();
     }
   }
 

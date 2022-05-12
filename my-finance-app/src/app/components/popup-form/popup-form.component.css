@@ -8,9 +8,10 @@
 }
 
 .modal-dialog {
-    top: 10%;
+    top: 0;
+    left: 20%;
     width: 230px;
-    height: 150px;
+    height: 100px;
     background-color: #08F26E;
     z-index: 2000;
     position: absolute;
@@ -25,7 +26,7 @@
     z-index: 1000;
     width: 100%;
     min-height: 100%;
-    background-color: #D7D7D7;
+    background-color: #FFF;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,17 +59,17 @@
 .column-container {
     display: flex;
     flex-direction: column;
-    margin: 15px 0;
+    height: 90px;
 }
 
 .row-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .form__field {
-    padding: 7px 5px;
-    border: none;
+    padding: 9px 5px;
+    border: 1px solid #000;
     border-radius: 6px;
     font-size: 18px;
 }
@@ -78,7 +79,6 @@
 }
 
 .form__select {
-    border: 1px solid #D7D7D7;
     scroll-behavior: smooth;
 }
 
@@ -88,20 +88,20 @@
 }
 
 .btn-submit {
-    width: 150px;
+    width: 160px;
     align-self: center;
     padding: 15px;
     margin-top: 10px;
     border: none;
     border-radius: 3px;
-    background-color: #648ca7;
+    background-color: #25A779;
     font-size: 18px;
     font-weight: 600;
     color: #FFF;
 }
 
 .button {
-    background-color: #1A95E9;
+    background-color: #25A779;
 }
 
 .button:hover {
@@ -110,7 +110,6 @@
 }
 
 .alert {
-    min-height: 20px;
     color: #BC1010;
 }
 
@@ -121,10 +120,18 @@
         border-radius: 6px;
         box-shadow: rgba(0, 0, 0, .16) 0px 10px 36px 0px, rgba(0, 0, 0, .06) 0px 0px 0px 1px;
     }
+
+    .modal-dialog {
+        left: 40%;
+    }
 }
 
-@media (max-width: 600px) {
+@media (min-width: 600px) {
     .btn-close {
         padding: 10px 17px;
     }
-  }
+
+    .modal-dialog {
+        left: 40%;
+    }
+}
