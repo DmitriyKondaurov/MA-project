@@ -1,0 +1,46 @@
+.report {
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
+  padding: 5px;
+  box-sizing: border-box;
+  font-family: 'open sans', sans-serif;
+}
+
+.report__filter {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-bottom: 10px;
+}
+
+.filter__month, .filter__year {
+  font-size: 18px;
+}
+
+.report__data-table {
+  width: 100%;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+tr {
+  border-bottom: 1px solid black;
+}
+
+th {
+  border: 1px solid black;
+}
+
+td {
+  border-left: 1px solid black;
+  text-align: right;
+}
+
+.data-table__row-header {
+  border-bottom: none;
+}
+
+.data-table__flow {
+  text-align: center;
+}

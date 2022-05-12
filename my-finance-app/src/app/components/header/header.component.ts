@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   curBalance: IBalance = {
     amount: 0,
     currency: 'UAH',
-    dateString: '',
+    dateString: new Date().toDateString(),
   };
   color: string = '';
   currDate: Date = new Date();

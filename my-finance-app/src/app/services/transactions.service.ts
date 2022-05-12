@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {ITotalByCategory, ITransactArchive} from "../app-interfaces";
+import {IMonth, ITotalByCategory, ITransactArchive} from "../app-interfaces";
+import months from "../components/report-plan-actual/report-plan-actual/months";
 
 @Injectable({
   providedIn: 'root'
@@ -43,16 +44,65 @@ export class TransactionsService {
     return totalByCategories;
   }
 
-  biggestCategoryAmount(curTransactions: ITransactArchive[], flow: string, planFact: string, date: Date) {
-    const reducedTransactions = this.customReduce(curTransactions, flow, planFact, date)
+  customReduceByMonth(curTransactions: ITransactArchive[]): IMonth[] {
+    const totalByMonths: IMonth[] = [
+      { title:'January', value:1, total: 0 },
+      { title:'February', value:2, total: 0 },
+      { title:'March', value:3, total: 0 },
+      { title:'April', value:4, total: 0 },
+      { title:'May', value:5, total: 0 },
+      { title:'June', value:6, total: 0 },
+      { title:'July', value:7, total: 0 },
+      { title:'August', value:8, total: 0 },
+      { title:'September', value:9, total: 0},
+      { title:'October', value:10, total: 0 },
+      { title:'November', value:11, total: 0 },
+      { title:'December', value:12, total: 0 },
+    ]
+
+      curTransactions.reduce((acc, curr):IMonth[] => {
+          const indexInAcc: number = acc.findIndex((i) => i.value === new Date(curr.date).getMonth() + 1 )
+          if (indexInAcc >= 0) {
+            acc[indexInAcc].total += curr.amount;
+            return acc
+          } else return acc;
+
+        }, totalByMonths)
+
+    return totalByMonths;
+  }
+
+  biggestCategoryAmount(transactions: ITransactArchive[], flow: string, planFact: string, date: Date) {
+    const reducedTransactions = this.customReduce(transactions, flow, planFact, date)
     return this.customSort(reducedTransactions)[0].amount
   }
 
 
-  customSort(curTransactions: ITransactArchive[]) {
-    curTransactions = curTransactions.sort((a, b) => {
+  customSort(transactions: ITransactArchive[]) {
+    transactions = transactions.sort((a, b) => {
       return b.amount - a.amount
     })
-    return curTransactions
+    return transactions
+  }
+
+  filterByYear(transactions: ITransactArchive[], year: number) {
+    return transactions.filter((item) => {
+      return new Date(item.date).getFullYear() === year;
+    })
+  }
+  filterByMonth(transactions: ITransactArchive[], month: number) {
+    return transactions.filter((item) => {
+      return new Date(item.date).getMonth() === month;
+    })
+  }
+  filterByFlow(transactions: ITransactArchive[], flowDirection: "costs" | "income") {
+    return transactions.filter((item) => {
+      return item.type.value === flowDirection;
+    })
+  }
+  filterByPlanActual(transactions: ITransactArchive[], planActual: "planned" | "actual") {
+    return transactions.filter((item) => {
+      return item.expense.value === planActual;
+    })
   }
 }

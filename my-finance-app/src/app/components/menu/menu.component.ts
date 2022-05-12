@@ -25,16 +25,12 @@ export class MenuComponent {
       url: ''
     },
     {
-      title: 'Planned budget',
-      url: ''
-    },
-    {
       title: 'Last transaction',
       url: 'archive'
     },
     {
-      title: 'Plan/Actual report',
-      url: ''
+      title: 'Cash flow report',
+      url: 'report'
     },
     {
       title: 'Goals',
