@@ -24,15 +24,13 @@
       <tr class="data-table__row-header" >
         <th rowspan="2">{{month.title}}</th>
         <td class="data-table__flow">income</td>
-        <td>{{plannedIncomeTransByMonths[i].total}}</td>
-        <td>{{actualIncomeTransByMonths[i].total}}</td>
+        <td>{{plannedIncomeTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
+        <td>{{actualIncomeTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
       </tr>
       <tr>
         <td class="data-table__flow">costs</td>
-        <td>{{i}}</td>
-<!--        <td>{{plannedCostsTransByMonths[i].total}}</td>-->
-        <td>{{i}}</td>
-<!--        <td>{{actualCostsTransByMonths[i].total}}</td>-->
+        <td>{{plannedCostsTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
+        <td>{{actualCostsTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
       </tr>
     </tbody>
   </table>

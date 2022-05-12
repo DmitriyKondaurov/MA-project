@@ -14,14 +14,14 @@ export class ReportPlanActualComponent implements OnInit {
   selectedMonth: number = new Date().getMonth() + 1;
   selectedYear: number = new Date().getFullYear();
   flowDirection = ['costs', 'income'];
-  months = months;
+  months = [...months];
   years = [new Date().getFullYear()]; // it must be taken from transactions
   transactions: ITransactArchive[] = [];
   data: any[] = [];
-  plannedIncomeTransByMonths: IMonth[] = [];
-  plannedCostsTransByMonths: IMonth[] = [];
-  actualIncomeTransByMonths: IMonth[] = [];
-  actualCostsTransByMonths: IMonth[] = [];
+  plannedIncomeTransByMonths: IMonth[] = Array(12).fill({title:'', value: 0, total: 0},);
+  plannedCostsTransByMonths: IMonth[] = Array(12).fill({title:'', value: 0, total: 0},);
+  actualIncomeTransByMonths: IMonth[] = Array(12).fill({title:'', value: 0, total: 0},);
+  actualCostsTransByMonths: IMonth[] = Array(12).fill({title:'', value: 0, total: 0},);
 
     constructor( private readonly restApiService: RestApiService,
                private transactionsService: TransactionsService) { }

@@ -45,12 +45,28 @@ export class TransactionsService {
   }
 
   customReduceByMonth(curTransactions: ITransactArchive[]): IMonth[] {
-    let totalByMonths: IMonth[] = [... months];
+    const totalByMonths: IMonth[] = [
+      { title:'January', value:1, total: 0 },
+      { title:'February', value:2, total: 0 },
+      { title:'March', value:3, total: 0 },
+      { title:'April', value:4, total: 0 },
+      { title:'May', value:5, total: 0 },
+      { title:'June', value:6, total: 0 },
+      { title:'July', value:7, total: 0 },
+      { title:'August', value:8, total: 0 },
+      { title:'September', value:9, total: 0},
+      { title:'October', value:10, total: 0 },
+      { title:'November', value:11, total: 0 },
+      { title:'December', value:12, total: 0 },
+    ]
 
       curTransactions.reduce((acc, curr):IMonth[] => {
-        const index = new Date(curr.date).getMonth();
-        acc[index].total += curr.amount;
-        return acc;
+          const indexInAcc: number = acc.findIndex((i) => i.value === new Date(curr.date).getMonth() + 1 )
+          if (indexInAcc >= 0) {
+            acc[indexInAcc].total += curr.amount;
+            return acc
+          } else return acc;
+
         }, totalByMonths)
 
     return totalByMonths;
