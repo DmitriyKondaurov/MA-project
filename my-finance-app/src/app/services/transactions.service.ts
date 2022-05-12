@@ -105,9 +105,4 @@ export class TransactionsService {
       return item.expense.value === planActual;
     })
   }
-  filterByCategory(transactions: ITransactArchive[], category: string) {
-    return transactions.filter((item) => {
-      return item.categoryName === category;
-    })
-  }
 }
