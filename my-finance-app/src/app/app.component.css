@@ -33,6 +33,10 @@
   width: 100%;
 }
 
+.main {
+  overflow: hidden;
+}
+
 @media only screen and (min-width: 600px) {
   /*.header {*/
   /*  max-width: 480px;*/
