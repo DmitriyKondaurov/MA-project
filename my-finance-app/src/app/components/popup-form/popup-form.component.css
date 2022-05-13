@@ -68,6 +68,7 @@
 }
 
 .form__field {
+    background: #FFF;
     padding: 9px 5px;
     border: 1px solid #000;
     border-radius: 6px;
@@ -137,5 +138,11 @@
 
     .modal-dialog {
         left: 40%;
+    }
+}
+
+@media (max-height: 680px) {
+    .popup__form {
+        margin-top: 50px;
     }
 }

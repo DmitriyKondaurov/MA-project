@@ -11,6 +11,7 @@ export class MonitoringInfoService {
   constructor() { }
 
   monitoringInfo( data: Transaction[]) {
+    this.transitions = [];
     data.forEach( (id: Transaction) => {
       if (id.expense.value === 'actual') this.transitions.push(id)
     } )

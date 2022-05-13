@@ -11,17 +11,31 @@ import { Transaction } from 'src/app/app-interfaces';
 })
 export class TransactionArchiveComponent implements OnInit {
 
-  data: any[] = []
-  transitions: Transaction[] = [];
+  data: Transaction[] = []
+  transactions: Transaction[] = [];
 
   constructor(private RestApiService: RestApiService, private MonitoringInfoService: MonitoringInfoService) { }
 
-  ngOnInit() {
+  sayHello(id: any) {
+    // this.RestApiService.deleteTransaction(id);
+    this.getTransaction();
+  }
+
+  getTransaction() {
     this.RestApiService.getTransactions().snapshotChanges().subscribe( res => {
+      this.data = [];
       res.forEach( item => {
-        this.data.push(item.payload.toJSON());
+        let a: Transaction | any;
+        a =  item.payload.toJSON();
+        a['$key'] = item.key;
+        this.data.push(a as Transaction);
       } )
-      this.transitions = this.MonitoringInfoService.monitoringInfo(this.data);
+      console.log(this.data);
+      this.transactions = this.MonitoringInfoService.monitoringInfo(this.data);
     })
+  }
+
+  ngOnInit() {
+    this.getTransaction();
   }
 }
