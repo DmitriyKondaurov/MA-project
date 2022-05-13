@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   flex-flow: column;
-  padding-top: 20px;
+  padding-top: 15px;
 }
 
 .field-cost__name {
@@ -15,6 +15,7 @@
 }
 
 .field-cost__list {
+  margin: 5px;
   padding: 0;
 }
 
