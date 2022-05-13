@@ -40,6 +40,7 @@ export interface IBalance {
 }
 
 export interface Transaction {
+  $key?: string;
   amount: number,
   categoryName: string,
   subCategoryName: string,
