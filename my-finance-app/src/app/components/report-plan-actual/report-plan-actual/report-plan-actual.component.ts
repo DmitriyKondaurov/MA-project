@@ -27,7 +27,9 @@ export class ReportPlanActualComponent implements OnInit {
   plannedCostsTransByCategory: ITotalByCategory[] = [];
   actualIncomeTransByCategory: ITotalByCategory[] = [];
   actualCostsTransByCategory: ITotalByCategory[] = [];
-    constructor( private readonly restApiService: RestApiService,
+  allNotEmptyCategories: string[] = []
+
+  constructor( private readonly restApiService: RestApiService,
                  private transactionsService: TransactionsService) { }
 
   ngOnInit() {
@@ -44,16 +46,28 @@ export class ReportPlanActualComponent implements OnInit {
       this.actualCostsTransByMonths = this.setDataByMonth(this.transactionsByYear, 'actual', 'costs')
 
       if (this.selectedMonth) {
-        this.setDataByCategory()
+        this.setDataByCategory(this.selectedMonth)
       }
     })
   }
 
-  setDataByCategory() {
-    this.plannedIncomeTransByCategory = this.getDataByCategory(this.transactionsByYear,'planned', 'income', +this.selectedMonth)
-    this.plannedCostsTransByCategory = this.getDataByCategory(this.transactionsByYear,'planned', 'costs', +this.selectedMonth)
-    this.actualIncomeTransByCategory = this.getDataByCategory(this.transactionsByYear,'actual', 'income', +this.selectedMonth)
-    this.actualCostsTransByCategory = this.getDataByCategory(this.transactionsByYear,'actual', 'costs', +this.selectedMonth)
+  setDataByCategory(selectedMonth: number) {
+    this.plannedIncomeTransByCategory = this.getDataByCategory(this.transactionsByYear,'planned', 'income', +selectedMonth)
+    this.plannedCostsTransByCategory = this.getDataByCategory(this.transactionsByYear,'planned', 'costs', +selectedMonth)
+    this.actualIncomeTransByCategory = this.getDataByCategory(this.transactionsByYear,'actual', 'income', +selectedMonth)
+    this.actualCostsTransByCategory = this.getDataByCategory(this.transactionsByYear,'actual', 'costs', +selectedMonth)
+
+    this.allNotEmptyCategories = this.transactionsService.filterByMonth(this.transactionsByYear, +this.selectedMonth)
+      .reduce((acc, curr) => {
+        const index: number = acc.findIndex((i) => i === curr.categoryName)
+      if (index >= 0) {
+        return acc
+      } else {
+        acc.push(curr.categoryName);
+        console.log(curr.categoryName)
+        return acc;
+      }
+    }, <string[]>[])
   }
 
   getDataByCategory(transactions:ITransactArchive[], planActual: 'planned'|'actual', flow:'income'|'costs'|'', month:number) {

@@ -5,7 +5,7 @@
         <option *ngFor="let flow of flowDirection" value="{{flow}}">{{flow}}</option>
       </select>
     <select [(ngModel)]="selectedMonth" class="filter__month" name="filter__month-till" id="filter__month-till"
-            (change)="setDataByCategory()">
+            (change)="setDataByCategory(selectedMonth)">
       <option *ngFor="let month of monthsForSelect" value="{{month.value}}">{{month.title}}</option>
     </select>
     <select [(ngModel)]="selectedYear" class="filter__year" name="filter__year" id="filter__year">
@@ -43,7 +43,29 @@
     </ng-template>
 
     <ng-template #elseBlockMonth>
-      <div class="d">chose month please</div>
+      <table class="report__data-table data-table" >
+        <thead>
+        <tr>
+          <th>Category</th>
+          <th>Plan</th>
+          <th>Actual</th>
+          <th>Deviation</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let category of allNotEmptyCategories; index as i;">
+        <tr class="data-table__row-header" >
+          <th rowspan="2">{{category}}</th>
+          <td class="data-table__flow">income</td>
+          <td>{{plannedIncomeTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
+          <td>{{actualIncomeTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
+        </tr>
+        <tr>
+          <td class="data-table__flow">costs</td>
+          <td>{{plannedCostsTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
+          <td>{{actualCostsTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
+        </tr>
+        </tbody>
+      </table>
     </ng-template>
 
   </ng-template>
