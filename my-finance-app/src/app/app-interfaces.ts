@@ -51,7 +51,8 @@ export interface Transaction {
 }
 export interface ITotalByCategory {
   categoryName: string,
-  value: number
+  value: number,
+  flow: string
 }
 
 export interface Currency {

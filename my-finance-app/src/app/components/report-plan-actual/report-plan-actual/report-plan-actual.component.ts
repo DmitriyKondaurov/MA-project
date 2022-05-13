@@ -60,7 +60,8 @@ export class ReportPlanActualComponent implements OnInit {
       } else {
         const missCategory: ITotalByCategory = {
           categoryName: curr.categoryName,
-          value: 0
+          value: 0,
+          flow: curr.type.value
         }
         acc.push(missCategory);
         return acc;
@@ -98,5 +99,16 @@ export class ReportPlanActualComponent implements OnInit {
     const planActTransactions = this.transactionsService.filterByPlanActual(transactions, planActual);
     const transactionByFlow = this.transactionsService.filterByFlow(planActTransactions, flow);
     return this.transactionsService.customReduceByMonth(transactionByFlow);
+  }
+
+  resetCategories(flow: 'income'|'costs'|'') {
+    if (flow === 'income') {
+
+
+    } else if (flow === 'costs') {
+
+      this.allNotEmptyCategories = []
+
+    }
   }
 }

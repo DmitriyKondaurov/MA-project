@@ -54,7 +54,8 @@ export class TransactionsService {
       } else {
         const missCategory: ITotalByCategory = {
           categoryName: curr.categoryName,
-          value: curr.amount
+          value: curr.amount,
+          flow: curr.type.value
         }
         acc.push(missCategory);
         return acc;
