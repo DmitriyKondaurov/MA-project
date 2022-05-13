@@ -44,3 +44,7 @@ td {
 .data-table__flow {
   text-align: center;
 }
+
+.data-table__flow--select {
+  border-bottom: 1px solid black;
+}

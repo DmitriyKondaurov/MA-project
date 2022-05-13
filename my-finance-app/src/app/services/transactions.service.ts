@@ -44,6 +44,25 @@ export class TransactionsService {
     return totalByCategories;
   }
 
+  reduceByCategory(transactions: ITransactArchive[]): ITotalByCategory[] {
+    let totalByCategories: ITotalByCategory[] = [];
+    transactions.reduce((acc, curr) => {
+      const index: number = acc.findIndex((i) => i.categoryName === curr.categoryName)
+      if (index >= 0) {
+        acc[index].value += curr.amount;
+        return acc
+      } else {
+        const missCategory: ITotalByCategory = {
+          categoryName: curr.categoryName,
+          value: curr.amount
+        }
+        acc.push(missCategory);
+        return acc;
+      }
+    }, totalByCategories)
+    return totalByCategories;
+  }
+
   customReduceByMonth(curTransactions: ITransactArchive[]): IMonth[] {
     const totalByMonths: IMonth[] = [
       { title:'January', value:1, total: 0 },
@@ -92,10 +111,10 @@ export class TransactionsService {
   }
   filterByMonth(transactions: ITransactArchive[], month: number) {
     return transactions.filter((item) => {
-      return new Date(item.date).getMonth() === month;
+      return (new Date(item.date).getMonth() + 1) === month;
     })
   }
-  filterByFlow(transactions: ITransactArchive[], flowDirection: "costs" | "income") {
+  filterByFlow(transactions: ITransactArchive[], flowDirection: "costs" | "income" | "") {
     return transactions.filter((item) => {
       return item.type.value === flowDirection;
     })
@@ -105,4 +124,5 @@ export class TransactionsService {
       return item.expense.value === planActual;
     })
   }
+
 }

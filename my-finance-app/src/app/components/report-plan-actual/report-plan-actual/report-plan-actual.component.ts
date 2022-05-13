@@ -17,8 +17,8 @@ export class ReportPlanActualComponent implements OnInit {
   monthsForSelect = [...months];
   monthsForTable = [...months];
   years = [new Date().getFullYear()]; // it must be taken from transactions
-  transactions: ITransactArchive[] = [];
   data: any[] = [];
+  transactionsByYear: ITransactArchive[] = [];
   plannedIncomeTransByMonths: IMonth[] = Array(12).fill({title:'', value: 0, total: 0},);
   plannedCostsTransByMonths: IMonth[] = Array(12).fill({title:'', value: 0, total: 0},);
   actualIncomeTransByMonths: IMonth[] = Array(12).fill({title:'', value: 0, total: 0},);
@@ -36,48 +36,36 @@ export class ReportPlanActualComponent implements OnInit {
       res.forEach( item => {
         this.data.push(item.payload.toJSON());
       } )
-      const transactionsByYear = this.transactionsService.filterByYear(this.data, this.selectedYear);
-      transactionsByYear.sort((a, b) => a.amount - b.amount);
-      const plannedTransactions = this.transactionsService.filterByPlanActual(transactionsByYear, 'planned');
-      const actualTransactions = this.transactionsService.filterByPlanActual(transactionsByYear, 'actual');
-      const plannedIncomeTrans = this.transactionsService.filterByFlow(plannedTransactions, 'income');
-      const plannedCostsTrans = this.transactionsService.filterByFlow(plannedTransactions, 'costs');
-      const actualIncomeTrans = this.transactionsService.filterByFlow(actualTransactions, 'income');
-      const actualCostsTrans = this.transactionsService.filterByFlow(actualTransactions, 'costs');
-      this.plannedIncomeTransByMonths = this.transactionsService.customReduceByMonth(plannedIncomeTrans);
-      this.plannedCostsTransByMonths = this.transactionsService.customReduceByMonth(plannedCostsTrans);
-      this.actualIncomeTransByMonths = this.transactionsService.customReduceByMonth(actualIncomeTrans);
-      this.actualCostsTransByMonths = this.transactionsService.customReduceByMonth(actualCostsTrans);
+      this.transactionsByYear = this.transactionsService.filterByYear(this.data, this.selectedYear);
+      this.transactionsByYear.sort((a, b) => a.amount - b.amount);
+      this.plannedIncomeTransByMonths = this.setDataByMonth(this.transactionsByYear, 'planned', 'income')
+      this.plannedCostsTransByMonths = this.setDataByMonth(this.transactionsByYear, 'planned', 'costs')
+      this.actualIncomeTransByMonths = this.setDataByMonth(this.transactionsByYear, 'actual', 'income')
+      this.actualCostsTransByMonths = this.setDataByMonth(this.transactionsByYear, 'actual', 'costs')
 
       if (this.selectedMonth) {
-        let totalByCategories: ITotalByCategory[] = [];
-        this.transactionsService.filterByMonth(plannedIncomeTrans, this.selectedMonth)
-          .reduce((acc, curr) => {
-            const index: number = acc.findIndex((i) => i.categoryName === curr.categoryName)
-            if (index >= 0) {
-              acc[index].value += curr.amount;
-              return acc
-            } else {
-              const missCategory: ITotalByCategory = {
-                categoryName: curr.categoryName,
-                value: curr.amount
-              }
-              acc.push(missCategory);
-              return acc;
-            }
-          }, totalByCategories)
-
-
-        // this.plannedCostsTransByCategory
-        // this.actualIncomeTransByCategory
-        // this.actualCostsTransByCategory
+        this.setDataByCategory()
       }
     })
   }
 
+  setDataByCategory() {
+    this.plannedIncomeTransByCategory = this.getDataByCategory(this.transactionsByYear,'planned', 'income', +this.selectedMonth)
+    this.plannedCostsTransByCategory = this.getDataByCategory(this.transactionsByYear,'planned', 'costs', +this.selectedMonth)
+    this.actualIncomeTransByCategory = this.getDataByCategory(this.transactionsByYear,'actual', 'income', +this.selectedMonth)
+    this.actualCostsTransByCategory = this.getDataByCategory(this.transactionsByYear,'actual', 'costs', +this.selectedMonth)
+  }
 
-      // transReduceByCategories.reduce((acc, curr) => acc += curr.amount, 0)
+  getDataByCategory(transactions:ITransactArchive[], planActual: 'planned'|'actual', flow:'income'|'costs'|'', month:number) {
+    const planActTransactions = this.transactionsService.filterByPlanActual(transactions, planActual);
+    const transactionByFlow = this.transactionsService.filterByFlow(planActTransactions, flow);
+    const transactionByMonth = this.transactionsService.filterByMonth(transactionByFlow, month)
+    return this.transactionsService.reduceByCategory(transactionByMonth);
+    }
 
-
-
+  setDataByMonth(transactions:ITransactArchive[], planActual: 'planned'|'actual', flow:'income'|'costs'|'') {
+    const planActTransactions = this.transactionsService.filterByPlanActual(transactions, planActual);
+    const transactionByFlow = this.transactionsService.filterByFlow(planActTransactions, flow);
+    return this.transactionsService.customReduceByMonth(transactionByFlow);
+  }
 }

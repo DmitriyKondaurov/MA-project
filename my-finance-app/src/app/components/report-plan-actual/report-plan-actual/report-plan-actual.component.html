@@ -4,7 +4,8 @@
       <select [(ngModel)]="selectedFlowDirection" class="filter__month" name="filter__month-from" id="filter__month-from">
         <option *ngFor="let flow of flowDirection" value="{{flow}}">{{flow}}</option>
       </select>
-    <select [(ngModel)]="selectedMonth" class="filter__month" name="filter__month-till" id="filter__month-till">
+    <select [(ngModel)]="selectedMonth" class="filter__month" name="filter__month-till" id="filter__month-till"
+            (change)="setDataByCategory()">
       <option *ngFor="let month of monthsForSelect" value="{{month.value}}">{{month.title}}</option>
     </select>
     <select [(ngModel)]="selectedYear" class="filter__year" name="filter__year" id="filter__year">
@@ -63,15 +64,23 @@
           <th *ngIf="selectedFlowDirection == 'costs'; then thenBlockFlow else elseBlockFlow"></th>
           <ng-template #elseBlockFlow>
           <th>{{month.title}}</th>
-          <td class="data-table__flow">income</td>
-          <td>{{plannedIncomeTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
-          <td>{{actualIncomeTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
+          <td class="data-table__flow data-table__flow--select">income</td>
+          <td class="data-table__data data-table__flow--select">
+            {{plannedIncomeTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}
+          </td>
+          <td class="data-table__data data-table__flow--select">
+            {{actualIncomeTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}
+          </td>
         </ng-template>
         <ng-template #thenBlockFlow>
           <th>{{month.title}}</th>
-          <td class="data-table__flow">costs</td>
-          <td>{{plannedCostsTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
-          <td>{{actualCostsTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
+          <td class="data-table__flow data-table__flow--select">costs</td>
+          <td class="data-table__data data-table__flow--select">
+            {{plannedCostsTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}
+          </td>
+          <td class="data-table__data data-table__flow--select">
+            {{actualCostsTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}
+          </td>
         </ng-template>
         </tr>
 
