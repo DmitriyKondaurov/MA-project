@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RestApiService } from '../../services/res-api.service'
 import { CostInfoService } from 'src/app/services/cost-info.service';
 import { Categories, Transaction } from 'src/app/app-interfaces';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cost-monitoring',
   templateUrl: './cost-monitoring.component.html',
   styleUrls: ['./cost-monitoring.component.css']
 })
-export class CostMonitoringComponent implements OnInit {
+export class CostMonitoringComponent implements OnInit, OnDestroy {
+
+  subscription1$?: Subscription;
+  subscription2$?: Subscription ;
 
   data: any[] = [];
   costs: Transaction[] = []
@@ -19,9 +23,20 @@ export class CostMonitoringComponent implements OnInit {
   amount = 0;
 
   constructor(private RestApiService: RestApiService, private CostInfoService: CostInfoService) { }
+  ngOnDestroy(): void {
+    this.subscription1$!.unsubscribe()
+    this.subscription2$!.unsubscribe()
+  }
 
   ngOnInit(): void {
-    this.RestApiService.getCategories().snapshotChanges().subscribe( res => {
+    // this.data.length = 0;
+    // this.costs.length = 0;
+    // this.arrCategories.length = 0;
+    // this.costCategories.length = 0;
+    // this.notZeroCategories.length = 0;
+    // this.diagramCategories.length = 0;
+    // this.amount = 0;
+    this.subscription1$ = this.RestApiService.getCategories().snapshotChanges().subscribe( res => {
       res.forEach( item => {
         this.arrCategories.push(item.payload.toJSON());
       })
@@ -30,24 +45,21 @@ export class CostMonitoringComponent implements OnInit {
         this.costCategories.push(Object.values(item.subCategories))
       })
       this.costCategories = this.costCategories.flat();
-      this.RestApiService.getTransactions().snapshotChanges().subscribe( res => {
+      this.subscription2$ = this.RestApiService.getTransactions().snapshotChanges().subscribe( res => {
         res.forEach( item => {
           this.data.push(item.payload.toJSON());
         })
         this.notZeroCategories = this.calculateCosts(this.CostInfoService.costInfo(this.data));
-        console.log(this.notZeroCategories);
       })
     })
   }
 
   calculateCosts(data: Transaction[]) {
-    console.log(data)
     let object: any = {};
     let allCosts: any = [];
     data.forEach((element: Transaction) => {
       allCosts.push({[element.subCategoryName]: +element.amount * element.currency.value})
     });
-    console.log(allCosts)
     this.costCategories.forEach( (category: string) => {
       object[category] = 0;
       allCosts.forEach( (el: any) => {
@@ -65,7 +77,6 @@ export class CostMonitoringComponent implements OnInit {
   }
 
   diagramInfo(data: any) {
-    let test = data
     data.forEach((element: any) => {
       let elAmount: any = Object.values(element)[0]
       this.amount = this.amount + elAmount;

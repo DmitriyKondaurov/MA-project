@@ -17,7 +17,7 @@ export class StatisticFieldComponent implements OnInit {
   ngOnInit(): void {
     this.key = Object.keys(this.field)[0]
     this.value = Object.values(this.field)[0]
-    this.ElementRef.nativeElement.children[0].children[0].style.setProperty('background-color', this.field.color);
+    this.ElementRef.nativeElement.children[0].children[0].children[0].style.setProperty('background-color', this.field.color);
   }
 
 }

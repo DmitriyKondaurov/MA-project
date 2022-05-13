@@ -1,5 +1,5 @@
 <div class="transaction">
-    <div class="transaction__costs">General costs: {{this.amount}} uah</div>
+    <div class="transaction__costs">General costs: <span class="costs__amount">{{this.amount}} uah</span></div>
     <div class="transaction__fields">
         <app-statistic-field class="transaction-card" *ngFor="let field of notZeroCategories" [field]="field"></app-statistic-field>
     </div>

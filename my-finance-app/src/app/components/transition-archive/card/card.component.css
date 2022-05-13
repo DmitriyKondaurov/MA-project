@@ -1,22 +1,34 @@
 .card {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-around;
     width: 100%;
+    border: solid 1px #EFEFEF;
+    box-shadow: 0 0 5px .5px #EBE9E9;
+    height: 50px;
 }
 
-.card__group-one {
+.card__indicator {
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.card__group-two {
     display: flex;
     justify-content: space-around;
-    width: 50%;
+    width: 35%;
 }
 
 .card__money {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 50%;
     font-weight: 600;
+}
+
+.card__category {
+    width: 35%;
 }
 
 @media (min-width:1200px) {
@@ -26,7 +38,7 @@
         height: 50px;
     }
     
-    .card__group-one {
+    .card__group-two {
         width: 35%;
     }
 
@@ -42,7 +54,7 @@
         height: 50px;
     }
     
-    .card__group-one {
+    .card__group-two {
         width: 35%;
     }
 
@@ -58,7 +70,7 @@
         height: 50px;
     }
     
-    .card__group-one {
+    .card__group-two {
         width: 35%;
     }
 
@@ -74,7 +86,7 @@
         height: 50px;
     }
     
-    .card__group-one {
+    .card__group-two {
         width: 35%;
     }
 
