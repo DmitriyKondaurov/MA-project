@@ -54,15 +54,19 @@
         </thead>
         <tbody *ngFor="let category of allNotEmptyCategories; index as i;">
         <tr class="data-table__row-header" >
-          <th rowspan="2">{{category}}</th>
-          <td class="data-table__flow">income</td>
-          <td>{{plannedIncomeTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
-          <td>{{actualIncomeTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
+          <th rowspan="2">{{category.categoryName}}</th>
+          <td>{{plannedIncomeTransByCategory[i].value | currency:'UAH':'symbol-narrow'}}</td>
+          <td>{{actualIncomeTransByCategory[i].value | currency:'UAH':'symbol-narrow'}}</td>
+          <td>
+            {{actualIncomeTransByCategory[i].value - plannedIncomeTransByCategory[i].value | currency:'UAH':'symbol-narrow'}}
+          </td>
         </tr>
         <tr>
-          <td class="data-table__flow">costs</td>
-          <td>{{plannedCostsTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
-          <td>{{actualCostsTransByMonths[i].total | currency:'UAH':'symbol-narrow'}}</td>
+          <td>{{plannedCostsTransByCategory[i].value | currency:'UAH':'symbol-narrow'}}</td>
+          <td>{{actualCostsTransByCategory[i].value | currency:'UAH':'symbol-narrow'}}</td>
+          <td>
+            {{actualCostsTransByCategory[i].value - plannedCostsTransByCategory[i].value | currency:'UAH':'symbol-narrow'}}
+          </td>
         </tr>
         </tbody>
       </table>
@@ -111,7 +115,37 @@
     </ng-template>
 
     <ng-template #elseBlockMonth>
-      <div class="d">chose month please</div>
+      <table class="report__data-table data-table" >
+        <thead>
+        <tr>
+          <th>Category</th>
+          <th>Plan</th>
+          <th>Actual</th>
+          <th>Deviation</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let category of allNotEmptyCategories; index as i;">
+        <tr class="data-table__row-header" >
+          <th *ngIf="selectedFlowDirection == 'costs'; then thenBlockFlow else elseBlockFlow"></th>
+          <ng-template #thenBlockFlow>
+          <th>{{category.categoryName}}</th>
+            <td class="data-table__flow--select">{{plannedCostsTransByCategory[i].value | currency:'UAH':'symbol-narrow'}}</td>
+            <td class="data-table__flow--select">{{actualCostsTransByCategory[i].value | currency:'UAH':'symbol-narrow'}}</td>
+            <td class="data-table__flow--select">
+              {{actualCostsTransByCategory[i].value - plannedCostsTransByCategory[i].value | currency:'UAH':'symbol-narrow'}}
+            </td>
+          </ng-template>
+          <ng-template #elseBlockFlow>
+            <th>{{category.categoryName}}</th>
+            <td class="data-table__flow--select">{{plannedIncomeTransByCategory[i].value | currency:'UAH':'symbol-narrow'}}</td>
+            <td class="data-table__flow--select">{{actualIncomeTransByCategory[i].value | currency:'UAH':'symbol-narrow'}}</td>
+            <td class="data-table__flow--select">
+              {{actualIncomeTransByCategory[i].value - plannedIncomeTransByCategory[i].value | currency:'UAH':'symbol-narrow'}}
+            </td>
+          </ng-template>
+        </tr>
+        </tbody>
+      </table>
     </ng-template>
   </ng-template>
 

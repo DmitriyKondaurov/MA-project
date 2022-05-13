@@ -27,7 +27,7 @@ export class ReportPlanActualComponent implements OnInit {
   plannedCostsTransByCategory: ITotalByCategory[] = [];
   actualIncomeTransByCategory: ITotalByCategory[] = [];
   actualCostsTransByCategory: ITotalByCategory[] = [];
-  allNotEmptyCategories: string[] = []
+  allNotEmptyCategories: ITotalByCategory[] = []
 
   constructor( private readonly restApiService: RestApiService,
                  private transactionsService: TransactionsService) { }
@@ -52,30 +52,47 @@ export class ReportPlanActualComponent implements OnInit {
   }
 
   setDataByCategory(selectedMonth: number) {
+    this.allNotEmptyCategories = this.transactionsService.filterByMonth(this.transactionsByYear, +this.selectedMonth)
+      .reduce((acc, curr) => {
+        const index: number = acc.findIndex((i) => i.categoryName === curr.categoryName)
+      if (index >= 0) {
+        return acc
+      } else {
+        const missCategory: ITotalByCategory = {
+          categoryName: curr.categoryName,
+          value: 0
+        }
+        acc.push(missCategory);
+        return acc;
+      }
+    }, <ITotalByCategory[]>[])
+
     this.plannedIncomeTransByCategory = this.getDataByCategory(this.transactionsByYear,'planned', 'income', +selectedMonth)
     this.plannedCostsTransByCategory = this.getDataByCategory(this.transactionsByYear,'planned', 'costs', +selectedMonth)
     this.actualIncomeTransByCategory = this.getDataByCategory(this.transactionsByYear,'actual', 'income', +selectedMonth)
     this.actualCostsTransByCategory = this.getDataByCategory(this.transactionsByYear,'actual', 'costs', +selectedMonth)
-
-    this.allNotEmptyCategories = this.transactionsService.filterByMonth(this.transactionsByYear, +this.selectedMonth)
-      .reduce((acc, curr) => {
-        const index: number = acc.findIndex((i) => i === curr.categoryName)
-      if (index >= 0) {
-        return acc
-      } else {
-        acc.push(curr.categoryName);
-        console.log(curr.categoryName)
-        return acc;
-      }
-    }, <string[]>[])
   }
 
   getDataByCategory(transactions:ITransactArchive[], planActual: 'planned'|'actual', flow:'income'|'costs'|'', month:number) {
+
     const planActTransactions = this.transactionsService.filterByPlanActual(transactions, planActual);
     const transactionByFlow = this.transactionsService.filterByFlow(planActTransactions, flow);
     const transactionByMonth = this.transactionsService.filterByMonth(transactionByFlow, month)
-    return this.transactionsService.reduceByCategory(transactionByMonth);
-    }
+    const transactionByCategories = this.transactionsService.reduceByCategory(transactionByMonth);
+    let shallowCopyCategories = [... this.allNotEmptyCategories];
+
+    transactionByCategories.reduce((acc, curr)=>{
+      const index = shallowCopyCategories.findIndex((i)=> i.categoryName === curr.categoryName)
+      if (index >= 0) {
+        shallowCopyCategories[index] = curr;
+        return acc;
+      } else {
+        return acc;
+      }
+    }, <ITotalByCategory[]>[])
+    return shallowCopyCategories
+
+  }
 
   setDataByMonth(transactions:ITransactArchive[], planActual: 'planned'|'actual', flow:'income'|'costs'|'') {
     const planActTransactions = this.transactionsService.filterByPlanActual(transactions, planActual);
