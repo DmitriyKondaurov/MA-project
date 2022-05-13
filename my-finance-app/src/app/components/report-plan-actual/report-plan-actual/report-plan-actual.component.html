@@ -4,15 +4,14 @@
       <select [(ngModel)]="selectedFlowDirection"
               class="filter__month"
               name="filter__month-from"
-              id="filter__month-from"
-              (change)="resetCategories(selectedFlowDirection)">
+              id="filter__month-from">
         <option *ngFor="let flow of flowDirection" value="{{flow}}">{{flow}}</option>
       </select>
     <select [(ngModel)]="selectedMonth"
             class="filter__month"
             name="filter__month-till"
             id="filter__month-till"
-            (change)="setDataByCategory(selectedMonth)">
+            (change)="setDataByCategory(selectedMonth, selectedFlowDirection)">
       <option *ngFor="let month of monthsForSelect" value="{{month.value}}">{{month.title}}</option>
     </select>
     <select [(ngModel)]="selectedYear" class="filter__year" name="filter__year" id="filter__year">
