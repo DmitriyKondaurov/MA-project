@@ -46,12 +46,12 @@ export class ReportPlanActualComponent implements OnInit {
       this.actualCostsTransByMonths = this.setDataByMonth(this.transactionsByYear, 'actual', 'costs')
 
       if (this.selectedMonth) {
-        this.setDataByCategory(this.selectedMonth)
+        this.setDataByCategory(this.selectedMonth, this.selectedFlowDirection)
       }
     })
   }
 
-  setDataByCategory(selectedMonth: number) {
+  setDataByCategory(selectedMonth: number, selectedFlow: string) {
     this.allNotEmptyCategories = this.transactionsService.filterByMonth(this.transactionsByYear, +this.selectedMonth)
       .reduce((acc, curr) => {
         const index: number = acc.findIndex((i) => i.categoryName === curr.categoryName)
@@ -99,16 +99,5 @@ export class ReportPlanActualComponent implements OnInit {
     const planActTransactions = this.transactionsService.filterByPlanActual(transactions, planActual);
     const transactionByFlow = this.transactionsService.filterByFlow(planActTransactions, flow);
     return this.transactionsService.customReduceByMonth(transactionByFlow);
-  }
-
-  resetCategories(flow: 'income'|'costs'|'') {
-    if (flow === 'income') {
-
-
-    } else if (flow === 'costs') {
-
-      this.allNotEmptyCategories = []
-
-    }
   }
 }
