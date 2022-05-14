@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { RestApiService } from '../../../services/res-api.service'
 
 @Component({
   selector: 'app-card',
@@ -7,11 +8,26 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
+  isShow = false;
+
   @Input() card: any
 
-  constructor() { }
+  constructor(private RestApiService: RestApiService, private element: ElementRef) { }
 
   ngOnInit(): void {
   }
 
+  show() {
+    this.isShow = true;
+  }
+
+  hide() {
+    this.isShow = false;
+    this.element.nativeElement.closest('body').style.overflow = 'auto'
+  }
+
+  sayHello(id: any) {
+    // this.RestApiService.deleteTransaction(id);
+    console.log(id);
+  }
 }

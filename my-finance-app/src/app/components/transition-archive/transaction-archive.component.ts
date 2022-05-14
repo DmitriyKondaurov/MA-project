@@ -16,10 +16,6 @@ export class TransactionArchiveComponent implements OnInit {
 
   constructor(private RestApiService: RestApiService, private MonitoringInfoService: MonitoringInfoService) { }
 
-  sayHello(id: any) {
-    // this.RestApiService.deleteTransaction(id);
-    this.getTransaction();
-  }
 
   getTransaction() {
     this.RestApiService.getTransactions().snapshotChanges().subscribe( res => {
@@ -30,7 +26,6 @@ export class TransactionArchiveComponent implements OnInit {
         a['$key'] = item.key;
         this.data.push(a as Transaction);
       } )
-      console.log(this.data);
       this.transactions = this.MonitoringInfoService.monitoringInfo(this.data);
     })
   }

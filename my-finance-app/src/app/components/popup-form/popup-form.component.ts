@@ -2,6 +2,7 @@ import { RestApiService } from './../../services/res-api.service';
 import { Component, OnInit, Output, EventEmitter, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Transaction } from 'src/app/app-interfaces';
+import { AuthService } from 'src/app/services/auth.service';
 
 interface Type {
   value: 'costs' | 'income',
@@ -68,7 +69,7 @@ export class PopupFormComponent implements OnInit {
   @Output() handleHide = new EventEmitter();
 
 
-  constructor(private RestApiService: RestApiService, private element: ElementRef) { }
+  constructor(private RestApiService: RestApiService, private element: ElementRef, private auth: AuthService) { }
 
   handleHideClick(): void {
     this.handleHide.emit();
@@ -80,6 +81,7 @@ export class PopupFormComponent implements OnInit {
     this.RestApiService.getTransactions();
     this.data = this.RestApiService.getCategories();
     this.RestApiService.getCategories().snapshotChanges().subscribe((res: any) => {
+      console.log(res);
       res.forEach( (category: any) => {
         this.dataCategories.push(category.payload.toJSON());
       } )
@@ -102,10 +104,14 @@ export class PopupFormComponent implements OnInit {
   submitForm(): void {
     this.submitted = true;
     if(this.form.valid) {
-      this.RestApiService.addTransaction(this.form.value);
+      console.log(this.auth.userUid)
+      this.RestApiService.addTransaction(this.form.value, this.auth.userUid);
       this.show();
       this.element.nativeElement.closest('body').style.overflow = 'auto';
-      this.form.reset();
+      this.form.controls['categoryName'].reset();
+      this.form.controls['subCategoryName'].reset();
+      this.form.controls['description'].reset();
+      this.form.controls['amount'].reset();
     }
   }
 

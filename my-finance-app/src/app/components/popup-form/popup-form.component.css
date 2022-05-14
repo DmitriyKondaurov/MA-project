@@ -101,11 +101,7 @@
     color: #FFF;
 }
 
-.button {
-    background-color: #25A779;
-}
-
-.button:hover {
+.btn-submit:hover {
     opacity: .8;
     cursor: pointer;
 }

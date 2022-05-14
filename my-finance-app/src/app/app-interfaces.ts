@@ -1,3 +1,5 @@
+import { object } from "rxfire/database"
+
 export interface ICategories {
   income: {
     [key: string]: string[]
@@ -86,4 +88,11 @@ export interface IMonth {
   title: string;
   value: number;
   total: number
+}
+
+export interface User {
+  uid: string;
+  email: string;
+  transactionList?: object;
+  balance?: object;
 }

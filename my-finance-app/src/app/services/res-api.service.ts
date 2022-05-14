@@ -8,15 +8,15 @@ export class RestApiService {
 
   transactionsRef?: AngularFireList<any>;
   transactionRef?: AngularFireObject<any>;
-  private dbTransactionPath = '/transaction-list';
+  private dbTransactionPath = '/transactionList';
   private dbCategoriesPath = '/categories';
   private dbBalancePath = '/balance';
 
   constructor(private http: HttpClient, private db: AngularFireDatabase) {
    }
 
-  addTransaction(transaction: any) {
-    this.transactionsRef = this.db.list(this.dbTransactionPath);
+  addTransaction(transaction: any, uid: string) {
+    this.transactionsRef = this.db.list(`users/${uid}/${this.dbTransactionPath}`);
     this.transactionsRef?.push(transaction);
   }
 
