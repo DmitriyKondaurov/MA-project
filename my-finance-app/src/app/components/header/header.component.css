@@ -1,12 +1,14 @@
 .header {
+  position: sticky;
+  top: 0;
+  padding: 15px;
+  margin: auto;
+  box-sizing: border-box;
+  background-color: #25A779;
   max-width: 1024px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: auto;
-  border-bottom: none;
-  box-sizing: border-box;
-
 }
 
 .balance, .login-user {
@@ -25,6 +27,12 @@
 
 .login-user {
   background-color: #F2FBFA;
-  padding: 15px 10px;
+  padding: 15px;
   border-radius: 50%;
+  border: 2px solid #373737;
+}
+
+.svg--out {
+  height: 20px;
+  width: 20px;
 }
