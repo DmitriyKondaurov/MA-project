@@ -137,7 +137,7 @@
     }
 }
 
-@media (max-height: 680px) {
+@media (max-height: 740px) {
     .popup__form {
         margin-top: 50px;
     }

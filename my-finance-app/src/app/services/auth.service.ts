@@ -5,7 +5,7 @@ import { User } from '../app-interfaces';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
 
-import { Observable, of, empty, map, tap } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { GoogleAuthProvider } from "firebase/auth";
 
