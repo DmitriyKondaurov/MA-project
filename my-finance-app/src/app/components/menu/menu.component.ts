@@ -21,7 +21,7 @@ export class MenuComponent {
       url: 'monitoring'
     },
     {
-      title: 'Category',
+      title: 'Categories',
       url: '#'
     },
     {
@@ -34,7 +34,7 @@ export class MenuComponent {
     },
     {
       title: 'Goals',
-      url: ''
+      url: 'goals'
     },
   ];
   constructor(private router: Router, private element: ElementRef) { }

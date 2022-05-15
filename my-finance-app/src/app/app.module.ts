@@ -34,6 +34,7 @@ import { StatisticFieldComponent } from './components/cost-monitoring/statistic/
 import { CostsFilterPipe } from './components/pipes/costs-filter.pipe';
 import { DiagramBarComponent } from './components/cost-monitoring/statistic-diagram/diagram-bar/diagram-bar.component';
 import { ReportPlanActualComponent } from './components/report-plan-actual/report-plan-actual/report-plan-actual.component';
+import { GoalsComponent } from './components/goals/goals.component';
 
 
 
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
   { path: 'archive', component: TransactionArchiveComponent, canActivate: [AuthGuard] },
   { path: 'monitoring', component: CostMonitoringComponent, canActivate: [AuthGuard] },
   { path: 'report', component: ReportPlanActualComponent, canActivate: [AuthGuard] },
+  { path: 'goals', component: GoalsComponent, canActivate: [AuthGuard] },
   { path: '', component: MainPageComponent }
 ]
 @NgModule({
@@ -67,6 +69,7 @@ const appRoutes: Routes = [
     CostsFilterPipe,
     DiagramBarComponent,
     ReportPlanActualComponent,
+    GoalsComponent,
   ],
   imports: [
     BrowserModule,
