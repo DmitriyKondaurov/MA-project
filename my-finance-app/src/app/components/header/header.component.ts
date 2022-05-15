@@ -42,6 +42,7 @@ export class HeaderComponent implements OnInit {
       const income = this.getTotalFilteringTransactions(this.data, 'income', this.curBalance)
       const costs = this.getTotalFilteringTransactions(this.data, 'costs', this.curBalance)
       this.curBalance.amount = this.curBalance.amount + income - costs;
+      console.log(income, costs, this.curBalance)
     })
   }
 

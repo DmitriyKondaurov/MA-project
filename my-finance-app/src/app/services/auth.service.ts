@@ -41,7 +41,6 @@ export class AuthService {
   private updateUserData(user: any) {
     this.userUid = user['uid'];
     localStorage.setItem('uid', user['uid'])
-    console.log(localStorage['uid'])
     const userRef: AngularFireList<User> = this.db.list(`users/${user.uid}`);
     const data = { 
       uid: user.uid, 
