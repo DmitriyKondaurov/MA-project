@@ -1,4 +1,4 @@
-<div class="card" >
+<div class="card" (click)="sayHello(card.$key)" (click)="show()">
     <div class="card__group-one">
     </div>
     <div class="card__group-two">
@@ -18,3 +18,4 @@
     <div class="card__category">{{card.subCategoryName}}</div>
     <div class="card_date">{{card.date}}</div>
 </div>
+<div class="card__modal" *ngIf="isShow"></div>

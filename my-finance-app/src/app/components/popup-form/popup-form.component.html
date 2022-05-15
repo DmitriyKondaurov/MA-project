@@ -13,7 +13,7 @@
             </option>
           </select>
           <div class="alert alert-danger"
-                *ngIf="form.controls['type'].invalid && form.controls['type'].touched">
+          *ngIf="(formControl['type'].touched || submitted) && formControl['type'].errors?.['required']">
                 Required field
           </div>
         </div>
@@ -25,7 +25,7 @@
             </option>
           </select>
           <div class="alert alert-danger"
-              *ngIf="form.controls['expense'].invalid && form.controls['expense'].touched">
+          *ngIf="(formControl['expense'].touched || submitted) && formControl['expense'].errors?.['required']">
               Required field
           </div>
         </div>
@@ -33,7 +33,7 @@
           <label class="form__title">Date</label>
           <input class="form__field" type="date" formControlName="date" data-date-input>
           <div class="alert alert-danger"
-              *ngIf="form.controls['date'].invalid && form.controls['date'].touched">
+          *ngIf="(formControl['date'].touched || submitted) && formControl['date'].errors?.['required']">
               Required field
           </div>
         </div>
@@ -45,7 +45,7 @@
             </option>
           </select>
           <div class="alert alert-danger"
-            *ngIf="form.controls['categoryName'].invalid && form.controls['categoryName'].touched">
+          *ngIf="(formControl['categoryName'].touched || submitted) && formControl['categoryName'].errors?.['required']">
             Required field
           </div>
         </div>
@@ -57,7 +57,7 @@
             </option>
           </select>
           <div class="alert alert-danger"
-              *ngIf="form.controls['subCategoryName'].invalid && form.controls['subCategoryName'].touched">
+          *ngIf="(formControl['subCategoryName'].touched || submitted) && formControl['subCategoryName'].errors?.['required']">
               Required field
           </div>
         </div>
@@ -70,7 +70,7 @@
             <label class="form__title">Amount</label>
             <input class="form__field" type="number" formControlName="amount">
             <div class="alert alert-danger"
-                *ngIf="form.controls['amount'].invalid && form.controls['amount'].touched">
+            *ngIf="(formControl['amount'].touched || submitted) && formControl['amount'].errors?.['required']">
                 Required field
             </div>
           </div>
@@ -83,10 +83,8 @@
             </select>
           </div>
         </div>
-        <button class="btn-submit"
-                [disabled]="form?.invalid"
-                [ngClass]="{'button': form?.invalid === false}"
-                >
-                Submit</button>
+        <button class="btn-submit">
+          Submit
+        </button>
     </form>
 </div>

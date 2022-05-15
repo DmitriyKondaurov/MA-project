@@ -1,4 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,7 @@ export class AppComponent {
     this.element.nativeElement.closest('body').style.overflow = 'auto'
   }
 
-  constructor(private element: ElementRef ) {}
+  constructor(private element: ElementRef, public auth: AuthService) {}
   ngOnInit() {
 
   }

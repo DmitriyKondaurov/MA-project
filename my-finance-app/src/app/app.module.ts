@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AuthGuard } from './services/auth.guard';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,9 +38,9 @@ import { ReportPlanActualComponent } from './components/report-plan-actual/repor
 
 
 const appRoutes: Routes = [
-  { path: 'archive', component: TransactionArchiveComponent },
-  { path: 'monitoring', component: CostMonitoringComponent },
-  { path: 'report', component: ReportPlanActualComponent },
+  { path: 'archive', component: TransactionArchiveComponent, canActivate: [AuthGuard] },
+  { path: 'monitoring', component: CostMonitoringComponent, canActivate: [AuthGuard] },
+  { path: 'report', component: ReportPlanActualComponent, canActivate: [AuthGuard] },
   { path: '', component: MainPageComponent }
 ]
 @NgModule({
@@ -79,7 +80,9 @@ const appRoutes: Routes = [
     AngularFireDatabaseModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

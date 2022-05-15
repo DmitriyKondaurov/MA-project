@@ -31,6 +31,14 @@
     width: 35%;
 }
 
+.card__modal {
+    position: absolute;
+    top: 40%;
+    height: 200px;
+    width: 200px;
+    background: #FFF;
+}
+
 @media (min-width:1200px) {
     .card {
         flex-direction: row;

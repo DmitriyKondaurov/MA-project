@@ -16,6 +16,8 @@ interface Type {
 
 export class PopupFormComponent implements OnInit {
 
+  submitted = false;
+
   isShow = false;
 
   show() {
@@ -98,12 +100,20 @@ export class PopupFormComponent implements OnInit {
   }
 
   submitForm(): void {
+    this.submitted = true;
     if(this.form.valid) {
       this.RestApiService.addTransaction(this.form.value);
       this.show();
       this.element.nativeElement.closest('body').style.overflow = 'auto';
-      this.form.reset();
+      this.form.controls['categoryName'].reset();
+      this.form.controls['subCategoryName'].reset();
+      this.form.controls['description'].reset();
+      this.form.controls['amount'].reset();
     }
+  }
+
+  get formControl() {
+    return this.form.controls;
   }
 
   getMainCategories(data: any): any {
