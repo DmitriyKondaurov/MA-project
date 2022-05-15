@@ -1,8 +1,4 @@
+<app-header></app-header>
 <app-popup-form *ngIf="isShow" (handleHide)="hide()" class="popup"></app-popup-form>
 <button class="btn-add" (click)="show()">+</button>
-
-
-<header class="header">
-    <app-header class="header__bar"></app-header>
-</header>
 <router-outlet class="main"></router-outlet>

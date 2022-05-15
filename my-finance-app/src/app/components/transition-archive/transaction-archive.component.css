@@ -1,11 +1,11 @@
 .transaction {
-    display: flex;
+    /*display: flex;*/
     flex-direction: column;
     align-items: center;
 }
 
 .transaction-card {
-    display: flex;
+    /*display: flex;*/
     justify-content: center;
     background-color: #FFF;
     padding: 5px 0;
