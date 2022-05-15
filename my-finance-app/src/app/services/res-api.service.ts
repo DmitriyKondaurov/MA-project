@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
-import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,18 +10,18 @@ export class RestApiService {
   private dbTransactionPath = '/transactionList';
   private dbCategoriesPath = '/categories';
   private dbBalancePath = '/balance';
+  userUid = localStorage['uid'];
 
-  constructor(private auth: AuthService,
-              private db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase) {
    }
 
   addTransaction(transaction: any) {
-    this.transactionsRef = this.db.list(`users/${this.auth.userUid}/${this.dbTransactionPath}`);
+    this.transactionsRef = this.db.list(`users/${this.userUid}/${this.dbTransactionPath}`);
     this.transactionsRef?.push(transaction);
   }
 
   getTransactions(): AngularFireList<any> {
-    this.transactionsRef = this.db.list(`users/${this.auth.userUid}/${this.dbTransactionPath}`);
+    this.transactionsRef = this.db.list(`users/${this.userUid}/${this.dbTransactionPath}`);
     return this.transactionsRef;
   }
 
@@ -37,12 +36,12 @@ export class RestApiService {
   }
 
   getTransaction(id: string): any {
-    this.transactionRef = this.db.object(`users/${this.auth.userUid}/${this.dbTransactionPath}/${id}`);
+    this.transactionRef = this.db.object(`users/${this.userUid}/${this.dbTransactionPath}/${id}`);
     return this.transactionRef;
   }
 
   deleteTransaction(id: string): any {
-    this.transactionRef = this.db.object(`users/${this.auth.userUid}/${this.dbTransactionPath}/${id}`);
+    this.transactionRef = this.db.object(`users/${this.userUid}/${this.dbTransactionPath}/${id}`);
     return this.transactionRef.remove();
   }
 
