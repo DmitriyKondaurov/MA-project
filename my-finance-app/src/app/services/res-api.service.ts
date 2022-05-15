@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
+import {IBalance} from "../app-interfaces";
 @Injectable({
   providedIn: 'root'
 })
@@ -18,6 +19,16 @@ export class RestApiService {
   addTransaction(transaction: any) {
     this.transactionsRef = this.db.list(`users/${this.userUid}/${this.dbTransactionPath}`);
     this.transactionsRef?.push(transaction);
+  }
+
+  setBalance(balance: IBalance) {
+    this.transactionsRef = this.db.list(`users/${this.userUid}/${this.dbTransactionPath}`);
+    this.transactionsRef?.push(balance);
+  }
+
+  getBalance(balance: IBalance) {
+    this.transactionsRef = this.db.list(`users/${this.userUid}/${this.dbTransactionPath}`);
+    this.transactionsRef?.push(balance);
   }
 
   getTransactions(): AngularFireList<any> {
