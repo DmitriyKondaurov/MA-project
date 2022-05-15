@@ -4,6 +4,7 @@ import {RestApiService} from "../../services/res-api.service";
 import {IBalance, ITransactArchive} from "../../app-interfaces";
 import {TransactionsService} from "../../services/transactions.service";
 import { AuthService } from 'src/app/services/auth.service';
+import {AngularFireObject, SnapshotAction} from "@angular/fire/compat/database";
 
 @Component({
   selector: 'app-header',
@@ -29,20 +30,24 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.color = this.choseHighlightColor.takeNewColor();
-    this.restApiService.getBalanceAmount().snapshotChanges().subscribe( (res: any[]) => {
-      this.curBalance.amount = res[0].payload.toJSON();
-      this.curBalance.currency = res[1].payload.toJSON();
-      this.curBalance.dateString = res[2].payload.toJSON();
-    })
 
-    this.restApiService.getTransactions().snapshotChanges().subscribe( res => {
-      res.forEach( item => {
-        this.data.push(item.payload.toJSON());
-      } )
-      const income = this.getTotalFilteringTransactions(this.data, 'income', this.curBalance)
-      const costs = this.getTotalFilteringTransactions(this.data, 'costs', this.curBalance)
-      this.curBalance.amount = this.curBalance.amount + income - costs;
-      console.log(income, costs, this.curBalance)
+      this.restApiService.getTransactions().snapshotChanges().subscribe( resTransactions => {
+        this.restApiService.getBalance().snapshotChanges().subscribe( (resBalance: any) => {
+          let balance = {
+            amount: NaN,
+            dateString: '',
+            currency: ''
+          }
+          balance = resBalance.payload.toJSON()
+          this.curBalance = balance;
+        this.data = [];
+          resTransactions.forEach( item => {
+          this.data.push(item.payload.toJSON());
+        } )
+        const income = this.getTotalFilteringTransactions(this.data, 'income', this.curBalance)
+        const costs = this.getTotalFilteringTransactions(this.data, 'costs', this.curBalance)
+        this.curBalance.amount = this.curBalance.amount + income - costs;
+      })
     })
   }
 

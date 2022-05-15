@@ -8,6 +8,7 @@ export class RestApiService {
 
   transactionsRef?: AngularFireList<any>;
   transactionRef?: AngularFireObject<any>;
+  balanceRef?: AngularFireObject<any>;
   private dbTransactionPath = '/transactionList';
   private dbCategoriesPath = '/categories';
   private dbBalancePath = '/balance';
@@ -22,13 +23,13 @@ export class RestApiService {
   }
 
   setBalance(balance: IBalance) {
-    this.transactionsRef = this.db.list(`users/${this.userUid}/${this.dbTransactionPath}`);
+    this.balanceRef = this.db.object(`users/${this.userUid}/${this.dbBalancePath}`);
     this.transactionsRef?.push(balance);
   }
 
-  getBalance(balance: IBalance) {
-    this.transactionsRef = this.db.list(`users/${this.userUid}/${this.dbTransactionPath}`);
-    this.transactionsRef?.push(balance);
+  getBalance(): AngularFireObject<IBalance> {
+    this.balanceRef = this.db.object(`users/${this.userUid}/${this.dbBalancePath}`);
+    return this.balanceRef;
   }
 
   getTransactions(): AngularFireList<any> {
@@ -38,11 +39,6 @@ export class RestApiService {
 
   getCategories() {
     this.transactionsRef = this.db.list(this.dbCategoriesPath);
-    return this.transactionsRef;
-  }
-
-  getBalanceAmount() {
-    this.transactionsRef = this.db.list(this.dbBalancePath);
     return this.transactionsRef;
   }
 
