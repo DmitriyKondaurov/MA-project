@@ -3,6 +3,7 @@ import {TakeColorService} from "../../services/take-color.service";
 import {RestApiService} from "../../services/res-api.service";
 import {IBalance, ITransactArchive} from "../../app-interfaces";
 import {TransactionsService} from "../../services/transactions.service";
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +22,8 @@ export class HeaderComponent implements OnInit {
   currDate: Date = new Date();
   constructor(private choseHighlightColor: TakeColorService,
               private readonly restApiService: RestApiService,
-              private transactionsService: TransactionsService
+              private transactionsService: TransactionsService,
+              public auth: AuthService
   ) { }
 
 

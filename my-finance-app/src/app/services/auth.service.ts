@@ -26,7 +26,7 @@ export class AuthService {
         if (user) {
           return this.db.list(`users/${user.uid}`).snapshotChanges();
         } else {
-          return of(false);
+          return of(null);
         }
       })
     )
