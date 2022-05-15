@@ -6,7 +6,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .balance, .login-user {
@@ -31,12 +30,24 @@
   cursor: pointer;
 }
 
-.login-user {
+.logout-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #F2FBFA;
-  padding: 15px 10px;
+  padding: 15px;
   border-radius: 50%;
-  border: 2px solid black;
+  border: 2px solid #black;
+}
 
+.svg--out {
+  height: 20px;
+  width: 20px;
+}
+
+.logout-user:hover {
+  cursor: pointer;
+  opacity: .9;
 }
 
 .balance__modal {
@@ -103,4 +114,3 @@
 .form__button-close:hover {
   cursor: pointer;
 }
-
