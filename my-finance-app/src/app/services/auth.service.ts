@@ -46,7 +46,6 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       transactionList: {},
-      balance: {}
     }
     let arr: any[] = []
     userRef.valueChanges().subscribe(res => {

@@ -28,8 +28,15 @@
   cursor: pointer;
   opacity: .9;
 }
+
+.title {
+  text-align: center;
+}
+
 .title__app-name {
+  display: block;
   font-size: 26px;
+  color: #25A779;
 }
 
 .sub__title {
