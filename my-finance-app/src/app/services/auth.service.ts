@@ -17,7 +17,7 @@ export class AuthService {
   user$: Observable<any>;
   userUid: string = '';
 
-  constructor(private afAuth: AngularFireAuth, 
+  constructor(private afAuth: AngularFireAuth,
               private db: AngularFireDatabase,
               private router: Router
   ) {
@@ -42,12 +42,16 @@ export class AuthService {
     this.userUid = user['uid'];
     localStorage.setItem('uid', user['uid'])
     const userRef: AngularFireList<User> = this.db.list(`users/${user.uid}`);
-    const data = { 
-      uid: user.uid, 
-      email: user.email, 
-      transactionList: {}, 
-      balance: {}
-    } 
+    const data = {
+      uid: user.uid,
+      email: user.email,
+      transactionList: {},
+      balance: {
+        amount: 0,
+        dateString: '',
+        currency: ''
+      }
+    }
     let arr: any[] = []
     userRef.valueChanges().subscribe(res => {
       res.forEach(el => {
