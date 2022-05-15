@@ -64,3 +64,11 @@
   border-radius: 2px;
   background-color: #373737;
 }
+
+.purchase {
+  color: #25A779;
+}
+
+.header-menu__link--disable {
+  color: #9e9e9e;
+}

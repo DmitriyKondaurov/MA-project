@@ -2,9 +2,18 @@
   <ul class="header-menu" (click)="toggle()" [ngClass]="status ? '': 'header-menu--hide'">
     <li *ngFor="let item of elements" class="header-menu__item"
         (click)="select(item)">
-      <span class="header-menu__link"
-         [class.header-menu__link_active]="selected === item.title"
-      >{{item.title}}</span>
+      <span *ngIf="item.url === '#'; then thenBlock else elseBlock"></span>
+      <ng-template #thenBlock>
+         <span class="header-menu__link header-menu__link--disable">
+           {{item.title}}(
+           <span class="purchase">PRO ver.</span>
+         )</span>
+      </ng-template>
+      <ng-template #elseBlock>
+        <span class="header-menu__link"
+              [class.header-menu__link_active]="selected === item.title"
+        >{{item.title}}</span>
+      </ng-template>
     </li>
   </ul>
   <button type="button" class="header-menu__switcher switcher" data-menu-switcher-btn="1" (click)="toggle()">

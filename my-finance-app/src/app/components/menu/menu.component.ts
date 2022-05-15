@@ -22,7 +22,7 @@ export class MenuComponent {
     },
     {
       title: 'Category',
-      url: ''
+      url: '#'
     },
     {
       title: 'Last transaction',
