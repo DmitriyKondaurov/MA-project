@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HeaderComponent implements OnInit {
   selectedBalanceAmount: number = NaN;
   selectedBalanceDate: string = '';
+  selectedBalanceCurr: string = 'UAH';
   transactions: ITransactArchive[] = [];
   data: any[] = [];
   startBalance: IBalance = {
@@ -41,11 +42,11 @@ export class HeaderComponent implements OnInit {
       this.restApiService.getTransactions().snapshotChanges().subscribe( resTransactions => {
         this.restApiService.getBalance().snapshotChanges().subscribe( (resBalance: any) => {
           let balance = {
-            amount: NaN,
+            amount: 0,
             dateString: '',
             currency: ''
           }
-          balance = resBalance.payload.toJSON()
+          resBalance.payload.toJSON() ? balance = resBalance.payload.toJSON(): balance;
           this.startBalance = balance;
           this.selectedBalanceDate = balance.dateString;
           this.selectedBalanceAmount = balance.amount;
@@ -76,6 +77,7 @@ export class HeaderComponent implements OnInit {
   setBalance() {
     this.startBalance.amount = this.selectedBalanceAmount;
     this.startBalance.dateString = this.selectedBalanceDate;
+    this.startBalance.currency = this.selectedBalanceCurr;
     this.restApiService.setBalance(this.startBalance)
     this.showModalBalance = false;
   }

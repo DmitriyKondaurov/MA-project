@@ -94,7 +94,9 @@ export class TransactionsService {
 
   biggestCategoryAmount(transactions: ITransactArchive[], flow: string, planFact: string, date: Date) {
     const reducedTransactions = this.customReduce(transactions, flow, planFact, date)
-    return this.customSort(reducedTransactions)[0].amount | 0;
+    if(this.customSort(reducedTransactions)[0] === undefined) {
+      return 0
+    } else return this.customSort(reducedTransactions)[0].amount;
   }
 
 

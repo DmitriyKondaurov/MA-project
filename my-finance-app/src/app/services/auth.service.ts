@@ -48,8 +48,8 @@ export class AuthService {
       transactionList: {},
       balance: {
         amount: 0,
-        dateString: ' ',
-        currency: ' '
+        dateString: '',
+        currency: ''
       }
     }
     let arr: any[] = []
