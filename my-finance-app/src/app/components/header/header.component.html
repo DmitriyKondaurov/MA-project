@@ -1,6 +1,6 @@
 <header class="header">
   <app-menu></app-menu>
-  <div class="balance">
+  <div class="balance" (click)="showModalBalance = true">
     <span class="balance__text">Balance:</span>
     <span class="balance__amount">
     {{curBalance.amount | currency:'UAH':'symbol-narrow'}}
@@ -10,4 +10,22 @@
     <span class="login-user__name">Exit</span>
   </div>
 </header>
-
+<div class="balance__modal form" *ngIf="showModalBalance">
+  <h2 class="form__title">Set your start balance:</h2>
+  <div class="form__button-close" (click)="showModalBalance = false">×</div>
+    <div class="form__item">
+      <label for="blDate" class="form__label">date:</label>
+      <input [(ngModel)]="selectedBalanceDate" type="date" id="blDate" name="blDate" class="form__field">
+    </div>
+    <div class="form__item">
+      <label for="blAmount" class="form__label">amount:</label>
+      <input [(ngModel)]="selectedBalanceAmount" type="number" id="blAmount" name="blAmount" class="form__field">
+    </div>
+    <div class="form__item">
+      <label for="blCurrency" class="form__label">currency:</label>
+      <select id="blCurrency" name="blCurrency" class="form__field">
+        <option value="UAH">UAH</option>
+      </select>
+    </div>
+  <button type="button" class="form__submit" (click)="setBalance()">save</button>
+</div>

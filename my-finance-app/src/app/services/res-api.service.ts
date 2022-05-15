@@ -24,7 +24,7 @@ export class RestApiService {
 
   setBalance(balance: IBalance) {
     this.balanceRef = this.db.object(`users/${this.userUid}/${this.dbBalancePath}`);
-    this.transactionsRef?.push(balance);
+    this.balanceRef?.set(balance);
   }
 
   getBalance(): AngularFireObject<IBalance> {
