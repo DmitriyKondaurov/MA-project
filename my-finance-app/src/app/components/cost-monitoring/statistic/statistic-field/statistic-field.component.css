@@ -28,26 +28,26 @@
 
 @media (min-width:769px) {
   .field__name {
-      font-size: 26px;
+    font-size: 26px;
   }
   .field__value {
-    font-size: 26px;
+  font-size: 26px;
   }
 
   .field__color {
-    align-self: center;
+  align-self: center;
   }
 }
 
 @media (min-width:1200px) {
   .field__name {
-    font-size: 28px;
+  font-size: 28px;
   }
   .field__value {
-    font-size: 28px;
+  font-size: 28px;
   }
 
   .field__color {
-    align-self: center;
+  align-self: center;
   }
 }

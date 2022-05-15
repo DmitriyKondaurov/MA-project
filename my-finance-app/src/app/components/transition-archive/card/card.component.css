@@ -100,16 +100,16 @@
 }
 
 .btn-del {
-    position: absolute;
-    right: 5px;
-    bottom: 5px;
-    color: #BC1010;
-    padding: 10px 15px;
-    background: #FFF;
-    border: 1px solid #373737;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 18px;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  color: #BC1010;
+  padding: 10px 15px;
+  background: #FFF;
+  border: 1px solid #373737;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 18px;
 }
 
 .btn-close:hover {

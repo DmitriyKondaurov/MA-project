@@ -1,32 +1,32 @@
 .transaction {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .transaction-card {
-    display: flex;
-    justify-content: center;
-    background-color: #FFF;
-    padding: 5px 0;
-    margin: 5px 0;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #FFF;
+  padding: 5px 0;
+  margin: 5px 0;
+  width: 100%;
 }
 
 @media (min-width:600px) {
-    .transaction-card {
-        max-width: 95%;
-    }
+  .transaction-card {
+    max-width: 95%;
+  }
 }
 
 @media (min-width:769px) {
-    .transaction-card {
-        max-width: 65%;
-    }
+  .transaction-card {
+    max-width: 65%;
+  }
 }
 
 @media (min-width:1200px) {
-    .transaction-card {
-        max-width: 60%;
-    }
+  .transaction-card {
+    max-width: 60%;
+  }
 }
