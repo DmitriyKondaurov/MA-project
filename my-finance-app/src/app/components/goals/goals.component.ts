@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RestApiService} from "../../services/res-api.service";
 import {ITransactArchive} from "../../app-interfaces";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-goals',
@@ -26,7 +27,7 @@ export class GoalsComponent implements OnInit {
     type:  {value: 'costs', title: 'consumption', id: 0},
   }
 
-  constructor(private RestApiService: RestApiService) { }
+  constructor(private RestApiService: RestApiService, private router: Router) { }
 
   submitForm(): void {
     this.goal.subCategoryName = this.goalName;
@@ -35,6 +36,7 @@ export class GoalsComponent implements OnInit {
     this.goal.amount = this.goalPrice;
     this.goal.date = this.goalTillDate;
       this.RestApiService.setGoal(this.goal);
+    this.router.navigateByUrl('').then((e) => alert('success'));
   }
 
   ngOnInit(): void {
