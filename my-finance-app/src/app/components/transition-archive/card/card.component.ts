@@ -26,11 +26,6 @@ export class CardComponent implements OnInit {
     this.element.nativeElement.closest('body').style.overflow = 'auto'
   }
 
-  sayHello(id: any) {
-    // this.RestApiService.deleteTransaction(id);
-    console.log(id);
-  }
-
   delete(id: any) {
     this.RestApiService.deleteTransaction(id);
   }
