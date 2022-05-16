@@ -53,8 +53,8 @@ export class RestApiService {
   }
 
   setGoal(goal: ITransactArchive) {
-    this.transactionRef = this.db.object(`users/${this.userUid}/${this.dbTransactionPath}`);
-    this.balanceRef?.set(goal);
+    this.transactionRef = this.db.object(`users/${this.userUid}/${this.dbTransactionPath}/${this.userUid}`);
+    this.transactionRef?.set(goal);
   }
 
   getGoal(): any {

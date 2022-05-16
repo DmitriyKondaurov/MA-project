@@ -29,6 +29,11 @@ export class GoalsComponent implements OnInit {
   constructor(private RestApiService: RestApiService) { }
 
   submitForm(): void {
+    this.goal.subCategoryName = this.goalName;
+    this.goal.currency.title = this.goalCurrency;
+    this.goal.description = this.goalDescription;
+    this.goal.amount = this.goalPrice;
+    this.goal.date = this.goalTillDate;
       this.RestApiService.setGoal(this.goal);
   }
 
