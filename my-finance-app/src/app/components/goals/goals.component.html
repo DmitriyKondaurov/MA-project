@@ -16,15 +16,15 @@
         </textarea>
       </div>
       <div class="column-container">
-        <label class="form__title">Price:</label>
+        <label for="goalAmount" class="form__title">Price:</label>
         <input [(ngModel)]="goalPrice"
                class="form__field form__field--price"
                type="number" name="goalAmount"
                id="goalAmount" required>
           <select [(ngModel)]="goalCurrency"
                   class="form__field form__field--select form__select"
-                  name="goalAmount" id="goalCurr" required>
-            <option value="UAH">UAH</option>
+                  name="goalCurrency" id="goalCurr" required>
+            <option value='UAH'>UAH</option>
           </select>
       </div>
       <div class="column-container">

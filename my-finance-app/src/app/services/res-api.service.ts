@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
-import {IBalance} from "../app-interfaces";
+import {IBalance, ITransactArchive} from "../app-interfaces";
 @Injectable({
   providedIn: 'root'
 })
@@ -52,4 +52,13 @@ export class RestApiService {
     return this.transactionRef.remove();
   }
 
+  setGoal(goal: ITransactArchive) {
+    this.transactionRef = this.db.object(`users/${this.userUid}/${this.dbTransactionPath}`);
+    this.balanceRef?.set(goal);
+  }
+
+  getGoal(): any {
+    this.transactionsRef = this.db.list(`users/${this.userUid}/${this.dbTransactionPath}`);
+    return this.transactionsRef;
+  }
 }
