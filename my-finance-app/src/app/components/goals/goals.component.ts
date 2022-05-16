@@ -9,7 +9,11 @@ import {ITransactArchive} from "../../app-interfaces";
 })
 
 export class GoalsComponent implements OnInit {
-
+  goalName: string = '';
+  goalCurrency: string = 'UAH';
+  goalDescription: string = '';
+  goalPrice: number = NaN;
+  goalTillDate: string = '';
   data?: any;
 
   goal: ITransactArchive = {
