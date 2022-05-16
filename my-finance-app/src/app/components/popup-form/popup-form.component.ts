@@ -87,8 +87,13 @@ export class PopupFormComponent implements OnInit {
 
     const dateControl = document.querySelector('[data-date-input]') as HTMLInputElement ;
     this.form.controls['expense'].valueChanges.subscribe( ({ value }) => {
-      if (value === 'planned') dateControl.type = 'month'
-      else dateControl.type = 'date';
+      if (value === 'planned') {
+        dateControl.type = 'month'
+        if (this.form.controls['type'].value.value === 'costs') this.categories = this.getMainCategories(this.dataCategories[0]);
+      } else {
+        dateControl.type = 'date';
+        if (this.form.controls['type'].value.value === 'costs') this.categories = this.getMainCategories(this.dataCategories[0]);
+      }
     })
     this.form.controls['type'].valueChanges.subscribe( ({ id }: Type) => {
       if(!this.dataCategories) return;
@@ -119,7 +124,12 @@ export class PopupFormComponent implements OnInit {
   getMainCategories(data: any): any {
     let categories: any[] = [];
     Object.values(data).forEach((element: any) => {
-      categories.push(Object.values(element)[0]);
+      if(this.form.controls['expense'].value.value === 'planned') {
+        if(Object.values(element)[0] != 'Goals') categories.push(Object.values(element)[0]);
+      } else {
+        categories.push(Object.values(element)[0]);
+      }
+
     });
     return categories.flat();
   }
