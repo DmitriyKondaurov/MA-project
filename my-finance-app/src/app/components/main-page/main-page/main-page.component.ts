@@ -9,7 +9,7 @@ import {RestApiService} from "../../../services/res-api.service";
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
-  transactionList : any[] = []
+  transactionsList : any[] = [];
   currDate: Date = new Date();
 
   income: IFrontPageItem = {
@@ -37,16 +37,15 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
     this.restService.getTransactions().snapshotChanges().subscribe( res => {
-      this.transactionList = [];
       res.forEach( item => {
-        this.transactionList.push(item.payload.toJSON());
+        this.transactionsList.push(item.payload.toJSON());
       } )
 
 // INCOME
-      this.getTransactions(this.transactionList, 'income', this.income);
+      this.getTransactions(this.transactionsList, 'income', this.income);
 
 // COST
-      this.getTransactions(this.transactionList, 'costs', this.cost);
+      this.getTransactions(this.transactionsList, 'costs', this.cost);
 
 // GOALS
       this.getGoals()
@@ -63,19 +62,22 @@ export class MainPageComponent implements OnInit {
   }
 
   getGoals() {
-    let goalTransReduce = this.transactionsService.customReduce(this.transactionList, 'costs', 'planned');
-    let index = goalTransReduce.findIndex((item) => item.categoryName === 'Goals')
+    const goalTransReducePlan = this.transactionsService.customReduce(this.transactionsList, 'costs', 'planned');
+    let index = goalTransReducePlan.findIndex((item) => item.categoryName === 'Goals')
+
     if (index >= 0 ) {
-      this.goal.name = goalTransReduce[index].subCategoryName
-      this.goal.total = goalTransReduce[index].amount
+      this.goal.name = goalTransReducePlan[index].subCategoryName
+      this.goal.total = goalTransReducePlan[index].amount
     } else {
       this.goal.name = ''
       this.goal.total = 0
     }
-    goalTransReduce = this.transactionsService.customReduce(this.transactionList, 'costs', 'actual');
-    index = goalTransReduce.findIndex((item) => item.categoryName === 'Goals')
+
+    const goalTransReduceActual = this.transactionsService.customReduce(this.transactionsList, 'costs', 'actual');
+
+    index = goalTransReduceActual.findIndex((item) => item.categoryName === 'Goals')
     if (index >= 0 ) {
-      this.goal.value = goalTransReduce[index].amount
+      this.goal.value = goalTransReduceActual[index].amount
     } else {
       this.goal.value = 0
     }

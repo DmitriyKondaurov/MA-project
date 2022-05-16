@@ -20,8 +20,7 @@ export class FieldCostComponent implements OnInit {
       const transactionList: any[] = [];
       res.forEach( item => {
         transactionList.push(item.payload.toJSON());
-      } )
-
+      })
       this.transactions = this.customReduce
         .customReduce(transactionList, 'costs', 'actual', this.currDate)
         .sort( (a, b) => b.amount - a.amount)

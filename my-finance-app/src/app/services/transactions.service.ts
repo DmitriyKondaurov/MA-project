@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {IMonth, ITotalByCategory, ITransactArchive} from "../app-interfaces";
-import months from "../components/report-plan-actual/report-plan-actual/months";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export class TransactionsService {
     let totalByCategories: ITransactArchive[] = [];
 
     if (date) {
-      curTransactions
+      totalByCategories = curTransactions
         .filter((item) => item.expense.value === planFact)
         .filter((item) => item.type.value === flow)
         .filter((item) => new Date(item.date).getMonth() === date.getMonth())
@@ -24,9 +23,9 @@ export class TransactionsService {
                   acc.push(curr);
                   return acc;
                 }
-        }, totalByCategories)
+        }, <ITransactArchive[]>[])
     } else {
-      curTransactions
+      totalByCategories = curTransactions
         .filter((item) => item.expense.value === planFact)
         .filter((item) => item.type.value === flow)
         .reduce((acc, curr):ITransactArchive[] => {
@@ -38,7 +37,7 @@ export class TransactionsService {
             acc.push(curr);
             return acc;
           }
-        }, totalByCategories)
+        }, <ITransactArchive[]>[])
     }
 
     return totalByCategories;
