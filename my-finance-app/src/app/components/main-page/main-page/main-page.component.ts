@@ -37,6 +37,7 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
     this.restService.getTransactions().snapshotChanges().subscribe( res => {
+      this.transactionsList = [];
       res.forEach( item => {
         this.transactionsList.push(item.payload.toJSON());
       } )
@@ -54,6 +55,9 @@ export class MainPageComponent implements OnInit {
   }
 
   getTransactions(transactionsList: ITransactArchive[], flowDirection: string, variable: IFrontPageItem) {
+    variable.value = 0;
+    variable.total = 0;
+    variable.progress = '0';
     let transactionsReduce = this.transactionsService.customReduce(transactionsList, flowDirection, 'actual', this.currDate);
     variable.value = transactionsReduce.reduce((acc, curr) => acc += curr.amount, 0)
     transactionsReduce = this.transactionsService.customReduce(transactionsList, flowDirection, 'planned', this.currDate);
