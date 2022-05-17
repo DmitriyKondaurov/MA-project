@@ -19,6 +19,7 @@ export class CardComponent implements OnInit {
 
   show() {
     this.isShow = true;
+    this.element.nativeElement.closest('body').style.overflow = 'hidden';
   }
 
   hide() {
