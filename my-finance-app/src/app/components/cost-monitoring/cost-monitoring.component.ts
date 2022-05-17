@@ -29,13 +29,6 @@ export class CostMonitoringComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // this.data.length = 0;
-    // this.costs.length = 0;
-    // this.arrCategories.length = 0;
-    // this.costCategories.length = 0;
-    // this.notZeroCategories.length = 0;
-    // this.diagramCategories.length = 0;
-    // this.amount = 0;
     this.subscription1$ = this.RestApiService.getCategories().snapshotChanges().subscribe( res => {
       res.forEach( item => {
         this.arrCategories.push(item.payload.toJSON());
