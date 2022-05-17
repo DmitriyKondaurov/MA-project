@@ -92,7 +92,6 @@ export interface IMonth {
 
 export interface User {
   uid: string;
-  email: string;
   transactionList?: object;
   balance?: object;
 }

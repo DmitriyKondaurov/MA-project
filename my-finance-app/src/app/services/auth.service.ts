@@ -43,8 +43,7 @@ export class AuthService {
     localStorage.setItem('uid', user['uid'])
     const userRef: AngularFireList<User> = this.db.list(`users/${user.uid}`);
     const data = { 
-      uid: user.uid, 
-      email: user.email, 
+      uid: user.uid,  
       transactionList: {}, 
       balance: {}
     } 
