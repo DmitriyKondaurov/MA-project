@@ -39,6 +39,12 @@
   }
 }
 
+@media (min-width:1000px) {
+  .field {
+    width: 100%
+  }
+}
+
 @media (min-width:1200px) {
   .field__name {
   font-size: 28px;
