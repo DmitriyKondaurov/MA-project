@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ITransactArchive} from "../../app-interfaces";
 import {RestApiService} from "../../services/res-api.service";
 import {TransactionsService} from "../../services/transactions.service";
+import months from "../report-plan-actual/report-plan-actual/months";
 
 @Component({
   selector: 'app-field-cost',
@@ -12,7 +13,7 @@ export class FieldCostComponent implements OnInit {
   transactions: ITransactArchive[] = [];
   currDate: Date = new Date();
   biggestCostAmount: number = 0;
-
+  months = months;
   constructor(private readonly restService: RestApiService, private customReduce: TransactionsService) { }
 
   ngOnInit() {
