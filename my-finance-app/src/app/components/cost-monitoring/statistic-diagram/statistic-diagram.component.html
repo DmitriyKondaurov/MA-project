@@ -1,3 +1,3 @@
 <div class="diagram">
-    <app-diagram-bar class="diagram__pie" *ngFor="let pie of notZeroCategories" [pie]="pie">{{pie.color}}</app-diagram-bar>
+    <app-diagram-bar class="diagram__pie" *ngFor="let pie of notZeroCategories | costSort" [pie]="pie">{{pie.color}}</app-diagram-bar>
 </div>
