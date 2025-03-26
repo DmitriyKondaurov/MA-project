@@ -14,7 +14,8 @@
             (change)="setDataByCategory(selectedMonth, selectedFlowDirection)">
       <option *ngFor="let month of monthsForSelect" value="{{month.value}}">{{month.title}}</option>
     </select>
-    <select [(ngModel)]="selectedYear" class="filter__year" name="filter__year" id="filter__year">
+    <select [(ngModel)]="selectedYear" class="filter__year" name="filter__year" id="filter__year"
+            (ngModelChange)="setDataByYear($event)" >
       <option *ngFor="let year of years"  value="{{year}}">{{year}}</option>
     </select>
   </div>

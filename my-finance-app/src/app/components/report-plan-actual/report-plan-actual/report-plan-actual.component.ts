@@ -38,6 +38,16 @@ export class ReportPlanActualComponent implements OnInit {
       res.forEach( item => {
         this.data.push(item.payload.toJSON());
       } )
+
+      this.years = this.data.reduce((acc, cur) => {
+          if (!acc.includes(Number(cur.date.substring(0, 4)))) {
+            acc.push(Number(cur.date.substring(0, 4)));
+          }
+          return acc;
+      }, <ITotalByCategory[]>[])
+
+      this.selectedYear = this.years[this.years.length - 1];
+      // this.selectedYear = 2022;
       this.transactionsByYear = this.transactionsService.filterByYear(this.data, this.selectedYear);
       this.transactionsByYear.sort((a, b) => a.amount - b.amount);
       this.plannedIncomeTransByMonths = this.setDataByMonth(this.transactionsByYear, 'planned', 'income')
@@ -99,5 +109,14 @@ export class ReportPlanActualComponent implements OnInit {
     const planActTransactions = this.transactionsService.filterByPlanActual(transactions, planActual);
     const transactionByFlow = this.transactionsService.filterByFlow(planActTransactions, flow);
     return this.transactionsService.customReduceByMonth(transactionByFlow);
+  }
+
+  setDataByYear(year:number) {
+    this.transactionsByYear = this.transactionsService.filterByYear(this.data, Number(year));
+    this.transactionsByYear.sort((a, b) => a.amount - b.amount);
+    this.plannedIncomeTransByMonths = this.setDataByMonth(this.transactionsByYear, 'planned', 'income')
+    this.plannedCostsTransByMonths = this.setDataByMonth(this.transactionsByYear, 'planned', 'costs')
+    this.actualIncomeTransByMonths = this.setDataByMonth(this.transactionsByYear, 'actual', 'income')
+    this.actualCostsTransByMonths = this.setDataByMonth(this.transactionsByYear, 'actual', 'costs')
   }
 }
