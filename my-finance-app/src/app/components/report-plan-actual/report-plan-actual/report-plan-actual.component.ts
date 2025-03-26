@@ -16,7 +16,7 @@ export class ReportPlanActualComponent implements OnInit {
   flowDirection = ['', 'costs', 'income'];
   monthsForSelect = [...months];
   monthsForTable = [...months];
-  years = [new Date().getFullYear()]; // it must be taken from transactions
+  years = [new Date().getFullYear()];
   data: any[] = [];
   transactionsByYear: ITransactArchive[] = [];
   plannedIncomeTransByMonths: IMonth[] = Array(12).fill({title:'', value: 0, total: 0},);
@@ -47,7 +47,6 @@ export class ReportPlanActualComponent implements OnInit {
       }, <ITotalByCategory[]>[])
 
       this.selectedYear = this.years[this.years.length - 1];
-      // this.selectedYear = 2022;
       this.transactionsByYear = this.transactionsService.filterByYear(this.data, this.selectedYear);
       this.transactionsByYear.sort((a, b) => a.amount - b.amount);
       this.plannedIncomeTransByMonths = this.setDataByMonth(this.transactionsByYear, 'planned', 'income')
