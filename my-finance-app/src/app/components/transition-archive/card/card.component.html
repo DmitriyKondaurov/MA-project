@@ -1,0 +1,55 @@
+<div class="card" (click)="show()">
+    <div class="card__group-one">
+    </div>
+    <div class="card__group-two">
+        <div class="card__indicator" [ngStyle]="{
+            background: (card.type.title) === 'income' ?
+            '#2ABF8B' : '#FD3A30'}">
+        </div>
+        <div class="card__money">
+            <div class="money__amount">
+                {{card.amount}}
+            </div>
+            <div class="money__curency">
+                {{card.currency.title}}
+            </div>
+        </div>
+    </div>
+    <div class="card__category">{{card.subCategoryName}}</div>
+    <div class="card_date">{{card.date}}</div>
+</div>
+<div class="modal__back" *ngIf="isShow" (click)="hide()"></div>
+<div class="card__modal" *ngIf="isShow">
+    <button class="btn-close" (click)="hide()">x</button>
+    <div class="modal__group">
+        <div class="group__info">
+            <div class="info__type">
+                <div class="modal__indicator" [ngStyle]="{
+                    background: (card.type.title) === 'income' ?
+                    '#2ABF8B' : '#FD3A30'}">
+                </div>
+                <div class="type__title">
+                    {{card.type.title}}
+                </div>
+            </div>
+            <div class="row-container">
+                Category: {{card.subCategoryName}}
+            </div>
+            <div>
+                Date: {{card.date}}
+            </div>
+            <div class="row-container">
+                Description: {{card.description}}
+            </div>
+            <div class="info__money row-container">
+                <div class="info__amount">
+                    Amount: {{card.amount}}
+                </div>
+                <div class="info__curency">
+                    {{card.currency.title}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn-del" (click)="delete(card.$key)">Delete</button>
+</div>

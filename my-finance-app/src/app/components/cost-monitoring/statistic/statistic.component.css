@@ -1,0 +1,71 @@
+.transaction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.transaction__costs {
+  position: absolute;
+  top: 100px;
+  padding: 0 50px;
+  font-size: 34px;
+  font-weight: 600;
+}
+
+.costs__amount {
+  font-size: 36px;
+  color: #25A779;
+}
+
+@media (min-width:1000px) {
+  .transaction {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+  }
+
+  .transaction-card {
+    display: flex;
+  }
+
+  .transaction__fields {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .transaction__costs {
+    left: 30%;
+    padding: 0 50px;
+    font-size: 30px;
+    font-weight: 600;
+  }
+}
+
+@media (min-width: 1200px) {
+  .transaction__costs {
+    left: 35%;
+  }
+}
+
+@media (max-width:540px) {
+  .transaction__costs {
+    font-size: 26px;
+  }
+
+  .costs__amount {
+    font-size: 28px;
+  }
+}
+
+
+@media (max-width:480px) {
+  .transaction__costs {
+    padding: 0 40px;
+    font-size: 22px;
+  }
+
+  .costs__amount {
+    font-size: 24px;
+  }
+}

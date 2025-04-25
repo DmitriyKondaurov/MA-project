@@ -1,0 +1,39 @@
+.progress-bar__line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 320px;
+  height: 20px;
+  border: 1px solid black;
+  background-color: #ececec;
+}
+
+.progress-bar__fill-value {
+  display: inline-block;
+  height: 20px;
+  border-right: 1px solid black;
+}
+
+@media only screen and (min-width: 600px) {
+  .progress-bar__line {
+    width: 400px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .progress-bar__line {
+    width: 500px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .progress-bar__line {
+    width: 700px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .progress-bar__line {
+    width: 800px;
+  }
+}

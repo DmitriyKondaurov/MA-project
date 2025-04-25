@@ -1,0 +1,13 @@
+.diagram {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-bottom: 2px solid #afacac;
+  border-radius: 2px;
+  height: 200px;
+}
+
+.diagram__pie {
+  margin: 0 7px;
+  width: 5%;
+}

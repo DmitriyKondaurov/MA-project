@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-finance-app';
+
+  isShow = false;
+
+  show() {
+    this.isShow = true;
+  }
+
+  hide() {
+    this.isShow = false;
+    this.element.nativeElement.closest('body').style.overflow = 'auto'
+  }
+
+  constructor(private element: ElementRef, public auth: AuthService) {}
+  ngOnInit() {
+
+  }
+
 }

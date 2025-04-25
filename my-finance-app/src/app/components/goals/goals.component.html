@@ -1,0 +1,42 @@
+<div class="goals">
+  <div class="goals__wrapper">
+    <form (ngSubmit)="submitForm()" class="goals__form">
+      <div class="column-container">
+        <label for="goalName" class="form__title">Goal:</label>
+        <input [(ngModel)]="goalName"
+               id="goalName" class="form__field form__select"
+               type="text" name="goalName" required
+               placeholder="type your purchase goal">
+      </div>
+      <div class="column-container">
+        <label for="goalDescription" class="form__title">Description:</label>
+        <textarea [(ngModel)]="goalDescription"
+                  class="form__field" name="goalDescription"
+                  id="goalDescription" rows="5" cols="25">
+        </textarea>
+      </div>
+      <div class="column-container">
+        <label for="goalAmount" class="form__title">Price:</label>
+        <input [(ngModel)]="goalPrice"
+               class="form__field form__field--price"
+               type="number" name="goalAmount"
+               id="goalAmount" required>
+          <select [(ngModel)]="goalCurrency"
+                  class="form__field form__field--select form__select"
+                  name="goalCurrency" id="goalCurr" required>
+            <option value='UAH'>UAH</option>
+          </select>
+      </div>
+      <div class="column-container">
+        <label for="goalDate" class="form__title">Till date:</label>
+        <input [(ngModel)]="goalTillDate" class="form__field" type="date" name="goalDate" id="goalDate" required>
+      </div>
+      <div class="buttons">
+        <button class="buttons__form-btn buttons__form-btn--cancel" routerLink="">Cancel</button>
+        <button type="submit" class="buttons__form-btn buttons__form-btn--submit">Submit</button>
+      </div>
+
+    </form>
+  </div>
+
+</div>

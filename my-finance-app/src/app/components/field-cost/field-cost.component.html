@@ -1,0 +1,9 @@
+<div class="field-cost">
+  <span class="field-cost__name">Costs by categories {{months[currDate.getMonth()+1].title}}:</span>
+  <ul class="field-cost__list">
+    <li class="field-cost__item"
+        *ngFor=" let item of transactions">
+      <app-field-cost-item [costByCategory] = item [totalCostAmount] = "biggestCostAmount"></app-field-cost-item>
+    </li>
+  </ul>
+</div>

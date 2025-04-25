@@ -1,0 +1,49 @@
+.field-cost {
+  width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  padding-top: 15px;
+}
+
+.field-cost__name {
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: underline;
+  align-self: flex-start;
+}
+
+.field-cost__list {
+  margin: 5px;
+  padding: 0;
+}
+
+.field-cost__item {
+  list-style: none;
+  padding: 5px 0;
+}
+
+@media only screen and (min-width: 600px) {
+  .field-cost {
+    width: 400px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .field-cost {
+    width: 500px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .field-cost {
+    width: 700px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .field-cost {
+    width: 800px;
+  }
+}

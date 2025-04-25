@@ -1,0 +1,90 @@
+<div class="popup__background" (click)="handleHideClick()"></div>
+<div *ngIf="isShow" class="modal-dialog">SUBMIT SUCCESSFULLY</div>
+<div class="popup-container">
+    <button class="btn-close" (click)="handleHideClick()">X</button>
+    <form [formGroup]="form"
+          (ngSubmit)="submitForm()"
+          class="popup__form">
+        <div class="column-container">
+          <label class="form__title">Type:</label>
+          <select formControlName="type" class="form__field form__select">
+            <option *ngFor="let type of types" [ngValue]="type">
+              {{ type.title }}
+            </option>
+          </select>
+          <div class="alert alert-danger"
+          *ngIf="(formControl['type'].touched || submitted) && formControl['type'].errors?.['required']">
+                Required field
+          </div>
+        </div>
+        <div class="column-container">
+          <label class="form__title">Actual/Planned</label>
+          <select formControlName="expense" class="form__field form__select">
+            <option *ngFor="let expense of expenses" [ngValue]="expense">
+              {{ expense.title }}
+            </option>
+          </select>
+          <div class="alert alert-danger"
+          *ngIf="(formControl['expense'].touched || submitted) && formControl['expense'].errors?.['required']">
+              Required field
+          </div>
+        </div>
+        <div class="column-container">
+          <label class="form__title">Date</label>
+          <input class="form__field date" type="date" formControlName="date" data-date-input>
+          <div class="alert alert-danger"
+          *ngIf="(formControl['date'].touched || submitted) && formControl['date'].errors?.['required']">
+              Required field
+          </div>
+        </div>
+        <div class="column-container">
+          <label class="form__title">Main category</label>
+          <select class="form__field form__select" formControlName="categoryName">
+            <option *ngFor="let category of categories" [ngValue]="category">
+              {{ category }}
+            </option>
+          </select>
+          <div class="alert alert-danger"
+          *ngIf="(formControl['categoryName'].touched || submitted) && formControl['categoryName'].errors?.['required']">
+            Required field
+          </div>
+        </div>
+        <div class="column-container">
+          <label class="form__title">Category</label>
+          <select class="form__field form__select" formControlName="subCategoryName">
+            <option *ngFor="let subCategory of subCategories" [ngValue]="subCategory">
+              {{ subCategory }}
+            </option>
+          </select>
+          <div class="alert alert-danger"
+          *ngIf="(formControl['subCategoryName'].touched || submitted) && formControl['subCategoryName'].errors?.['required']">
+              Required field
+          </div>
+        </div>
+        <div class="column-container">
+          <label class="form__title">Description</label>
+          <input class="form__field" type="text" formControlName="description">
+        </div>
+        <div class="row-container">
+          <div class="column-container">
+            <label class="form__title">Amount</label>
+            <input class="form__field" type="number" formControlName="amount">
+            <div class="alert alert-danger"
+            *ngIf="(formControl['amount'].touched || submitted) && formControl['amount'].errors?.['required']">
+                Required field
+            </div>
+          </div>
+          <div class="column-container">
+            <label class="form__title">Currency</label>
+            <select class="form__field form__select" formControlName="currency">
+              <option *ngFor="let currency of currencies" [ngValue]="currency">
+                {{ currency.title }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-submit">
+          Submit
+        </button>
+    </form>
+</div>

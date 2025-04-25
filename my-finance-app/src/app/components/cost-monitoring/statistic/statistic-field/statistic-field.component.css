@@ -1,0 +1,59 @@
+.field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 0 10px;
+}
+
+.group-one {
+  display: flex;
+  align-items: center;
+}
+
+.field__color {
+  align-self: flex-start;
+  padding: 8px 7px;
+}
+
+.field__name {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.field__value {
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+@media (min-width:769px) {
+  .field__name {
+    font-size: 26px;
+  }
+  .field__value {
+  font-size: 26px;
+  }
+
+  .field__color {
+  align-self: center;
+  }
+}
+
+@media (min-width:1000px) {
+  .field {
+    width: 100%
+  }
+}
+
+@media (min-width:1200px) {
+  .field__name {
+  font-size: 28px;
+  }
+  .field__value {
+  font-size: 28px;
+  }
+
+  .field__color {
+  align-self: center;
+  }
+}
