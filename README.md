@@ -1,6 +1,10 @@
 MyFinanceApp
 This project was generated with Angular CLI version 13.1.2.
 
+graduation project of Masters Academy course
+
+link to live project -> https://dmitriykondaurov.github.io/MA-project/my-finance-app/dist/my-finance-app/
+
 Development server
 Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
