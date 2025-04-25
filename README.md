@@ -12,6 +12,24 @@ Database & Backend Services: Firebase (Firestore, Authentication, Hosting)
 
 Deployment: GitHub Pages (for frontend hosting)
 
+## Angular Features Used
+The application was built using Angular and leverages several of its core features and best practices, including:
+
+Components – for modular and reusable UI building blocks
+
+Services – to handle business logic and data fetching
+
+Routing – to enable navigation between different views/pages
+
+Route Guards – to protect routes and manage access control
+
+Directives – both built-in and custom, to manipulate the DOM dynamically
+
+Decorators – such as @Component, @Injectable, and @Input/@Output for metadata and dependency injection
+
+Pipes – to transform data in templates (e.g., date formatting, filtering)
+
+Interfaces – to enforce type safety and maintain clean, scalable code
 
 ## Development server
 
