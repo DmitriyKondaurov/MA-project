@@ -1,9 +1,16 @@
 # MyFinanceApp
 
-## Graduation project of Masters Academy course
+## Graduation project of Masters Academy course (Cherkasy, Ukraine).
 
 link to live project -> [My finance](https://dmitriykondaurov.github.io/MA-project/my-finance-app/dist/my-finance-app/)
 
+## Technology Stack
+
+Frontend: Angular, HTML, CSS, TypeScript
+
+Database & Backend Services: Firebase (Firestore, Authentication, Hosting)
+
+Deployment: GitHub Pages (for frontend hosting)
 
 
 ## Development server
