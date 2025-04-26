@@ -1,13 +1,14 @@
 # MyFinanceApp
 
 ## Graduation project of Masters Academy course (Cherkasy, Ukraine).
-## App features:
+### App features:
  - Control of family budget cash flows,
  - Monitoring of spending,
  - Visualization and comparison of major expenses,
  - Analysis and identification of unreasonable expenditures
 
 link to live project -> [My finance](https://dmitriykondaurov.github.io/MA-project/my-finance-app/dist/my-finance-app/)
+link to presentation -> [slide show presentation](https://docs.google.com/presentation/d/1PMvyaQrLqrL-EA6eeOdoUwTiyvrYDrIqlZKHYRwTeXc/edit?usp=sharing)
 
 ## Technology Stack
 
